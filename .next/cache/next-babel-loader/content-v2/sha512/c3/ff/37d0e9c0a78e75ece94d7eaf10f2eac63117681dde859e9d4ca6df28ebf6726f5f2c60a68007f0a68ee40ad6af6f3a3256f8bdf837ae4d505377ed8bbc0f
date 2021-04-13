@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { default } from \"./Footer\";","map":{"version":3,"sources":["/media/michal_cfc/Michal/lex/layout/Footer/index.tsx"],"names":["default"],"mappings":"AAAA,SAASA,OAAT,QAAwB,UAAxB","sourcesContent":["export { default } from \"./Footer\";"]},"metadata":{},"sourceType":"module"}

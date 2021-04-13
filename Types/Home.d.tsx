@@ -1,0 +1,10 @@
+interface Movie {
+    id: number
+    title: string
+    userAgent?: string
+    isMobile?: boolean
+    cover: {url: string}
+}
+export interface HomeProps {
+    movies: [Movie];
+}
