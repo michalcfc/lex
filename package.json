@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "export": "next export",
-    "build": "next build && next export",
-    "start": "next start"
+    "build": "next build",
+    "start": "next start -p $PORT"
   },
   "dependencies": {
     "@babel/core": "^7.12.13",
