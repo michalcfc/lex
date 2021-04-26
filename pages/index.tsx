@@ -58,7 +58,7 @@ const sections = [
         isFlex: true,
         isReverse: false,
         background: true,
-        img: 'img/section1.jpg',
+        img: 'img/section.jpg',
         title: "Internet radiowy",
         desc: "Twojej lokalizacji nie ma w obszarze światłowodu? Internet radiowy od Lexell to najlepszy wybór."
     },

@@ -42,7 +42,7 @@ const Hero = () => {
                         <HeroIconThird><img height="60px" src={"/img/serwis.png"} /></HeroIconThird>
                     </Link> */}
                     {/* <HeroImg
-                        src="/img/hero2.png"
+                        src="/img/lex_hero.png"
                         alt="Picture of the author"
                     /> */}
                 </HeroContentRight>

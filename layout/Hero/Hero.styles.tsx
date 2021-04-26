@@ -53,16 +53,16 @@ export const HeroWrapper = styled.picture`
     object-fit: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url("img/hero2.png");
+    background-image: url("img/lex2.png");
 `;
 
 export const HeroContentWrapper = styled.div`
     display: flex;
     line-height: 1.2;
-    padding-top: 7rem;
+    padding: 2rem 0;
+    height: 100%;
     position: relative;
     align-items: center;
-    height: 100%;
 `
 
 export const HeroContentLeft = styled.div`
@@ -87,7 +87,7 @@ export const HeroTitle = styled.h2`
 
 export const HeroImg = styled.img<DataProps>`
   object-fit: cover;
-  max-width: 100%;
+  // max-width: 100%;
   object-position: bottom right;
 `
 
