@@ -30,7 +30,7 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
     isReverse,
     className,
     img,
-    key
+    noRef,
 }, ref) => {
 
     const domRef = React.useRef();
@@ -55,7 +55,7 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
             background={background}
             customPadding={customPadding}
             ref={domRef}
-            className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
+            className={`fade-in-section ${noRef || isVisible ? ' is-visible' : ''}`}
             isVisible={isVisible}
             style={style}
         >
