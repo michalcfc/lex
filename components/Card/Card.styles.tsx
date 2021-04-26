@@ -52,8 +52,10 @@ export const CardImg = styled.img`
 
 export const CardIcon = styled.figure`
   margin: 0;
-  padding: 0;
+  padding-bottom: 1rem;
   position: relative;
+  display: flex;
+  font-size: 1.2rem;
   color: ${({theme}) => theme.colors.brand};
 `
 
@@ -62,14 +64,13 @@ export const CardHeader = styled.figure`
 `
 
 export const CardTitle = styled.div`
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 1rem;
 `
 
 export const CardContent = styled.div<DataProps>`
   flex: 1 1 0%;
-  font-size: 1.2rem;
   display: ${({flexContent}) => flexContent && `flex`};
   align-items: ${({flexContent}) => flexContent && `center`};
   margin:  ${({theme}) => theme.spacing.sm};
@@ -79,8 +80,7 @@ export const CardContent = styled.div<DataProps>`
   }
 `;
 
-export const CardDescription = styled.div`
-  font-size: 1.2rem;;
+export const CardDescription = styled.p`
 `
 
 export const CardFooter = styled.div`

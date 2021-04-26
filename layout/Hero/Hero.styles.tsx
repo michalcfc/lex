@@ -47,7 +47,7 @@ export const HeroWrapper = styled.picture`
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 42rem;
+    min-height: 44rem;
     color: ${({theme}) => theme.colors.white};
     background-color: ${({theme}) => theme.colors.brand};
     object-fit: cover;

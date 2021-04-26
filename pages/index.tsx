@@ -5,6 +5,7 @@ import Grid  from "@components/Grid"
 import Slider from "@components/Slider"
 import Section from "@components/Section"
 import Accordion from "@components/Accordion"
+import CallWidget from "@components/CallWidget"
 import CallToAction from "@components/CallToAction"
 import Button from "@components/Button"
 import GoToTop from "@components/GoToTop"
@@ -38,7 +39,7 @@ const cards = [
         id: 3,
         name: "Sprawna obsługa klienta",
         cardIcon: faHeadset,
-        desc: "Odpowiemy na wszystkie pytania i zaradzimy na każdy problem związany z naszymi usługami."
+        desc: "Doradzimy i rozwiążemy każdy problem związany z naszymi usługami."
     }
 ]
 
@@ -187,6 +188,8 @@ const Home: React.FC<HomeProps> = ( {
                 img={section.img}
                 />)
             })}
+        
+        <CallWidget />
 
         {isBottom 
             && <GoToTop />

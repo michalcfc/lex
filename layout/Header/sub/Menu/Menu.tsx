@@ -10,6 +10,13 @@ import { MenuProps } from "./Menu.d"
 import Submenu from "../Submenu";
 
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    faChevronUp,
+    faChevronDown
+} from '@fortawesome/free-solid-svg-icons'
+
+
 const Menu: React.FC<MenuProps> = ({
     links,
 }) => {
@@ -31,7 +38,16 @@ const Menu: React.FC<MenuProps> = ({
                     //     setMenuOpen(false)
                     // }}
                     >
-                   <Link href={`${link.url}`}>{link.name}</Link>
+                   <Link href={`${link.url}`}>
+                       <>
+                       {link.name}
+                       {link.hasSubmenu 
+                        &&  <>{
+                            isMenuOpen ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />
+                        }</>
+                        }
+                       </>
+                    </Link>
                 {link.hasSubmenu
                     && isMenuOpen
                     && link.id == subemnuId

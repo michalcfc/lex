@@ -18,8 +18,7 @@ import {
     faBars,
     faTimes
 } from '@fortawesome/free-solid-svg-icons'
-import {faFacebookF} from "@fortawesome/free-brands-svg-icons";
-import {HeaderTopInfoItem} from "../../Header.styles";
+
 
 const MobileMenu: React.FC<MenuProps> = ({
     links,

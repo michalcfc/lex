@@ -39,6 +39,7 @@ export const HeaderTopInfoWrapper = styled.div<DataProps>`
   padding: .42rem 0;
   color: ${({theme}) => theme.colors.white};
   display: ${({position}) => position ? 'none' : ""};
+  background: ${({ theme }) => theme.colors.brand};
   & svg {
     margin-right: .42rem;
   }

@@ -22,6 +22,12 @@ const Layout = ({children}) => {
     const menuLinks = [
         {
             id: 1,
+            name: 'Strona główna',
+            hasSubmenu: false,
+            url: "/"
+        },
+        {
+            id: 2,
             name: 'Usługi',
             hasSubmenu: true,
             url: '',
@@ -59,19 +65,19 @@ const Layout = ({children}) => {
             ]
         },
         {
-            id: 2,
+            id: 3,
             name: 'O nas',
             hasSubmenu: false,
             url: "/about"
         },
         {
-            id: 3,
+            id: 4,
             name: 'Światłowód',
             hasSubmenu: false,
             url: "/about"
         },
         {
-            id: 4,
+            id: 5,
             name: "Kontakt",
             hasSubmenu: false,
             url: "/contact"
@@ -80,6 +86,62 @@ const Layout = ({children}) => {
     ]
 
     const footerLinks = [
+        {
+            header: 'Usługi',
+            link: [
+                {
+                    id: 1,
+                    name: 'Internet światłowodowy',
+                    url: ''
+                },
+                {
+                    id: 2,
+                    name: 'Internet radiowy',
+                    url: ''
+                },
+                {
+                    id: 3,
+                    name: 'Telewizja',
+                    url: ''
+                },
+                {
+                    id: 4,
+                    name: 'Serwis',
+                    url: ''
+
+                }
+            ]
+        },
+        {
+            header: 'Inne usługi',
+            link: [
+                {
+                    id: 1,
+                    name: 'Monitoring',
+                    url: ''
+                },
+                {
+                    id: 2,
+                    name: 'Prace budowlane w zakresie przyłączy',
+                    url: ''
+                },
+                {
+                    id: 3,
+                    name: 'Sieci telekomunikacyjnych',
+                    url: ''
+                },
+                {
+                    id: 4,
+                    name: 'Wykonastwo sieci w budynkach',
+                    url: ''
+                },
+                {
+                    id: 4,
+                    name: 'Usługi maszynami budowlanymi',
+                    url: ''
+                }
+            ]
+        },
     ]
 
     return (
@@ -93,7 +155,7 @@ const Layout = ({children}) => {
                 {children}
             </Main>
             <Footer
-                links={footerLinks}
+                footerLinks={footerLinks}
             />
         </Wrapper>
         
