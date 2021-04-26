@@ -9,6 +9,9 @@ import {
     PhoneNumber
 } from "./CallToAction.styles"
 
+import Container from "@components/Container"
+import Section from "@components/Section"
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faPhone,
@@ -21,27 +24,31 @@ const CallToAction: React.FC<CallToActionProps> = () => {
 
 
     return (
-        <>
-            <CallToActionStyle>
-                <CallToActionLeft>
-                    <CallToActionImg
-                        src="/img/doradca.png"
-                    />
-                </CallToActionLeft>
-                <CallToActionRight>
-                    <CallToActionTitle>Masz pytania? Zadzwoń!</CallToActionTitle>
-                    <p>Konsultanci pracują od poniedziałku do piątku w godzinach 8:00 - 17:00.</p>
-                    <CallToActionText>
-                        <PhoneNumber>
-                            <FontAwesomeIcon icon={faPhone} />+48 516-178-131
-                        </PhoneNumber>
-                        <PhoneNumber>
-                            <FontAwesomeIcon icon={faPhone} />61 814-38-25
-                        </PhoneNumber>
-                    </CallToActionText>
-                </CallToActionRight>
-            </CallToActionStyle>
-        </>
+        <Section
+            background={false}
+        >
+            <Container>
+                <CallToActionStyle>
+                    <CallToActionLeft>
+                        <CallToActionImg
+                            src="/img/doradca.png"
+                        />
+                    </CallToActionLeft>
+                    <CallToActionRight>
+                        <CallToActionTitle>Masz pytania? Zadzwoń!</CallToActionTitle>
+                        <p>Konsultanci pracują od poniedziałku do piątku w godzinach 8:00 - 17:00.</p>
+                        <CallToActionText>
+                            <PhoneNumber>
+                                <FontAwesomeIcon icon={faPhone} /> 61 814-38-25
+                            </PhoneNumber>
+                            <PhoneNumber>
+                                <FontAwesomeIcon icon={faPhone} /> +48 516-178-131
+                            </PhoneNumber>
+                        </CallToActionText>
+                    </CallToActionRight>
+                </CallToActionStyle>
+            </Container>
+        </Section>
     )
 }
 

@@ -4,45 +4,113 @@ import Link from "next/link"
 
 import Container from "components/Container"
 
+import { 
+    FontAwesomeIcon 
+} from '@fortawesome/react-fontawesome'
+
+import {
+    faFacebookF,
+    faInstagram,
+} from '@fortawesome/free-brands-svg-icons'
+
+import {
+    faMapMarked,
+    faPhone,
+    faEnvelope
+} from '@fortawesome/free-solid-svg-icons'
+
 import {
     FooterWrapper,
     FooterContent,
     FooterBottom,
-    FooterContact,
+    FooterColumn,
     FooterContactItem,
-    FooterLinks,
-    LinkItem
+    FooterSocialIcon,
+    FooterSocialIcons,
+    FooterColumnTitle,
+    FooterLinkItem,
+    StyledLink
 } from "./Footer.styles"
 
 const Footer = ({
-        links
+    footerLinks
     }) => {
     return (
         <FooterWrapper>
             <Container>
             <FooterContent>
-                <FooterContact>
+                <FooterColumn>
+                    <img src="/img/lex_white.png" alt="lexell.pl" />
                     <p>
-                        Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.
+                        LEXELL to firma działająca na rynku od 1992 roku. 
+                        W swojej ofercie mamy internet radiowy oraz serwis komputerów i laptopów. 
                     </p>
-                    {/* <FooterContactItem><img src="/img/lex_white.png"/></FooterContactItem>
-                    <FooterContactItem>ul. Przylesie 6</FooterContactItem>
-                    <FooterContactItem>60-185 Skórzewo</FooterContactItem>
-                    <FooterContactItem>tel: 516-178-131</FooterContactItem>
-                    <FooterContactItem>lub 61 814-38-25</FooterContactItem> */}
-                </FooterContact>
-                <FooterLinks>
-                    {links.map(link => (
-                        <LinkItem>{link.name}</LinkItem>
+                    <FooterSocialIcons>
+                            <FooterSocialIcon>
+                                <FontAwesomeIcon icon={faFacebookF} />
+                            </FooterSocialIcon>
+                            <FooterSocialIcon>
+                                <FontAwesomeIcon icon={faInstagram} />
+                            </FooterSocialIcon>
+                        </FooterSocialIcons>
+                </FooterColumn>
+                    {footerLinks.map(section => (
+                    <FooterColumn>
+                        <FooterColumnTitle> 
+                            {section.header} 
+                        </FooterColumnTitle>
+                        <ul>
+                            {section.link.map(l => {
+                                return (
+                                    <FooterLinkItem>
+                                       <StyledLink href={"lexell.pl"}> 
+                                            {l.name} 
+                                        </StyledLink>
+                                    </FooterLinkItem>
+                                )
+                            })}
+                        </ul>
+                    </FooterColumn>
                     ))}
-                </FooterLinks>
+                    <FooterColumn>
+                        <FooterColumnTitle>
+                            Kontakt
+                        </FooterColumnTitle>
+                        
+                        <FooterContactItem>
+                            <FooterSocialIcon>
+                                <FontAwesomeIcon icon={faMapMarked} />
+                            </FooterSocialIcon>
+                            ul. Przylesie 6, <br/>
+                            60-185 Skórzewo
+                        </FooterContactItem>
+                            
+                        <FooterContactItem>
+                            <FooterSocialIcon>
+                                <FontAwesomeIcon icon={faPhone} />
+                            </FooterSocialIcon>
+                                +48 516-178-131 <br/>
+                                61 814-38-25
+                        </FooterContactItem>
+
+                        <FooterContactItem>
+                            <FooterSocialIcon>
+                                <FontAwesomeIcon icon={faEnvelope} />
+                            </FooterSocialIcon>
+                                <StyledLink href={"/contact"}> 
+                                    Napisz do nas
+                                </StyledLink>
+                        </FooterContactItem>
+
+                    </FooterColumn>
             </FooterContent>
             <FooterBottom>
-                © 2021 Jachimov.pl | All Rights Reserved
-            <Link href="https://github.com/michalcfc/e-commerce">
-                <a target="_blank" rel="noreferrer">
-                </a>
-            </Link>
+           
+                <Link href="https://jachimov.pl">
+                    <a target="_blank" rel="noreferrer">
+                    © 2021 Jachimov.pl | All Rights Reserved
+                    </a>
+                </Link>
             </FooterBottom>
             </Container>
         </FooterWrapper>

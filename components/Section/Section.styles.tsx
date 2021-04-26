@@ -58,9 +58,25 @@ export const SectionWrapper = styled.section<DataProps>`
 
 export const SectionTitle = styled.h2<DataProps>`
   margin: 1rem 2rem;
-  @media (min-width: 800px) {
-      font-size: 2rem
-  }
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    top: -1.4rem;
+    left: 0;
+    width: 4rem;
+    border-bottom: 3px solid ${({theme}) =>  theme.colors.brand};
+  };
+  // &:before {
+  //   content: 'service';
+  //   top: -4rem;
+  //   position: absolute;
+  //   font-size: 4rem;
+  //   color: #eee;
+  // }
+    @media (min-width: 800px) {
+        font-size: 2rem
+    }
 `;
 
 export const SectionContent = styled.div<DataProps>`
@@ -79,7 +95,8 @@ export const SectionContent = styled.div<DataProps>`
 `;
 
 export const SectionImg = styled.img<DataProps>`
-  border-radius: 63% 37% 30% 70% / 50% 45% 55% 50%;
+  border-radius: ${({isReverse}) => isReverse ? '63% 37% 30% 70% / 50% 45% 55% 50%' : "37% 68% 70% 30% / 50% 45% 55% 50%" };
+  box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 5%), 0 1.5rem 2.2rem rgb(0 0 0 / 10%)
 `;
 
 export const SectionDescription = styled.p<DataProps>`

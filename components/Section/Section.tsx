@@ -69,11 +69,12 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                         src={img} 
                         alt={title}
                         loading="lazy" 
+                        isReverse={isReverse}
                     />
                     <div>
-                        <SectionTitle>
+                        {title && <SectionTitle>
                             {title}
-                        </SectionTitle>
+                        </SectionTitle>}
                         <SectionDescription>
                             {description}
                         </SectionDescription>
