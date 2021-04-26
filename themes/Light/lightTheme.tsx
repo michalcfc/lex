@@ -6,10 +6,11 @@ import fontSize from "../../utilis/fontSize.styles"
 export const lightTheme: DefaultTheme = {
   background: '#fff',
   backgroundMain: "#fff",
-  boxShadow: '0 15px 55px -5px rgba(9,31,67,.1)',
+  boxShadow: '0px 10px 30px 0px rgb(205 205 205 / 33%)',
   boxShadowColor: '4px 4px 20px 0 rgba(103, 58, 183, 0.43)',
-  body: '#f8fafd',
+  body: '#f5f8fb',
   text: '#212332',
+  borderRadius: '.42rem',
   buttonColor: {
     colors,
   },

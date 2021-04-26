@@ -13,10 +13,10 @@ export const MenuWrapper = styled.div<DataProps>`
 export const MenuItem: any = styled.div`
   cursor: pointer;
   height: 100%;
-  padding: 1.2rem 0;
+  padding:  1rem 1rem 0;
   position: relative;
-  &:not(:last-child) {
-    margin-right: 3.4rem;
+  &:last-child {
+    padding-right: 0;
   }
   & a {
     color: inherit;
@@ -26,7 +26,6 @@ export const MenuItem: any = styled.div`
   &:hover {
     color: ${({ theme }) => lighten(0.1, theme.colors.gray)};
     transition: all 1s ease;
-    -webkit-transition: all 1s ease;
     &:before {
         background: white;
         width: 100%;

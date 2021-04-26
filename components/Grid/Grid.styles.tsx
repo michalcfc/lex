@@ -1,6 +1,5 @@
-import styled from "styled-components"
 import { space } from 'styled-system'
-import { ReactElement } from "react"
+import styled from "styled-components"
 
 type DataProps = {
     p?: number
@@ -26,6 +25,9 @@ export const GridStyles = styled.div<DataProps>`
     grid-template-columns: ${({columns}) => columns};
     grid-auto-columns:  ${({autoColumns}) => autoColumns};
     grid-auto-flow: ${({autoFlow}) => autoFlow};
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
     & a {
         text-decoration: none;
     }

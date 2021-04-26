@@ -19,9 +19,9 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-        {/*  <div id="zadarmaScripts"></div>*/}
-        {/*<script type="text/javascript" src="js/zadarma.js"></script>*/}
-          {/*<div id="myZadarmaCallmeWidget9378">Here</div>*/}
+         {/* <div id="zadarmaScripts"></div>
+        <script type="text/javascript" src="js/zadarma.js"></script>
+          <div id="myZadarmaCallmeWidget9378">Here</div>  */}
         </body>
       </Html>
     )

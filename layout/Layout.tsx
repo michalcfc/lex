@@ -66,6 +66,12 @@ const Layout = ({children}) => {
         },
         {
             id: 3,
+            name: 'Światłowód',
+            hasSubmenu: false,
+            url: "/about"
+        },
+        {
+            id: 4,
             name: "Kontakt",
             hasSubmenu: false,
             url: "/contact"

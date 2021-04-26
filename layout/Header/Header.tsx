@@ -15,6 +15,8 @@ import {
     faFacebookF
 } from '@fortawesome/free-brands-svg-icons'
 
+import Container from "components/Container"
+
 import {
     BrandLogo,
     SocialIcon,
@@ -24,7 +26,7 @@ import {
     HeaderTopInfoWrapper,
     HeaderTopInfoContent,
     HeaderTopInfoItems,
-    HeaderTopInfoItem
+    HeaderTopInfoItem,
 } from "./Header.styles"
 
 import Menu from "./sub/Menu"
@@ -68,6 +70,7 @@ const Header: React.FC<HeaderProps> = ( {
             <HeaderTopInfoWrapper
                 position={isHomePage() && scroll}
             >
+                <Container>
                 <HeaderTopInfoContent>
                     <HeaderTopInfoItems>
                         <HeaderTopInfoItems>
@@ -87,30 +90,35 @@ const Header: React.FC<HeaderProps> = ( {
                         <HeaderTopInfoItem>
                             <FontAwesomeIcon icon={faPhone} /> +48 516-178-131
                         </HeaderTopInfoItem>
-                        <HeaderTopInfoItem>
+                        {/* <HeaderTopInfoItem>
                           <FontAwesomeIcon icon={faUser} />Panel klienta
-                        </HeaderTopInfoItem>
+                        </HeaderTopInfoItem> */}
                     </HeaderTopInfoItems>
                 </HeaderTopInfoContent>
+                </Container>
             </HeaderTopInfoWrapper>
             <HeaderContentWrapper
                 position={scroll}
             >
-                <HeaderContent>
-                    <BrandLogo>
-                        <Link href="/">
-                            <img src="/img/lex.png"/>
-                        </Link>
-                    </BrandLogo>
-                    {!isMobile ? <Menu
-                        links={links}
-                        />
-                    : <MobileMenu
+                <Container>
+                    <HeaderContent>
+                        <BrandLogo>
+                         {scroll ?<Link href="/">
+                                <img src="/img/lex.png"/>
+                            </Link> :   <Link href="/">
+                                <img src="/img/lex_white.png"/>
+                            </Link>}
+                        </BrandLogo>
+                        {!isMobile ? <Menu
                             links={links}
-                            setMenuOpen={setMenuOpen}
-                            isOpen={isMenuOpen}
-                        />}
-                </HeaderContent>
+                            />
+                        : <MobileMenu
+                                links={links}
+                                setMenuOpen={setMenuOpen}
+                                isOpen={isMenuOpen}
+                            />}
+                    </HeaderContent>
+                </Container>
             </HeaderContentWrapper>
         </HeaderWrapper>
     )

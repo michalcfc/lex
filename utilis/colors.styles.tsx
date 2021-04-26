@@ -9,7 +9,7 @@ export default {
         black: "#292929",
         purple: "#845ef7",
         lightGray: "#f4f6f8",
-        lightBlue: "#edf2f7",
+        lightBlue: "#f2f6f9",
         dark: '#212332',
         darkPurple: '#27253a',
         lightGreen: "#5dd8de",
