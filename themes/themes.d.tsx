@@ -9,6 +9,7 @@ declare module 'styled-components' {
     text: string;
     body: string;
     boxShadow: string
+    borderRadius: string
     boxShadowColor: string
     colors: {
       [el: string]: string

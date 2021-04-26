@@ -12,6 +12,7 @@ export const MenuWrapper = styled.div<DataProps>`
   align-items: center;
   position: absolute;
   transform: translateX(-40%);
+  border-radius:  ${({ theme }) => theme.borderRadius};
   color: ${({ theme }) => theme.colors.black};
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow:  ${({ theme }) => theme.boxShadow};

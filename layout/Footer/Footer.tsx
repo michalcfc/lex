@@ -2,6 +2,8 @@
 import React from 'react';
 import Link from "next/link"
 
+import Container from "components/Container"
+
 import {
     FooterWrapper,
     FooterContent,
@@ -17,13 +19,17 @@ const Footer = ({
     }) => {
     return (
         <FooterWrapper>
+            <Container>
             <FooterContent>
                 <FooterContact>
-                    <FooterContactItem><img src="/img/lex_white.png"/></FooterContactItem>
+                    <p>
+                        Start working with Landrick that can provide everything you need to generate awareness, drive traffic, connect.
+                    </p>
+                    {/* <FooterContactItem><img src="/img/lex_white.png"/></FooterContactItem>
                     <FooterContactItem>ul. Przylesie 6</FooterContactItem>
                     <FooterContactItem>60-185 Skórzewo</FooterContactItem>
                     <FooterContactItem>tel: 516-178-131</FooterContactItem>
-                    <FooterContactItem>lub 61 814-38-25</FooterContactItem>
+                    <FooterContactItem>lub 61 814-38-25</FooterContactItem> */}
                 </FooterContact>
                 <FooterLinks>
                     {links.map(link => (
@@ -38,6 +44,7 @@ const Footer = ({
                 </a>
             </Link>
             </FooterBottom>
+            </Container>
         </FooterWrapper>
     )
 }

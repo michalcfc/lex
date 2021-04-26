@@ -31,18 +31,13 @@ export const HeaderWrapper = styled.header<DataProps>`
     transition: all 0.5s;
     position:  ${({theme, position}) => position ? "fixed" :  ""};
     background: ${({theme, position}) => position ? theme.colors.white : 'transparent'};
-    color: ${({theme, position}) => position ? "#17175e" : theme.colors.black};
+    color: ${({theme, position}) => position ? theme.colors.black : theme.colors.white};
     box-shadow:  ${({homePage, position}) => (position || !homePage) && "0 8px 20px 0 rgba(0, 0, 0, 0.1)"};
 `;
 
 export const HeaderTopInfoWrapper = styled.div<DataProps>`
-  width: 100%;
   padding: .42rem 0;
-  background: ${({theme}) => theme.colors.brand};
-  display: flex;
   color: ${({theme}) => theme.colors.white};
-  align-items: center;
-  justify-content: center;
   display: ${({position}) => position ? 'none' : ""};
   & svg {
     margin-right: .42rem;
@@ -53,7 +48,6 @@ export const HeaderTopInfoWrapper = styled.div<DataProps>`
 `
 
 export const HeaderTopInfoContent = styled.div<DataProps>`
-  width: 80%;
   padding: .42rem 0;
   justify-content: space-between;
   display: ${({position}) => position ? 'none' : "flex"};
@@ -64,24 +58,18 @@ export const HeaderTopInfoItems = styled.div<DataProps>`
 `
 
 export const HeaderTopInfoItem = styled.div<DataProps>`
-  margin: 0 1rem;
-  &:first-child {
-   margin: 0;
+  padding: 0 1rem;
+  &:last-child {
+   padding-right: 0;
   }
 `
 
 export const HeaderContentWrapper = styled.div<DataProps>`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
  padding: ${({position}) => position ? '.42rem' : ".6rem 0"};
 `
 
 export const HeaderContent = styled.div<DataProps>`
-  height: 100%;
-  width: 80%;
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
 `
