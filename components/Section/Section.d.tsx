@@ -17,5 +17,5 @@ export interface SectionProps {
     pb?: number
     p?: number
     m?: number
-    key?: number
+    noRef?: boolean
 }

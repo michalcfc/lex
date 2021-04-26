@@ -48,6 +48,7 @@ const sections = [
         isFlex: true,
         isReverse: true,
         background: false,
+        noRef: true,
         img: 'img/section1.jpg',
         title: "Internet światłowodowy",
         desc: "Dostarczamy usługi połączenia światłowodowego. Zobacz czy działamy w twojej lokalizacji."
@@ -57,7 +58,7 @@ const sections = [
         isFlex: true,
         isReverse: false,
         background: true,
-        img: 'img/section1.jpg',
+        img: 'img/section.jpg',
         title: "Internet radiowy",
         desc: "Twojej lokalizacji nie ma w obszarze światłowodu? Internet radiowy od Lexell to najlepszy wybór."
     },
@@ -178,6 +179,7 @@ const Home: React.FC<HomeProps> = ( {
             return (<Section
                 key={section.id}
                 title={section.title}
+                noRef={section.noRef}
                 isFlex={section.isFlex}
                 isReverse={section.isReverse}
                 background={section.background}

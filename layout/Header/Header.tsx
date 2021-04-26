@@ -104,7 +104,7 @@ const Header: React.FC<HeaderProps> = ( {
                     <HeaderContent>
                         <BrandLogo>
                          {scroll ?<Link href="/">
-                                <img src="/img/lex.png"/>
+                                <img src="/img/logo.png"/>
                             </Link> :   <Link href="/">
                                 <img src="/img/lex_white.png"/>
                             </Link>}
