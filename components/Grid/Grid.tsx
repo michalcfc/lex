@@ -14,6 +14,7 @@ const Grid: React.FC<GridProps> = ({
     children, 
     columnGap,
     autoColumns,
+    customMargin,
     alignItems,
     autoFlow,
     mt,
@@ -28,6 +29,7 @@ const Grid: React.FC<GridProps> = ({
             gridGap={gridGap}
             columns={columns}
             alignItems={alignItems}
+            customMargin={customMargin}
             columnGap={columnGap}
             autoColumns={autoColumns}
             autoFlow={autoFlow}

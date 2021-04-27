@@ -27,7 +27,9 @@ export const CallToActionImg = styled.img<DataProps>`
 `;
 
 export const CallToActionTitle = styled.h2<DataProps>`
-    font-size: ${({ theme }) => theme.fontSize.xxl};
+  @media (min-width: 800px) {
+      font-size: ${({ theme }) => theme.fontSize.xxl};
+    }
 `;
 
 export const CallToActionText = styled.p<DataProps>`

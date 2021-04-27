@@ -50,32 +50,35 @@ export const SectionWrapper = styled.section<DataProps>`
     will-change: opacity, transform, visibility;
     margin: 0 auto;
     background-position: center;
-    padding: ${({customPadding}) => customPadding ? customPadding : '4rem 0' };
     background-repeat: no-repeat;
+    padding: ${({customPadding}) => customPadding ? customPadding : '2rem 0' };
     color:  ${({theme, background}) => background && theme.colors.black};
     background: ${({theme, background}) => background ? `url(${background}) ${theme.colors.lightBlue} fixed center center` : `url('/img/circles.png')`};
+    @media (min-width: 800px) {
+      padding: ${({customPadding}) => customPadding ? customPadding : '4rem 0' };
+    }
 `;
 
 export const SectionTitle = styled.h2<DataProps>`
   margin: 1rem 2rem;
   position: relative;
-  &:after {
-    content: '';
-    position: absolute;
-    top: -1.4rem;
-    left: 0;
-    width: 4rem;
-    border-bottom: 3px solid ${({theme}) =>  theme.colors.brand};
-  };
   // &:before {
-  //   content: 'service';
-  //   top: -4rem;
-  //   position: absolute;
-  //   font-size: 4rem;
-  //   color: #eee;
-  // }
+    //   content: 'service';
+    //   top: -4rem;
+    //   position: absolute;
+    //   font-size: 4rem;
+    //   color: #eee;
+    // }
     @media (min-width: 800px) {
-        font-size: 2rem
+      font-size: 2rem
+      &:after {
+        content: '';
+        position: absolute;
+        top: -1.4rem;
+        left: 0;
+        width: 4rem;
+        border-bottom: 3px solid ${({theme}) =>  theme.colors.brand};
+      };
     }
 `;
 
@@ -90,17 +93,17 @@ export const SectionContent = styled.div<DataProps>`
   @media (min-width: 800px) {
     flex-wrap: nowrap;
     width: 100%;
-    padding: 1rem;
   }
 `;
 
 export const SectionImg = styled.img<DataProps>`
   max-width: 100%;
   height: auto;
-  border-radius: ${({isReverse}) => isReverse ? '63% 37% 30% 70% / 50% 45% 55% 50%' : "37% 68% 70% 30% / 50% 45% 55% 50%" };
-  box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 5%), 0 1.5rem 2.2rem rgb(0 0 0 / 10%);
-  @media (max-width: 800px) {
-    margin-bottom: 1.4rem;
+  margin-bottom: 2rem;
+  border-radius: .42rem;
+  @media (min-width: 800px) {
+    border-radius: ${({isReverse}) => isReverse ? '63% 37% 30% 70% / 50% 45% 55% 50%' : "37% 68% 70% 30% / 50% 45% 55% 50%" };
+    box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 5%), 0 1.5rem 2.2rem rgb(0 0 0 / 10%);
   }
 `;
 
