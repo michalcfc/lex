@@ -13,10 +13,15 @@ export const MenuWrapper = styled.div<DataProps>`
 export const MenuItem: any = styled.div`
   cursor: pointer;
   height: 100%;
-  padding:  1rem 1rem 0;
+  display: flex;
+  align-items: center;
+  padding:  1.4rem 1.2rem;
   position: relative;
   &:last-child {
     padding-right: 0;
+  }
+  & svg {
+    margin-left: .4rem;
   }
   & a {
     color: inherit;

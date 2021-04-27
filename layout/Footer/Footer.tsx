@@ -28,6 +28,7 @@ import {
     FooterSocialIcon,
     FooterSocialIcons,
     FooterColumnTitle,
+    FooterLogo,
     FooterLinkItem,
     StyledLink
 } from "./Footer.styles"
@@ -40,7 +41,7 @@ const Footer = ({
             <Container>
             <FooterContent>
                 <FooterColumn>
-                    <img src="/img/lex_white.png" alt="lexell.pl" />
+                    <FooterLogo src="/img/lex_white.png" alt="lexell.pl" />
                     <p>
                         LEXELL to firma działająca na rynku od 1992 roku. 
                         W swojej ofercie mamy internet radiowy oraz serwis komputerów i laptopów. 
@@ -74,7 +75,7 @@ const Footer = ({
                     ))}
                     <FooterColumn>
                         <FooterColumnTitle>
-                            Kontakt
+                            Adres firmy
                         </FooterColumnTitle>
                         
                         <FooterContactItem>
@@ -89,8 +90,8 @@ const Footer = ({
                             <FooterSocialIcon>
                                 <FontAwesomeIcon icon={faPhone} />
                             </FooterSocialIcon>
-                                +48 516-178-131 <br/>
-                                61 814-38-25
+                                61 814-38-25 <br/>
+                                +48 516-178-131
                         </FooterContactItem>
 
                         <FooterContactItem>

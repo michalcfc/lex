@@ -12,6 +12,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
           <Head>
+              <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
               <link rel="preconnect" href="https://fonts.gstatic.com" />
               <link rel="preconnect" href="https://fonts.gstatic.com" />
               <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" />
