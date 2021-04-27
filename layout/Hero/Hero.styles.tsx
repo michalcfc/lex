@@ -47,40 +47,46 @@ export const HeroWrapper = styled.picture`
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 44rem;
+    height: 30rem;
     color: ${({theme}) => theme.colors.white};
     background-color: ${({theme}) => theme.colors.brand};
     object-fit: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-image: url("img/lex2.png");
+    @media (min-width: 800px) {
+      min-height: 44rem;
+    }
 `;
 
 export const HeroContentWrapper = styled.div`
-    display: flex;
-    line-height: 1.2;
-    padding: 2rem 0;
-    height: 100%;
-    position: relative;
-    align-items: center;
+  line-height: 1.2;
+  padding: 2rem 0;
+  display: flex;
+  height: 100%;
+  position: relative;
+  align-items: center;
+  @media (min-width: 800px) {
+      flex: 1 0 0%;
+    }
 `
 
 export const HeroContentLeft = styled.div`
-    flex: 0 0 50%;
-    animation: ${fadeIn} 1s ease-in-out;
-    white-space: pre-wrap;
-      @media (max-width: 800px) {
-        flex: 1 0 0%;
+  flex: 1 0 0%;
+  padding: 1rem;
+  animation: ${fadeIn} 1s ease-in-out;
+  white-space: pre-wrap;
+@media (min-width: 800px) {
+        flex: 0 0 50%;
       }
 `;
 
 export const HeroTitle = styled.h2`
     line-height: 1.4;
-    font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 1rem;
-      @media (max-width: 800px) {
-        font-size: 2.375rem;
+    @media (min-width: 800px) {
+        font-size: 2.2rem;;
       }
 `
 
@@ -93,10 +99,6 @@ export const HeroImg = styled.img<DataProps>`
 
 export const HeroDescription = styled.p`
     line-height: 1.8;
-    font-size: 1.2rem;
-     @media (max-width: 800px) {
-        font-size: 1.4rem;
-      }
 `
 
 export const HeroContentRight = styled.div`

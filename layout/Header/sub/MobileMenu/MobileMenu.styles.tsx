@@ -13,6 +13,7 @@ export const MenuWrapper = styled.div<DataProps>`
     z-index: 9999;
     position: fixed;
     overflow-y: auto;
+    color: ${({theme}) => theme.colors.brand};
     background: ${({theme}) => theme.colors.white};
 `;
 

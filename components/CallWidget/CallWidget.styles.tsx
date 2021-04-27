@@ -6,9 +6,14 @@ type DataProps = {
 }
 
 export const CallWidgetWrapper = styled.div<DataProps>`
-  right: 100px;
-  bottom: 4%;
-  position: fixed;
+right: 30px;
+bottom: 16%;
+position: fixed;
+@media (min-width: 800px) {
+    bottom: 4%;
+    right: 100px;
+  }
+
 `
 
 export const CallWidgetButton = styled.div<DataProps>`

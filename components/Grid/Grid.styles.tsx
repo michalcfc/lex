@@ -11,6 +11,7 @@ type DataProps = {
     alignItems?: string
     columnGap?: number
     autoColumns?: string
+    customMargin?: number
     autoFlow?: string
 }
 
@@ -25,10 +26,12 @@ export const GridStyles = styled.div<DataProps>`
     grid-template-columns: ${({columns}) => columns};
     grid-auto-columns:  ${({autoColumns}) => autoColumns};
     grid-auto-flow: ${({autoFlow}) => autoFlow};
-    margin-right: auto;
-    margin-left: auto;
     width: 100%;
+    margin-top: ${({customMargin}) => `${customMargin / 2}rem`};
     & a {
         text-decoration: none;
     }
+    @media (min-width: 800px) {
+        margin-top: ${({customMargin}) => `${customMargin}rem`}
+      }
 `
