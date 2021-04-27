@@ -11,8 +11,7 @@ export const FooterWrapper = styled.footer`
   flex-direction: column;
   grid-area: footer;
   color: ${({theme}) => theme.colors.white};
-  // background: ${({theme}) => theme.colors.brand};
-  background: ${({theme}) => theme.colors.brand} url("/img/footer-1.png") right top no-repeat;
+  background: ${({theme}) => theme.colors.brand};
 `;
 
 export const FooterContent = styled.footer`
@@ -29,17 +28,26 @@ export const FooterBottom = styled.div`
 `;
 
 export const FooterColumn = styled.div`
+margin-bottom: 2rem;
+@media (min-width: 800px) {
+  margin: 0;
   flex: 0 0 25%;
   max-width: 25%;
   &:not(:first-child) {
     padding: 0 ${({theme}) => theme.spacing.md};
   }
+}
 `;
+
+export const FooterLogo = styled.img`
+  margin-bottom: 0.6rem;
+`
 
 
 export const FooterContactItem = styled.div`
   display: flex;
   align-items: center;
+  line-height: 1.4;
   margin-bottom: ${({theme}) => theme.spacing.md};;
 `;
 
@@ -59,11 +67,11 @@ export const FooterSocialIcon = styled.div`
   justify-content: center;
   margin: 0 ${({theme}) => theme.spacing.md} 0 0;
   border-radius: ${({ theme }) => theme.borderRadius};
-  background: ${({theme}) => darken(0.1, theme.colors.brand)};
+  background: ${({theme}) => lighten(0.1, theme.colors.brand)};
   padding: ${({theme}) => theme.spacing.md};
   &:hover {
     cursor: pointer;
-    background: ${({ theme }) => lighten(0.1, theme.colors.brand)};
+    background: ${({ theme }) => darken(0.1, theme.colors.brand)};
   }
 `;
 
@@ -87,7 +95,8 @@ export const StyledLink = styled.a`
 `
 
 
-export const FooterColumnTitle = styled.h4`
+export const FooterColumnTitle = styled.h6`
+  font-size: 1.4rem;
   text-decoration: none;
   margin-bottom: 2rem;
   &:after {

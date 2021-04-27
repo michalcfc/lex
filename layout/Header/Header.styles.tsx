@@ -66,11 +66,12 @@ export const HeaderTopInfoItem = styled.div<DataProps>`
 `
 
 export const HeaderContentWrapper = styled.div<DataProps>`
- padding: ${({position}) => position ? '.42rem' : ".6rem 0"};
+//  padding: ${({position}) => position ? '.42rem' : ".6rem 0"};
 `
 
 export const HeaderContent = styled.div<DataProps>`
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 `

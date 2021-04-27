@@ -95,8 +95,13 @@ export const SectionContent = styled.div<DataProps>`
 `;
 
 export const SectionImg = styled.img<DataProps>`
+  max-width: 100%;
+  height: auto;
   border-radius: ${({isReverse}) => isReverse ? '63% 37% 30% 70% / 50% 45% 55% 50%' : "37% 68% 70% 30% / 50% 45% 55% 50%" };
-  box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 5%), 0 1.5rem 2.2rem rgb(0 0 0 / 10%)
+  box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 5%), 0 1.5rem 2.2rem rgb(0 0 0 / 10%);
+  @media (max-width: 800px) {
+    margin-bottom: 1.4rem;
+  }
 `;
 
 export const SectionDescription = styled.p<DataProps>`
