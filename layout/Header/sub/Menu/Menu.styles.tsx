@@ -16,8 +16,9 @@ export const MenuItem: any = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-  &:last-child {
-    padding-right: 0;
+  transition: opacity 0.4s ease-in-out;
+  &:not(last-child) {
+    margin-left: 2.4rem;
   }
   & svg {
     margin-left: .4rem;
@@ -25,17 +26,12 @@ export const MenuItem: any = styled.div`
   & a {
     color: inherit;
     text-decoration: none;
-    &:not(last-child) {
-      padding:  2rem 1.2rem;
-    }
   }
   &:hover {
-    color: ${({ theme }) => lighten(0.1, theme.colors.gray)};
-    transition: all 1s ease;
+
     &:before {
         background: white;
         width: 100%;
-        transition: width 0.5s cubic-bezier((0.22, 0.61, 0.36, 1));
     }
     &:after {
       background: transparent;
@@ -46,19 +42,20 @@ export const MenuItem: any = styled.div`
     content: '';
     position: absolute;
     width: 0%;
-    height: 3px;
-    bottom: -4px;
+    height: 2px;
+    bottom: -8px;
     background: rgb(13, 26, 38);
     left: 0;
     transition: 0.5s;
   };
   &:before {
     left: 0;
-    transition: 0.5s;
+    transition: 0.5s  ease-in-out;
   }
   &:after {
     background: rgb(13, 26, 38);
     right: 0;
+    transition: width 0.5s ease-in-out;
   }
 `;
 

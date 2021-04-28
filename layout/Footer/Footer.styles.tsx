@@ -71,7 +71,7 @@ export const FooterSocialIcon = styled.div`
   padding: ${({theme}) => theme.spacing.md};
   &:hover {
     cursor: pointer;
-    background: ${({ theme }) => darken(0.1, theme.colors.brand)};
+    background: ${({ theme }) => lighten(0.2, theme.colors.brand)};
   }
 `;
 

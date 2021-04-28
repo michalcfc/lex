@@ -66,38 +66,37 @@ export const HeroContentWrapper = styled.div`
   height: 100%;
   position: relative;
   align-items: center;
-  @media (min-width: 800px) {
-      flex: 1 0 0%;
-    }
 `
 
 export const HeroContentLeft = styled.div`
   flex: 1 0 0%;
   animation: ${fadeIn} 1s ease-in-out;
   white-space: pre-wrap;
-@media (min-width: 800px) {
-        flex: 0 0 50%;
-      }
+  @media (min-width: 800px) {
+      flex: 0 0 45%;
+    }
 `;
 
 export const HeroTitle = styled.h2`
-    line-height: 1.4;
     font-weight: 700;
     margin-bottom: 1rem;
     @media (min-width: 800px) {
-        font-size: 2.2rem;;
-      }
+        font-size: 3.2rem;;
+    }
 `
 
 
 export const HeroImg = styled.img<DataProps>`
   object-fit: cover;
-  // max-width: 100%;
+  max-width: 100%;
   object-position: bottom right;
 `
 
 export const HeroDescription = styled.p`
-    line-height: 1.8;
+    line-height: 1.4;
+    @media (min-width: 800px) {
+      font-size: 1.3rem;
+    }
 `
 
 export const HeroContentRight = styled.div`
@@ -117,9 +116,7 @@ export const HeroIcon = styled.div`
     height: 1rem;
     position: absolute;
     border-radius: 1.26rem;
-   color:  ${({theme}) => theme.colors.white};
-    // background:  ${({theme}) => theme.colors.blue};
-    // box-shadow: ${({theme}) => theme.boxShadow};
+    color:  ${({theme}) => theme.colors.white};
     animation: ${bounce} 3s ease-in-out 0s infinite alternate;
     &:hover {
       cursor: pointer;
@@ -166,4 +163,35 @@ export const HeroIconThird = styled(HeroIcon)`
         }
     }
 `
+export const HeroButton = styled.div`
+    margin-top: 1.6rem;
+`
+    
+  export const StyledLink = styled.a`
+    font-size: 2rem;
+    padding: .8rem 1rem;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background: ${({theme}) => lighten(0.1, theme.colors.brand)};
+    &:hover {
+      background: ${({theme}) => lighten(0.2, theme.colors.brand)};
+    }
+
+`
+
+export const StyledIcon = styled.div`
+    background: #fff;
+    padding: .6rem;
+    border-radius: 50px;
+    margin-right: 1rem;
+`
+    
+export const PhoneNumber = styled.div`
+  font-size: 1.2rem;
+  font-weight: 600;
+`
+
 

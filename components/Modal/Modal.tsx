@@ -8,7 +8,10 @@ import {
 import {
     ModalWrapper,
     ModalBackground,
-    ModalCloseIcon
+    ModalCloseIcon,
+    ModalHeader,
+    ModalBody,
+    ModalFooter
 } from "./Modal.styles"
 
 import { ModalProps } from "./Modal.d"
@@ -16,16 +19,23 @@ import { ModalProps } from "./Modal.d"
 const Modal: React.FC<ModalProps> = ({
     isOpen,
     isClose,
-    children
+    children,
+    title,
+    text,
  }) => (
   <>
       {isOpen
         && <ModalBackground onClick={isClose}>
          <ModalWrapper>
-             <ModalCloseIcon>
-                 <FontAwesomeIcon icon={faTimes} />
-             </ModalCloseIcon>
+             <ModalHeader>
+                {title}
+                <ModalCloseIcon>
+                    <FontAwesomeIcon icon={faTimes} />
+                </ModalCloseIcon>
+             </ModalHeader>
+             <ModalBody>
               {children}
+             </ModalBody>
           </ModalWrapper>
       </ModalBackground>}
   </>

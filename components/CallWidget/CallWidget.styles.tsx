@@ -9,6 +9,7 @@ export const CallWidgetWrapper = styled.div<DataProps>`
 right: 30px;
 bottom: 16%;
 position: fixed;
+z-index: 99;
 @media (min-width: 800px) {
     bottom: 12%;
     right: 30px;

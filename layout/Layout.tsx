@@ -36,7 +36,7 @@ const Layout = ({children}) => {
                     id: 1,
                     icon: faWifi,
                     name: 'Internet',
-                    url: '/networks'
+                    url: '/opticalfiber'
                 },
                 {
                     id: 2,
@@ -87,6 +87,7 @@ const Layout = ({children}) => {
 
     const footerLinks = [
         {
+            id: 1,
             header: 'Usługi',
             link: [
                 {
@@ -113,6 +114,7 @@ const Layout = ({children}) => {
             ]
         },
         {
+            id: 2,
             header: 'Inne usługi',
             link: [
                 {
@@ -136,7 +138,7 @@ const Layout = ({children}) => {
                     url: ''
                 },
                 {
-                    id: 4,
+                    id: 5,
                     name: 'Usługi maszynami budowlanymi',
                     url: ''
                 }

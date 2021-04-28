@@ -11,6 +11,9 @@ declare module 'styled-components' {
     boxShadow: string
     borderRadius: string
     boxShadowColor: string
+    buttonSize: {
+      [el: string]: string
+    }
     colors: {
       [el: string]: string
     }

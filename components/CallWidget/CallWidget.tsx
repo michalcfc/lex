@@ -6,6 +6,8 @@ import {
 } from "./CallWidget.styles"
 
 import Modal from "@components/Modal"
+import Input from "@components/Input"
+import Button from "@components/Button"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -27,8 +29,26 @@ const CallWidget: React.FC<CallWidgetProps> = () => {
        </CallWidgetWrapper>
        {
         isPhoneModalOpen 
-            && <Modal isOpen={isPhoneModalOpen} isClose={() => setPhoneModalOpen(false)}> 
-                    Zamów połączenie. Oddzwonimy.
+            && <Modal 
+                    title="Zamów połączenie"
+                    text="Oddzwonimy"
+                    isOpen={isPhoneModalOpen} 
+                    isClose={() => setPhoneModalOpen(false)}
+                > 
+                      <Input 
+                        value=""
+                        label="Imię"
+                        onChange={() => {}}
+                    />
+                    <Input 
+                        value=""
+                        label="Numer telefonu"
+                        onChange={() => {}}
+                    />
+                    <Button 
+                        name="Zamawiam"
+                        onClick={() => {}}
+                    />
                 </Modal>
        }
        </>

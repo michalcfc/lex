@@ -56,15 +56,15 @@ const Footer = ({
                         </FooterSocialIcons>
                 </FooterColumn>
                     {footerLinks.map(section => (
-                    <FooterColumn>
+                    <FooterColumn key={section.id}>
                         <FooterColumnTitle> 
                             {section.header} 
                         </FooterColumnTitle>
                         <ul>
                             {section.link.map(l => {
                                 return (
-                                    <FooterLinkItem>
-                                       <StyledLink href={"lexell.pl"}> 
+                                    <FooterLinkItem key={l.id}>
+                                       <StyledLink href={l.url}> 
                                             {l.name} 
                                         </StyledLink>
                                     </FooterLinkItem>

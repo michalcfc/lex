@@ -152,6 +152,8 @@ const Section: React.FC<PricingProps> = ({
             <PricingBottom>
                 {!isTvPricing && "Stały adres IP za dopłatą miesięcznie: 5zł"}
             <Modal
+            title=""
+            text=""
                     isOpen={isChannelModalOpen}
                     isClose={() => setChannelModal(false)}
                 >

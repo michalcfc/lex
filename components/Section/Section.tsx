@@ -77,21 +77,21 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                         isReverse={isReverse}
                     />}
                     <SectionBody>
+                        <SectionDescription>
                         {title && <SectionTitle>
                             {title}
                         </SectionTitle>}
-                        <SectionDescription>
                             {description}
+                        <SectionFooter>
+                            {link && <Link href={link}><a><Button 
+                                    variant="secondary"
+                                    name="Dowiedz się więcej"
+                                    onClick={() => {}}
+                                    /></a></Link>}
+                        </SectionFooter>
                         </SectionDescription>
-                    <SectionFooter>
-                        {link && <Link href={`${link}`}><a><Button 
-                                variant="secondary"
-                                name="Dowiedz się więcej"
-                                onClick={() => {}}
-                            /></a></Link>}
-                    </SectionFooter>
+                        {children}
                     </SectionBody>
-                    <>{children}</>
                 </SectionContent>
             </Container>
         </SectionWrapper>
