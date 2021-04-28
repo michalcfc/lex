@@ -50,6 +50,7 @@ const sections = [
         isReverse: true,
         background: false,
         noRef: true,
+        link: 'networks',
         img: 'img/section1.jpg',
         title: "Internet światłowodowy",
         desc: "Dostarczamy usługi połączenia światłowodowego. Zobacz czy działamy w twojej lokalizacji."
@@ -59,6 +60,7 @@ const sections = [
         isFlex: true,
         isReverse: false,
         background: true,
+        link: 'networks',
         img: 'img/section.jpg',
         title: "Internet radiowy",
         desc: "Twojej lokalizacji nie ma w obszarze światłowodu? Internet radiowy od Lexell to najlepszy wybór."
@@ -68,6 +70,7 @@ const sections = [
         isFlex: true,
         isReverse: true,
         background: false,
+        link: 'television',
         img: 'img/section2.jpg',
         title: "Telewizja",
         desc: "Najlepsze kanały sportowe, filmowe i informacyjne. Oglądaj co tylko chcesz!"
@@ -77,6 +80,7 @@ const sections = [
         isFlex: true,
         isReverse: false,
         background: true,
+        link: 'service',
         img: 'img/section4.jpg',
         title: "Serwis",
         desc: "Szybka naprawa Twojego komputera lub laptopa. Zapewniamy profity dla naszych abonentów"
@@ -86,6 +90,7 @@ const sections = [
         isFlex: true,
         isReverse: true,
         background: false,
+        link: 'monitoring',
         img: 'img/section5.jpg',
         title: "Monitoring",
         desc: "Are unpleasing occasional celebrated motionless unaffected conviction out. Evil make to no five they" + 
@@ -96,6 +101,7 @@ const sections = [
         isFlex: true,
         isReverse: false,
         background: true,
+        link: 'connections',
         img: 'img/section6.jpg',
         title: "Prace budowlane w zakresie przyłączy",
         desc: "Budowa sieci i przyłączy telekomunikacyjnych, elektrycznych, wodno-kanalizacyjno gazowej."
@@ -105,6 +111,7 @@ const sections = [
         isFlex: true,
         isReverse: true,
         background: false,
+        link: 'telecommunications',
         img: 'img/section7.jpg',
         title: "Budowa sieci telekomunikacyjnych",
         desc: "Are unpleasing occasional celebrated motionless unaffected conviction out. Evil make to no five they" + 
@@ -115,6 +122,7 @@ const sections = [
         isFlex: true,
         isReverse: false,
         background: true,
+        link: 'networks',
         img: 'img/section3.jpg',
         title: "Wykonastwo sieci w budynkach",
         desc: "Are unpleasing occasional celebrated motionless unaffected conviction out. Evil make to no five they" + 
@@ -125,6 +133,7 @@ const sections = [
         isFlex: true,
         isReverse: true,
         background: false,
+        link: 'constructionMachinery',
         img: 'img/section9.jpg',
         title: "Usługi maszynami budowlanymi",
         desc: "Are unpleasing occasional celebrated motionless unaffected conviction out. Evil make to no five they" + 
@@ -139,7 +148,6 @@ const Home: React.FC<HomeProps> = ( {
 
     const [isBottom, setIsBottom] = useState(false)
 
-
     useEffect(() => {
         const onScroll = function () {
            if (window.innerHeight + window.scrollY >= document.documentElement.clientHeight) {
@@ -149,9 +157,11 @@ const Home: React.FC<HomeProps> = ( {
             setIsBottom(false)
            }
         }
+
         window.addEventListener('scroll', onScroll)
         return () => window.removeEventListener('scroll', onScroll)
      }, [])
+
 
     return (
     <>
@@ -165,11 +175,11 @@ const Home: React.FC<HomeProps> = ( {
                 {cards.map(card => {
                 return (
                     <Card
-                        p={3}
-                        key={card.id}
-                        cardIcon={card.cardIcon}
-                        title={card.name}
-                        description={card.desc}
+                    p={3}
+                    key={card.id}
+                    cardIcon={card.cardIcon}
+                    title={card.name}
+                    description={card.desc}
                     >
                     </Card>
                 )})}
@@ -180,6 +190,7 @@ const Home: React.FC<HomeProps> = ( {
             return (<Section
                 key={section.id}
                 title={section.title}
+                link={section.link}
                 noRef={section.noRef}
                 isFlex={section.isFlex}
                 isReverse={section.isReverse}

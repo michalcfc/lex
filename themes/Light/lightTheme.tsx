@@ -5,7 +5,7 @@ import fontSize from "../../utilis/fontSize.styles"
 
 export const lightTheme: DefaultTheme = {
   background: '#fff',
-  backgroundMain: "#fff",
+  backgroundMain: '#f5f8fb',
   boxShadow: '0px 10px 30px 0px rgb(205 205 205 / 33%)',
   boxShadowColor: '4px 4px 20px 0 rgba(103, 58, 183, 0.43)',
   body: '#f5f8fb',

@@ -1,15 +1,20 @@
 
 import React, {useEffect, useState} from "react"
 
+import Link from "next/link"
+
 import {
     SectionWrapper,
     SectionTitle,
     SectionContent,
+    SectionBody,
     SectionDescription,
+    SectionFooter,
     SectionImg
 } from "./Section.styles"
 
 import Container from "@components/Container"
+import Button from "@components/Button"
 
 import { SectionProps } from "./Section.d";
 
@@ -28,7 +33,7 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
     description,
     isFlex,
     isReverse,
-    className,
+    link,
     img,
     noRef,
 }, ref) => {
@@ -41,7 +46,7 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
           entries.forEach(entry => setVisible(entry.isIntersecting));
         });
         observer.observe(domRef.current);
-      }, []);
+      }, [isVisible]);
 
 
     return (
@@ -65,20 +70,27 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                     isReverse={isReverse}
                     customPadding={customPadding}
                 >
-                    <SectionImg 
+                   {img && <SectionImg 
                         src={img} 
                         alt={title}
                         loading="lazy" 
                         isReverse={isReverse}
-                    />
-                    <div>
+                    />}
+                    <SectionBody>
                         {title && <SectionTitle>
                             {title}
                         </SectionTitle>}
                         <SectionDescription>
                             {description}
                         </SectionDescription>
-                    </div>
+                    <SectionFooter>
+                        {link && <Link href={`${link}`}><a><Button 
+                                variant="secondary"
+                                name="Dowiedz się więcej"
+                                onClick={() => {}}
+                            /></a></Link>}
+                    </SectionFooter>
+                    </SectionBody>
                     <>{children}</>
                 </SectionContent>
             </Container>

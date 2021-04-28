@@ -73,7 +73,6 @@ export const HeroContentWrapper = styled.div`
 
 export const HeroContentLeft = styled.div`
   flex: 1 0 0%;
-  padding: 1rem;
   animation: ${fadeIn} 1s ease-in-out;
   white-space: pre-wrap;
 @media (min-width: 800px) {

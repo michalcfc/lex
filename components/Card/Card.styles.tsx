@@ -74,7 +74,6 @@ export const CardContent = styled.div<DataProps>`
   display: ${({flexContent}) => flexContent && `flex`};
   align-items: ${({flexContent}) => flexContent && `center`};
   margin:  ${({theme}) => theme.spacing.sm};
-  padding: ${({theme}) => theme.spacing.sm};
   & svg {
      margin-right: ${({flexContent}) => flexContent && `1rem`};
   }

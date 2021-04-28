@@ -9,7 +9,7 @@ import { ButtonProps} from "./Button.d"
 
 const Button: React.FC<ButtonProps> = ({ 
     name,
-    buttonColor,
+    variant,
     buttonBackground,
     hero,
     onClick 
@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({
     return (
         <ButtonWrapper
             hero={hero}
-            buttonColor={buttonColor}
+            variant={variant}
             onClick={onClick} 
             
         >

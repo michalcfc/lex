@@ -3,7 +3,7 @@ export interface ButtonProps {
   color?: string
   children?: string
   hero?: boolean
-  buttonColor?: string
+  variant?: string
   buttonBackground?: string
   onClick: () => void
 }

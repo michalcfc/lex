@@ -8,6 +8,7 @@ export interface SectionProps {
     children?: React.ReactNode
     isVisible?: boolean
     className?: string
+    link?: string
     description?: string
     ref?: React.RefObject<HTMLDivElement>;
     img?: string

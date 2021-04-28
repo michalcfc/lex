@@ -38,16 +38,18 @@ const Menu: React.FC<MenuProps> = ({
                     //     setMenuOpen(false)
                     // }}
                     >
-                   <Link href={`${link.url}`}>
-                       <>
+                   <Link href={link.url}>
+                       <a>
                        {link.name}
                        {link.hasSubmenu 
                         &&  <>{
                             isMenuOpen
-                            && link.id == subemnuId ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />
+                                && link.id == subemnuId 
+                                    ? <FontAwesomeIcon icon={faChevronUp} /> 
+                                    : <FontAwesomeIcon icon={faChevronDown} />
                         }</>
                         }
-                       </>
+                       </a>
                     </Link>
                 {link.hasSubmenu
                     && isMenuOpen

@@ -36,7 +36,7 @@ const Layout = ({children}) => {
                     id: 1,
                     icon: faWifi,
                     name: 'Internet',
-                    url: '/network'
+                    url: '/networks'
                 },
                 {
                     id: 2,
@@ -50,18 +50,18 @@ const Layout = ({children}) => {
                     name: 'TV + Internet',
                     url: '/tv-network'
                 },
-                // {
-                //     id: 3,
-                //     icon: faTools,
-                //     name: 'Usługi IT',
-                //     url: '/service'
-                // },
-                // {
-                //     id: 4,
-                //     icon: faUpload,
-                //     name: 'Transmisja danych',
-                //     url: '/transmision'
-                // },
+                {
+                    id: 3,
+                    icon: faTools,
+                    name: 'Usługi IT',
+                    url: '/service'
+                },
+                {
+                    id: 4,
+                    icon: faUpload,
+                    name: 'Transmisja danych',
+                    url: '/transmision'
+                },
             ]
         },
         {
@@ -74,7 +74,7 @@ const Layout = ({children}) => {
             id: 4,
             name: 'Światłowód',
             hasSubmenu: false,
-            url: "/about"
+            url: "/"
         },
         {
             id: 5,

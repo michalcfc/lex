@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 type DataProps = {
   children?: string
-  buttonColor?: string
+  variant?: string
   buttonBackground?: string
   danger?: string
   hero?: boolean
@@ -29,7 +29,7 @@ const buttonHover = styledMap`
 `;
 
 const buttonSize = styledMap`
-  default: .62rem 1.2rem;
+  default: .75rem 1.2rem;
   secondary: .47rem .75rem;
   hero:  1rem 1.75rem;
 `;
@@ -50,9 +50,9 @@ export const ButtonWrapper = styled.button<DataProps>`
   line-height: 1.5;
   font-weight: 400;
   text-align: center;
-  margin: ${({theme}) => theme.spacing.xs};
+  margin: ${({theme}) => theme.spacing.xs} 0;
   border-radius: .75rem;
-  border: 1px solid transparent;
+  border: 1px solid ${buttonColor};
   color: ${buttonColor};
   padding: ${buttonSize};
   box-shadow: ${buttonShadow};
