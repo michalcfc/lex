@@ -2,7 +2,12 @@ import React from 'react';
 import Image from 'next/image'
 import Link from 'next/link'
 
+import Button from "components/Button"
 import Container from "components/Container"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    faPhone,
+} from '@fortawesome/free-solid-svg-icons'
 
 import {
     HeroIconFirst,
@@ -10,6 +15,10 @@ import {
     HeroIconThird,
     HeroWrapper,
     HeroContentWrapper,
+    StyledLink,
+    HeroButton,
+    PhoneNumber,
+    StyledIcon,
     HeroContentLeft,
     HeroContentRight,
     HeroTitle,
@@ -24,12 +33,26 @@ const Hero = () => {
             <HeroContentWrapper>
                 <HeroContentLeft>
                 <HeroTitle>
-                    Szybki internet i serwis
+                    Building Trust Over the Years
                 </HeroTitle>
                 <HeroDescription>
-                   Internet radiowy od Lexell to najlepsze rozwiązanie dla wszystkich, którzy ze względu na swoją lokalizację nie posiadają dostępu do sieci światłowodowej.
-                   W naszej ofercie znajduje się również serwis jednostek PC oraz laptopów.
+                    Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed.
                 </HeroDescription>
+                <HeroButton>
+                    <Link
+                        href="contact"
+            
+                    >
+                        <StyledLink>
+                            <StyledIcon>
+                                <FontAwesomeIcon color="black" icon={faPhone} />
+                            </StyledIcon>
+                            <PhoneNumber>
+                                +48 516-178-131
+                            </PhoneNumber>
+                        </StyledLink>
+                    </Link>
+                </HeroButton>
                 </HeroContentLeft>
                 <HeroContentRight>
                     {/* <Link href="/television">

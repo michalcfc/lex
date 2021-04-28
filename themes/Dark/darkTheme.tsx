@@ -11,6 +11,12 @@ export const darkTheme: DefaultTheme = {
   body: '#f5f8fb',
   text: '#212332',
   borderRadius: '.42rem',
+  buttonSize: {
+    default: '.75rem 1.2rem',
+    secondary: '.75rem 1.2rem',
+    hero:  '1rem 1.75rem',
+    cookie: '.4rem 1.75rem',
+  },
   buttonColor: {
     colors,
   },

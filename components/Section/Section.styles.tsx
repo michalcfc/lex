@@ -110,13 +110,13 @@ export const SectionImg = styled.img<DataProps>`
 
 export const SectionDescription = styled.p<DataProps>`
   font-size: 1.2rem;
+  margin: 0 2rem;
 `;
 
 export const SectionBody = styled.div<DataProps>`
-@media (min-width: 800px) {
-    margin: 1rem 2rem;
-  }
+
 `
+
 
 export const SectionFooter = styled.div<DataProps>`
   margin: 1rem 0;

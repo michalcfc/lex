@@ -1,6 +1,6 @@
-import styledMap from "styled-map";
 import { lighten } from "polished";
 import styled from "styled-components";
+import styledMap, { mapToTheme as theme } from 'styled-map';
 
 type DataProps = {
   children?: string
@@ -32,6 +32,7 @@ const buttonSize = styledMap`
   default: .75rem 1.2rem;
   secondary: .47rem .75rem;
   hero:  1rem 1.75rem;
+  cookie: .4rem 1.75rem;
 `;
 
 const fontSize = styledMap`
@@ -51,10 +52,10 @@ export const ButtonWrapper = styled.button<DataProps>`
   font-weight: 400;
   text-align: center;
   margin: ${({theme}) => theme.spacing.xs} 0;
-  border-radius: .75rem;
-  border: 1px solid ${buttonColor};
+  border-radius: 50px;
+  border: 0;
   color: ${buttonColor};
-  padding: ${buttonSize};
+  padding: ${theme('buttonSize', 'variant')};
   box-shadow: ${buttonShadow};
   background: ${buttonBackground};
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;

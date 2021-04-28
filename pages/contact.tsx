@@ -56,12 +56,13 @@ const Contact: React.FC<HomeProps> = (
     }
 
     return (
-      <Container>
+        <>
           <Head>
               <title>
                   Kontakt
               </title>
           </Head>
+      <Container>
               <Heading>
                   Kontakt
               </Heading>
@@ -71,6 +72,7 @@ const Contact: React.FC<HomeProps> = (
                   choosenPack={choosenPack}
               />
       </Container>
+      </>
     )
 }
 

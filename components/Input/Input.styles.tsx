@@ -16,7 +16,6 @@ export const InputLabel = styled.label<DataProps>`
   width: fit-content;
   pointer-events: none;
   text-shadow: none;
-  text-transform: capitalize;
   transform-origin: left top;
   transform: scale(1) translate3d(0, -30px, 0);
   transition: 200ms ease all;

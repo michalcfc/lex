@@ -14,7 +14,7 @@ export const FooterWrapper = styled.footer`
   background: ${({theme}) => theme.colors.brand};
 `;
 
-export const FooterContent = styled.footer`
+export const FooterContent = styled.div`
   display: flex;
   padding: 1rem;
   justify-content: space-between;
@@ -71,7 +71,7 @@ export const FooterSocialIcon = styled.div`
   padding: ${({theme}) => theme.spacing.md};
   &:hover {
     cursor: pointer;
-    background: ${({ theme }) => darken(0.1, theme.colors.brand)};
+    background: ${({ theme }) => lighten(0.2, theme.colors.brand)};
   }
 `;
 

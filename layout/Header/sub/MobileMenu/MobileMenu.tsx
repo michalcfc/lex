@@ -46,13 +46,13 @@ const MobileMenu: React.FC<MenuProps> = ({
                     <>
                     {link.subLinks && link.subLinks.map(sub => (
                         <MenuItem>
-                            <LinkStyled key={sub.id} href={`${sub.url}`}>
+                            <LinkStyled key={sub.id} href={sub.url}>
                                 {sub.name}
                             </LinkStyled>
                         </MenuItem>
                     ))}
                     <MenuItem>
-                        <LinkStyled key={link.id}  href={`${link.url}`}>
+                        <LinkStyled key={link.id}  href={link.url}>
                             {link.name}
                         </LinkStyled>
                     </MenuItem>

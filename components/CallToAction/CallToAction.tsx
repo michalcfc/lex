@@ -27,7 +27,6 @@ const CallToAction: React.FC<CallToActionProps> = () => {
         <Section
             background={false}
         >
-            <Container>
                 <CallToActionStyle>
                     <CallToActionLeft>
                         <CallToActionImg
@@ -36,7 +35,7 @@ const CallToAction: React.FC<CallToActionProps> = () => {
                     </CallToActionLeft>
                     <CallToActionRight>
                         <CallToActionTitle>Masz pytania? Zadzwoń!</CallToActionTitle>
-                        <p>Konsultanci pracują od poniedziałku do piątku w godzinach 8:00 - 17:00.</p>
+                        Konsultanci pracują od poniedziałku do piątku w godzinach 8:00 - 17:00.
                         <CallToActionText>
                             <PhoneNumber>
                                 <FontAwesomeIcon icon={faPhone} /> 61 814-38-25
@@ -47,7 +46,6 @@ const CallToAction: React.FC<CallToActionProps> = () => {
                         </CallToActionText>
                     </CallToActionRight>
                 </CallToActionStyle>
-            </Container>
         </Section>
     )
 }
