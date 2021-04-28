@@ -40,7 +40,7 @@ const Hero = () => {
                 </HeroDescription>
                 <HeroButton>
                     <Link
-                        href="/contact"
+                        href="contact"
             
                     >
                         <StyledLink>

@@ -14,7 +14,7 @@ export const FooterWrapper = styled.footer`
   background: ${({theme}) => theme.colors.brand};
 `;
 
-export const FooterContent = styled.footer`
+export const FooterContent = styled.div`
   display: flex;
   padding: 1rem;
   justify-content: space-between;

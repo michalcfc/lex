@@ -73,7 +73,6 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                    {img && <SectionImg 
                         src={img} 
                         alt={title}
-                        loading="lazy" 
                         isReverse={isReverse}
                     />}
                     <SectionBody>

@@ -139,7 +139,7 @@ const Section: React.FC<PricingProps> = ({
                         </PricingItem>
                         <PricingFooter>
                                 <Link
-                                    href={'/contact'}
+                                    href={'contact'}
                                     >
                             <StyledLink
                                 onClick={() => choosePack(pack.name)}
