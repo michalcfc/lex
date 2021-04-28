@@ -5,25 +5,30 @@ type DataProps = {
 }
 
 export const CallToActionStyle = styled.div<DataProps>`
-    display: flex;
     padding: 1rem;
     border-radius: ${({ theme }) => theme.borderRadius};
     box-shadow: 0 2px 24px rgb(0 0 0 / 14%);
+    @media (min-width: 800px) {
+      display: flex;
+    }
 `;
 
 export const CallToActionRight= styled.div<DataProps>`
-  margin-left: 2rem;
-  line-height: 1.6;
+line-height: 1.6;
+  @media (min-width: 800px) {
+    margin-left: 2rem;
+  }
 `;
 
 export const CallToActionLeft = styled.div<DataProps>`
-    margin: -180px 0;
-      @media (max-width: 800px) {
-        display: none;
-      }
+    @media (min-width: 800px) {
+      margin: -180px 0;
+      margin-left: 2rem;
+    }
 `;
 
 export const CallToActionImg = styled.img<DataProps>`
+    max-width: 100%;
 `;
 
 export const CallToActionTitle = styled.h2<DataProps>`

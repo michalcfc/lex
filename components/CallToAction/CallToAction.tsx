@@ -27,7 +27,6 @@ const CallToAction: React.FC<CallToActionProps> = () => {
         <Section
             background={false}
         >
-            <Container>
                 <CallToActionStyle>
                     <CallToActionLeft>
                         <CallToActionImg
@@ -47,7 +46,6 @@ const CallToAction: React.FC<CallToActionProps> = () => {
                         </CallToActionText>
                     </CallToActionRight>
                 </CallToActionStyle>
-            </Container>
         </Section>
     )
 }

@@ -3,13 +3,8 @@
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
   "/": "pages/index.js",
-  "/tv-network": "pages/tv-network.js",
-  "/constructionMachinery": "pages/constructionMachinery.js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
   "/networks": "pages/networks.js",
-  "/telecommunications": "pages/telecommunications.js",
-  "/connections": "pages/connections.js",
-  "/monitoring": "pages/monitoring.js",
-  "/service": "pages/service.js",
-  "/television": "pages/television.js"
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
+  "/television": "pages/television.js",
+  "/tv-network": "pages/tv-network.js"
 }
