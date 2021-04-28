@@ -15,7 +15,6 @@ export const MenuItem: any = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  padding:  1.4rem 1.2rem;
   position: relative;
   &:last-child {
     padding-right: 0;
@@ -25,8 +24,10 @@ export const MenuItem: any = styled.div`
   }
   & a {
     color: inherit;
-    font-size: 1.2rem;
     text-decoration: none;
+    &:not(last-child) {
+      padding:  2rem 1.2rem;
+    }
   }
   &:hover {
     color: ${({ theme }) => lighten(0.1, theme.colors.gray)};

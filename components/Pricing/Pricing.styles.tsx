@@ -18,9 +18,8 @@ const progress = (value) => keyframes`
 `;
 
 export const PricingWrapper = styled.div<DataProps>`
-    margin: 2rem;
       @media (min-width: 800px) {
-        margin: 4rem;
+        margin: 4rem 0;
       }
 `;
 
@@ -40,8 +39,10 @@ export const PricingPack = styled.div<DataProps>`
     padding: 1.4rem 0;
     text-align: center;
     border: 1px solid transparent;
+    border-radius:  ${({theme}) => theme.borderRadius};
     box-shadow:  ${({theme}) => theme.boxShadow};
-  position: relative;
+    background: ${({theme}) => theme.colors.white};
+      position: relative;
   &:hover {
     border: ${({theme}) => `1px solid ${theme.colors.lightGreen}`};
     box-shadow: ${({theme}) => theme.boxShadowColor};
@@ -55,10 +56,11 @@ export const PricingSwitchWrapper = styled.div<DataProps>`
   @media (min-width: 800px) {
     width: 50%;
   }
-`
-
-export const PricingSwitch = styled.div<DataProps>`
+  `
+  
+  export const PricingSwitch = styled.div<DataProps>`
   position: relative;
+  background: ${({theme}) => theme.colors.white};
   box-shadow: 0 2px 24px 0 rgba(0,0,0,.14);
 `
 

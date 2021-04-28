@@ -2,6 +2,8 @@ import { url } from "node:inspector";
 import styled, { keyframes } from "styled-components";
 import { space } from "styled-system"
 
+import Image from 'next/image'
+
 type DataProps = {
     pt?: number
     pb?: number
@@ -53,15 +55,26 @@ export const SectionWrapper = styled.section<DataProps>`
     background-repeat: no-repeat;
     padding: ${({customPadding}) => customPadding ? customPadding : '2rem 0' };
     color:  ${({theme, background}) => background && theme.colors.black};
-    background: ${({theme, background}) => background ? `url(${background}) ${theme.colors.lightBlue} fixed center center` : `url('/img/circles.png')`};
+    background: ${({theme, background}) => background ? `url(${background}) ${theme.colors.lightBlue} fixed center center` : `${theme.colors.white} url('/img/circles.png')`};
     @media (min-width: 800px) {
       padding: ${({customPadding}) => customPadding ? customPadding : '4rem 0' };
     }
 `;
 
 export const SectionTitle = styled.h2<DataProps>`
-  margin: 1rem 2rem;
   position: relative;
+  margin-bottom: 1rem;
+  &:after {
+  @media (min-width: 800px) {
+      content: '';
+      position: absolute;
+      top: -1.4rem;
+      left: 0;
+      width: 4rem;
+      border-bottom: 3px solid ${({theme}) =>  theme.colors.brand};
+    };
+  }
+  `;
   // &:before {
     //   content: 'service';
     //   top: -4rem;
@@ -69,18 +82,6 @@ export const SectionTitle = styled.h2<DataProps>`
     //   font-size: 4rem;
     //   color: #eee;
     // }
-    @media (min-width: 800px) {
-      font-size: 2rem
-      &:after {
-        content: '';
-        position: absolute;
-        top: -1.4rem;
-        left: 0;
-        width: 4rem;
-        border-bottom: 3px solid ${({theme}) =>  theme.colors.brand};
-      };
-    }
-`;
 
 export const SectionContent = styled.div<DataProps>`
   z-index: 99;
@@ -108,6 +109,15 @@ export const SectionImg = styled.img<DataProps>`
 `;
 
 export const SectionDescription = styled.p<DataProps>`
-  margin: 1rem 2rem;
   font-size: 1.2rem;
 `;
+
+export const SectionBody = styled.div<DataProps>`
+@media (min-width: 800px) {
+    margin: 1rem 2rem;
+  }
+`
+
+export const SectionFooter = styled.div<DataProps>`
+  margin: 1rem 0;
+`

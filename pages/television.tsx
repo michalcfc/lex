@@ -2,6 +2,8 @@ import { HomeProps } from "./../Types/Home.d"
 import Pricing from "@components/Pricing/Pricing";
 import Head from "next/head";
 
+import Container from "@components/Container"
+
 const Television: React.FC<HomeProps> = ({
 
 }) => {
@@ -34,7 +36,7 @@ const Television: React.FC<HomeProps> = ({
     ]
 
     return (
-        <>
+        <Container>
             <Head>
                 <title>Telewizja - cennik</title>
             </Head>
@@ -43,7 +45,7 @@ const Television: React.FC<HomeProps> = ({
                 pricing={pricing}
                 isTvPricing={true}
             />
-        </>
+        </Container>
     )
 }
 

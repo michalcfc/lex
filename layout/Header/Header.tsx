@@ -99,11 +99,12 @@ const Header: React.FC<HeaderProps> = ( {
             </HeaderTopInfoWrapper>
             <HeaderContentWrapper
                 position={scroll}
+                homePage={isHomePage()}
             >
                 <Container>
                     <HeaderContent>
                         <BrandLogo>
-                         {scroll ?<Link href="/">
+                         {scroll || !isHomePage() ?<Link href="/">
                                 <img src="/img/logo.png"/>
                             </Link> :   <Link href="/">
                                 <img src="/img/lex_white.png"/>

@@ -32,7 +32,7 @@ export const HeaderWrapper = styled.header<DataProps>`
     position:  ${({theme, position}) => position ? "fixed" :  ""};
     background: ${({theme, position}) => position ? theme.colors.white : 'transparent'};
     color: ${({theme, position}) => position ? theme.colors.black : theme.colors.white};
-    box-shadow:  ${({homePage, position}) => (position || !homePage) && "0 8px 20px 0 rgba(0, 0, 0, 0.1)"};
+    box-shadow:  ${({homePage, position}) => position && "0 8px 20px 0 rgba(0, 0, 0, 0.1)"};
 `;
 
 export const HeaderTopInfoWrapper = styled.div<DataProps>`
@@ -66,7 +66,8 @@ export const HeaderTopInfoItem = styled.div<DataProps>`
 `
 
 export const HeaderContentWrapper = styled.div<DataProps>`
-//  padding: ${({position}) => position ? '.42rem' : ".6rem 0"};
+  color: ${({theme, homePage}) => !homePage && theme.colors.brand};
+  background: ${({theme, homePage}) => !homePage && theme.colors.white};
 `
 
 export const HeaderContent = styled.div<DataProps>`

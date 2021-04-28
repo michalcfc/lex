@@ -87,7 +87,7 @@ const Section: React.FC<PricingProps> = ({
             </PricingSwitchWrapper>}
             <Grid
                 gridGap="30px"
-                columns="repeat(auto-fit, minmax(320px, 1fr));"
+                columns="repeat(auto-fit, minmax(260px, 1fr));"
                 mt={4}
             >
                 {pricing.map(pack => (
