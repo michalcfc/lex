@@ -2,7 +2,8 @@ import React, {SelectHTMLAttributes, TextareaHTMLAttributes} from "react"
 import {
     SelectStyle,
     SelectLabel,
-    SelectWrapper
+    SelectWrapper,
+
   } from "./Select.styles"
 
   import { SelectProps } from "./Select.d"
@@ -33,7 +34,9 @@ type Props = SelectProps &  SelectHTMLAttributes<HTMLSelectElement>
       return (
           <option
             key={option.value}
+
             value={option.value}
+            hidden={option.hidden ? option.selected : ''}
             selected={option.selected ? option.selected : ''}
             disabled={option.disabled ? option.disabled : ''}
           >

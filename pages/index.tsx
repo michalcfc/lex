@@ -174,8 +174,8 @@ const Home: React.FC<HomeProps> = ( {
         >
             <Grid
                 gridGap="20px"
-                columns="repeat(auto-fit, minmax(320px, 1fr));"
-                customMargin={-16}
+                columns="repeat(auto-fit, minmax(220px, 1fr));"
+                customMargin={-12}
             >
                 {cards.map(card => {
                 return (

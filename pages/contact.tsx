@@ -21,7 +21,7 @@ const Contact: React.FC<HomeProps> = (
     let messageTopic = [
         {
             id: 0,
-            value: 'Wybierz temat',
+            value: '',
             label: "Wybierz temat",
             disabled: true,
             selected: true
@@ -57,24 +57,22 @@ const Contact: React.FC<HomeProps> = (
 
     return (
         <>
-          <Head>
-              <title>
-                  Kontakt
-              </title>
-          </Head>
-      <Container>
-              <Heading>
-                  Kontakt
-              </Heading>
-              {/*Adres e-mail: biuro@lexell.com.pl*/}
-              <ContactForm
-                  messageTopic={checkChoosenPack()}
-                  choosenPack={choosenPack}
-              />
-      </Container>
-      </>
+            <Head>
+                <title>
+                    Kontakt
+                </title>
+            </Head>
+            <Container>
+                <Heading>
+                    Kontakt
+                </Heading>
+                <ContactForm
+                    messageTopic={checkChoosenPack()}
+                    choosenPack={choosenPack}
+                />
+            </Container>
+        </>
     )
 }
 
 export default Contact
-

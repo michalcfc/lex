@@ -6,14 +6,17 @@ type DataProps = {
 
 export const CookieWrapper = styled.div<DataProps>`
 position: fixed;
+bottom: 0;
+width: 90%;
 left: 50%;
-bottom: 0%;
-width: 60%;
-transform: translate(-50%, -50%);
+transform: translate(-50%, -20%);
 padding: 0 ${({theme}) => theme.spacing.md};
 color: ${({theme}) => theme.colors.white};
 background: ${({theme}) => theme.colors.brand};
 border-radius: ${({theme}) => theme.borderRadius};
+@media (min-width: 800px) {
+    width: 60%;
+  }
 `;
 
 export const CookieContent = styled.div<DataProps>`

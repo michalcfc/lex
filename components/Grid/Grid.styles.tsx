@@ -26,7 +26,6 @@ export const GridStyles = styled.div<DataProps>`
     grid-template-columns: ${({columns}) => columns};
     grid-auto-columns:  ${({autoColumns}) => autoColumns};
     grid-auto-flow: ${({autoFlow}) => autoFlow};
-    width: 100%;
     margin-top: ${({customMargin}) => `${customMargin / 2}rem`};
     & a {
         text-decoration: none;

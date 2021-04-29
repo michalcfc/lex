@@ -35,32 +35,56 @@ const Layout = ({children}) => {
                 {
                     id: 1,
                     icon: faWifi,
-                    name: 'Internet',
+                    name: 'Internet światłowodowy',
                     url: '/opticalfiber'
                 },
                 {
                     id: 2,
                     icon: faTv,
+                    name: 'Internet radiowy',
+                    url: '/networks'
+                },
+                {
+                    id: 3,
+                    icon: faChromecast,
                     name: 'Telewizja',
                     url: '/television'
                 },
                 {
                     id: 3,
-                    icon: faChromecast,
-                    name: 'TV + Internet',
-                    url: '/tv-network'
-                },
-                {
-                    id: 3,
                     icon: faTools,
-                    name: 'Usługi IT',
+                    name: 'Serwis',
                     url: '/service'
                 },
                 {
                     id: 4,
                     icon: faUpload,
-                    name: 'Transmisja danych',
-                    url: '/transmision'
+                    name: 'Monitoring',
+                    url: '/monitoring'
+                },
+                {
+                    id: 5,
+                    icon: faUpload,
+                    name: 'Prace budowlane w zakresie przyłączy',
+                    url: '/connections'
+                },
+                {
+                    id: 6,
+                    icon: faUpload,
+                    name: 'Budowa sieci telekomunikacyjnych',
+                    url: '/telecommunications'
+                },
+                {
+                    id: 7,
+                    icon: faUpload,
+                    name: 'Wykonastwo sieci w budynkach',
+                    url: '/networks'
+                },
+                {
+                    id: 8,
+                    icon: faUpload,
+                    name: 'Usługi maszynami budowlanymi',
+                    url: '/constructionMachinery'
                 },
             ]
         },

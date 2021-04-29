@@ -6,10 +6,13 @@ import {
 import {AlertProps } from "./Alert.d"
 
 const Alert: React.FC<AlertProps> = ({
-text
+    text,
+    variant
 }) => (
 
-<AlertWrapper>
+<AlertWrapper
+    variant={variant}
+>
     <AlertContent>
         {text}
     </AlertContent>

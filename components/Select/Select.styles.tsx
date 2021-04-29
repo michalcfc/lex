@@ -28,10 +28,17 @@ export const SelectStyle = styled.select`
   border-radius: 0.4rem;
   background:  ${({theme}) => theme.colors.white};;
   border: 1px solid  ${({theme}) => theme.colors.black};
-
   &:focus {
     outline: 0;
   }
+  & option {
+    color: #000;
+  }
+  
+  &:invalid {
+    color: #ccc;
+  }
+  
 
   &:focus + ${SelectLabel} {
     opacity: 1;
@@ -39,3 +46,11 @@ export const SelectStyle = styled.select`
     transform: scale(0.8) translate3d(0, -4rem, 0);
   }
 `;
+
+export const OptionStyle = styled.option`
+    color: #000;
+  &:first-child
+  {
+    color: #ccc;
+  }
+    `

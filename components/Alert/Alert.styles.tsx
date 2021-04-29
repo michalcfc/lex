@@ -1,15 +1,16 @@
 import styled from "styled-components";
+import { mapToTheme as theme } from 'styled-map'
 
 type DataProps = {
-
+  variant?: string
 }
 
 export const AlertWrapper = styled.div<DataProps>`
-  color: #fff;
-  padding: 1rem;
-  margin: 1rem 0;
-  border-radius: .42rem;
-  background: #2ecc71;
+  color: ${({theme}) => theme.colors.white};
+  padding: ${({theme}) => theme.spacing.md};
+  margin-bottom: ${({theme}) => theme.spacing.lg};
+  border-radius: ${({theme}) => theme.borderRadius};
+  background: ${theme('colors', 'variant')};
 `;
 
 export const AlertContent = styled.div<DataProps>`

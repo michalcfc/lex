@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import {
     CookieWrapper,
     CookieContent
@@ -8,14 +8,18 @@ import {
 import { CookieProps } from "./Cookie.d"
 
 import Button from "@components/Button"
+import { truncate } from "fs/promises"
 
 const Cookie: React.FC<CookieProps> = ({
 
 
     }) => {
 
+    const [isCookieAccept, setCookieAccept] = useState(false)
+
     return (
-        <CookieWrapper>
+        <>
+        {!isCookieAccept && <CookieWrapper>
             <CookieContent>
                 <span>
                     This site uses cookies to provide you with a better user experience. 
@@ -24,10 +28,11 @@ const Cookie: React.FC<CookieProps> = ({
                 <Button 
                     name="Ok"
                     variant="cookie"
-                    onClick={() => {}}
+                    onClick={() => setCookieAccept(true)}
                 />
             </CookieContent>
-        </CookieWrapper>
+        </CookieWrapper>}
+        </>
     )
 }
 
