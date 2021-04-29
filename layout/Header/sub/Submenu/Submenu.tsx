@@ -2,7 +2,9 @@ import React from 'react';
 import {
     MenuWrapper,
     MenuItem,
-    MenuLink
+    MenuLink,
+    MenuContent,
+    MenuColumns
 } from "./Submenu.styles"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,12 +17,25 @@ const Submenu: React.FC<SubmenuProps> = ({
     links,
     setMenuOpen,
 }) => {
+
+    function chunkArrayInGroups(arr, size) {
+        let result = [];
+        let pos = 0;
+        while (pos < arr.length) {
+            result.push(arr.slice(pos, pos + size));
+            pos += size;
+        }
+        return result;
+        }
+
     return (
         <MenuWrapper
             onMouseLeave={() => {
                 setMenuOpen(false)
             }}
         >
+            <MenuContent>
+                <MenuColumns>
             {links.map((link, id) => {
                return <MenuItem
                    key={id}
@@ -28,13 +43,15 @@ const Submenu: React.FC<SubmenuProps> = ({
                    <Link href={link.url}>
                        <a>
                        <MenuLink>
-                           <FontAwesomeIcon icon={link.icon} />
-                           <div>{link.name}</div>
+                           {/* <FontAwesomeIcon icon={link.icon} /> */}
+                           <span>{link.name}</span>
                        </MenuLink>
                        </a>
                    </Link>
                 </MenuItem> 
             })}
+            </MenuColumns>
+            </MenuContent>
         </MenuWrapper>
     )
 }

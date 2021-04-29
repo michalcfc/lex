@@ -75,7 +75,9 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                         alt={title}
                         isReverse={isReverse}
                     />}
-                    <SectionBody>
+                    <SectionBody
+                         isReverse={isReverse}
+                    >
                         {title && <SectionTitle>
                             {title}
                         </SectionTitle>}

@@ -93,9 +93,9 @@ export const HeroImg = styled.img<DataProps>`
 `
 
 export const HeroDescription = styled.p`
-    line-height: 1.4;
+    line-height: 1.8;
     @media (min-width: 800px) {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
 `
 

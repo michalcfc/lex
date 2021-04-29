@@ -57,7 +57,7 @@ export const SectionWrapper = styled.section<DataProps>`
     color:  ${({theme, background}) => background && theme.colors.black};
     background: ${({theme, background}) => background ? `url(${background}) ${theme.colors.lightBlue} fixed center center` : `${theme.colors.white} url('/img/circles.png')`};
     @media (min-width: 800px) {
-      padding: ${({customPadding}) => customPadding ? customPadding : '4rem 0' };
+      padding: ${({customPadding}) => customPadding ? customPadding : '6rem 0' };
     }
 `;
 
@@ -103,8 +103,8 @@ export const SectionImg = styled.img<DataProps>`
   margin-bottom: 2rem;
   border-radius: .42rem;
   @media (min-width: 800px) {
-    border-radius: ${({isReverse}) => isReverse ? '63% 37% 30% 70% / 50% 45% 55% 50%' : "37% 68% 70% 30% / 50% 45% 55% 50%" };
-    box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 5%), 0 1.5rem 2.2rem rgb(0 0 0 / 10%);
+    border-radius: .42rem;
+    box-shadow: 0 26px 26px rgb(0 0 0 / 20%);
   }
 `;
 
@@ -113,7 +113,16 @@ export const SectionDescription = styled.p<DataProps>`
 `;
 
 export const SectionBody = styled.div<DataProps>`
-  margin: 0 2rem;
+@media (min-width: 800px) {
+  ${({ isReverse }) => isReverse && `
+    margin-right: 6rem;
+  `}
+
+  ${({ isReverse }) => !isReverse && `
+    margin-left: 6rem;
+`}
+}
+
 `
 
 

@@ -5,5 +5,5 @@ export interface ButtonProps {
   hero?: boolean
   variant?: string
   buttonBackground?: string
-  onClick: () => void
+  onClick: React.MouseEventHandler<HTMLElement>
 }
