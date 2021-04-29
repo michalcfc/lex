@@ -8,7 +8,7 @@ import {
 import Input from "../Input"
 import Autocomplates from "./components/Autocomplates"
 
-import db from "../../Api/db.json"
+import db from "../../api/db.json"
 
 const ENTER = 13
 const ARROW_UP = 40
