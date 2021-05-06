@@ -35,55 +35,37 @@ const Layout = ({children}) => {
                 {
                     id: 1,
                     icon: faWifi,
-                    name: 'Internet światłowodowy',
+                    name: 'Lexell internet',
                     url: '/opticalfiber'
                 },
                 {
                     id: 2,
-                    icon: faTv,
-                    name: 'Internet radiowy',
-                    url: '/networks'
-                },
-                {
-                    id: 3,
-                    icon: faChromecast,
-                    name: 'Telewizja',
-                    url: '/television'
-                },
-                {
-                    id: 3,
                     icon: faTools,
-                    name: 'Serwis',
+                    name: 'Lexell help desk IT',
                     url: '/service'
+                },
+                {
+                    id: 3,
+                    icon: faUpload,
+                    name: 'Lexell computer',
+                    url: '/computer'
                 },
                 {
                     id: 4,
                     icon: faUpload,
-                    name: 'Monitoring',
-                    url: '/monitoring'
+                    name: 'Lexell energy',
+                    url: '/energy'
                 },
                 {
                     id: 5,
                     icon: faUpload,
-                    name: 'Prace budowlane w zakresie przyłączy',
-                    url: '/connections'
+                    name: 'Lexell smart and security',
+                    url: '/monitoring'
                 },
                 {
                     id: 6,
                     icon: faUpload,
-                    name: 'Budowa sieci telekomunikacyjnych',
-                    url: '/telecommunications'
-                },
-                {
-                    id: 7,
-                    icon: faUpload,
-                    name: 'Wykonastwo sieci w budynkach',
-                    url: '/networks'
-                },
-                {
-                    id: 8,
-                    icon: faUpload,
-                    name: 'Usługi maszynami budowlanymi',
+                    name: 'Lexell building',
                     url: '/constructionMachinery'
                 },
             ]
@@ -116,56 +98,34 @@ const Layout = ({children}) => {
             link: [
                 {
                     id: 1,
-                    name: 'Internet światłowodowy',
-                    url: ''
+                    name: 'Lexell internet',
+                    url: '/opticalfiber'
                 },
                 {
                     id: 2,
-                    name: 'Internet radiowy',
-                    url: ''
+                    name: 'Lexell help desk IT',
+                    url: '/service'
                 },
                 {
                     id: 3,
-                    name: 'Telewizja',
-                    url: ''
+                    name: 'Lexell computer',
+                    url: '/computer'
                 },
                 {
                     id: 4,
-                    name: 'Serwis',
-                    url: ''
-
-                }
-            ]
-        },
-        {
-            id: 2,
-            header: 'Inne usługi',
-            link: [
-                {
-                    id: 1,
-                    name: 'Monitoring',
-                    url: ''
-                },
-                {
-                    id: 2,
-                    name: 'Prace budowlane w zakresie przyłączy',
-                    url: ''
-                },
-                {
-                    id: 3,
-                    name: 'Sieci telekomunikacyjnych',
-                    url: ''
-                },
-                {
-                    id: 4,
-                    name: 'Wykonastwo sieci w budynkach',
-                    url: ''
+                    name: 'Lexell energy',
+                    url: '/energy'
                 },
                 {
                     id: 5,
-                    name: 'Usługi maszynami budowlanymi',
-                    url: ''
-                }
+                    name: 'Lexell smart and security',
+                    url: '/monitoring'
+                }, 
+                {
+                    id: 6,
+                    name: 'Lexell building',
+                    url: '/constructionMachinery'
+                },
             ]
         },
     ]

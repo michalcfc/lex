@@ -57,8 +57,8 @@ const sections = [
         noRef: true,
         link: '/networks',
         img: 'img/section1.jpg',
-        title: "Internet światłowodowy",
-        desc: "Dostarczamy usługi połączenia światłowodowego. Zobacz czy działamy w twojej lokalizacji."
+        title: "Lexell internet",
+        desc: "Szybkie łącze internetu radiowego lub światłowodu u Ciebie."
     },
     {
         id: 2,
@@ -66,9 +66,9 @@ const sections = [
         isReverse: false,
         background: true,
         link: '/networks',
-        img: 'img/section.jpg',
-        title: "Internet radiowy",
-        desc: "Twojej lokalizacji nie ma w obszarze światłowodu? Internet radiowy od Lexell to najlepszy wybór."
+        img: 'img/section4.jpg',
+        title: "Lexell help desk IT",
+        desc: "Szybka naprawa Twojego komputera lub laptopa. Zapewniamy profity dla naszych abonentów."
     },
     {
         id: 3,
@@ -76,9 +76,9 @@ const sections = [
         isReverse: true,
         background: false,
         link: '/television',
-        img: 'img/section2.jpg',
-        title: "Telewizja",
-        desc: "Najlepsze kanały sportowe, filmowe i informacyjne. Oglądaj co tylko chcesz!"
+        img: 'img/computer.jpeg',
+        title: "Lexell computer",
+        desc: "Sprzęt komputerowy od LEXELL to gwarancja wydajności i niezawodności. "
     },
     {
         id: 4,
@@ -86,9 +86,9 @@ const sections = [
         isReverse: false,
         background: true,
         link: '/service',
-        img: 'img/section4.jpg',
-        title: "Serwis",
-        desc: "Szybka naprawa Twojego komputera lub laptopa. Zapewniamy profity dla naszych abonentów"
+        img: 'img/energy.jpeg',
+        title: "Lexell energy",
+        desc: "Wszystko co związane z energią odnawialną. Panele fotowoltaiczne oraz instalacje fotowoltaiczne tam gdzie tego potrzebujesz."
     },
     {
         id: 5,
@@ -97,9 +97,8 @@ const sections = [
         background: false,
         link: '/monitoring',
         img: 'img/section5.jpg',
-        title: "Monitoring",
-        desc: "Are unpleasing occasional celebrated motionless unaffected conviction out. Evil make to no five they" + 
-        "Are unpleasing occasional celebrated motionless unaffected conviction out. Evil make to no five they"
+        title: "Lexell smart and security",
+        desc: "Oferujemy nowoczesne rozwiązania w aspekcie Twojego bezpieczeństwa, ochrony i monitoringu."
     },
     {
         id: 6,
@@ -107,42 +106,9 @@ const sections = [
         isReverse: false,
         background: true,
         link: '/connections',
-        img: 'img/section6.jpg',
-        title: "Prace budowlane w zakresie przyłączy",
-        desc: "Budowa sieci i przyłączy telekomunikacyjnych, elektrycznych, wodno-kanalizacyjno gazowej."
-    },
-    {
-        id: 7,
-        isFlex: true,
-        isReverse: true,
-        background: false,
-        link: '/telecommunications',
-        img: 'img/section7.jpg',
-        title: "Budowa sieci telekomunikacyjnych",
-        desc: "Are unpleasing occasional celebrated motionless unaffected conviction out. Evil make to no five they" + 
-        "Are unpleasing occasional celebrated motionless unaffected conviction out. Evil make to no five they"
-    },
-    {
-        id: 8,
-        isFlex: true,
-        isReverse: false,
-        background: true,
-        link: '/networks',
-        img: 'img/section3.jpg',
-        title: "Wykonastwo sieci w budynkach",
-        desc: "Are unpleasing occasional celebrated motionless unaffected conviction out. Evil make to no five they" + 
-        "Are unpleasing occasional celebrated motionless unaffected conviction out. Evil make to no five they"
-    },
-    {
-        id: 9,
-        isFlex: true,
-        isReverse: true,
-        background: false,
-        link: '/constructionMachinery',
         img: 'img/section9.jpg',
-        title: "Usługi maszynami budowlanymi",
-        desc: "Are unpleasing occasional celebrated motionless unaffected conviction out. Evil make to no five they" + 
-        "Are unpleasing occasional celebrated motionless unaffected conviction out. Evil make to no five they"
+        title: "Lexell building",
+        desc: "Budujemy sieci i przyłącza telekomunikacyjne, elektryczne czy wodno-kanalizacyjno gazowe. Świadczymy usługi pracy mikrokoparki."
     },
 ]
 
