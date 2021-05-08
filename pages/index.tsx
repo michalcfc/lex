@@ -12,6 +12,11 @@ import Button from "@components/Button"
 import GoToTop from "@components/GoToTop"
 import { HomeProps } from "./../Types/Home.d"
 
+import Head from 'next/head'
+
+import { getAllPostsForHome } from '../lib/api'
+import { CMS_NAME } from '../lib/constatns'
+
 import {
     faPhone,
 } from '@fortawesome/free-solid-svg-icons'
@@ -113,9 +118,13 @@ const sections = [
 ]
 
 
-const Home: React.FC<HomeProps> = ( {
+const Home: React.FC<HomeProps> = ( {preview, allPosts}) => {
+    
+    const heroPost = allPosts[0].node
+    // const morePosts = allPosts.slice(1)
 
-}) => {
+    console.log(heroPost.hero_title[0].text)
+
 
     const [isBottom, setIsBottom] = useState(false)
 
@@ -136,6 +145,9 @@ const Home: React.FC<HomeProps> = ( {
 
     return (
     <>
+        <Head>
+          <title>{heroPost.hero_title[0].text}</title>
+        </Head>
         <Section
         >
             <Grid
@@ -188,24 +200,9 @@ const Home: React.FC<HomeProps> = ( {
 
 export default Home
 
-// export async function getStaticProps(context) {
-//     const UA = context.req.headers['user-agent'];
-//     const isMobile = Boolean(UA.match(
-//         /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
-//     ))
-//
-//     return {
-//         props: {
-//             isMobile
-//         }
-//     }
-// }
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const movies = await getMovies()
-//   return {
-//     props: {
-//       movies
-//     }
-//   }
-// }
+export async function getStaticProps({ preview = false, previewData }) {
+    const allPosts = await getAllPostsForHome(previewData)
+    return {
+        props: { preview, allPosts },
+    }
+  }
