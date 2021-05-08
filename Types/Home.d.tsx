@@ -6,5 +6,7 @@ interface Movie {
     cover: {url: string}
 }
 export interface HomeProps {
-    movies: [Movie];
+    movies: [Movie]
+    preview: string
+    allPosts: any
 }
