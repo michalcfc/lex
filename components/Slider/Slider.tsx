@@ -38,28 +38,29 @@ const Slider: React.FC<SliderProps> = ({
     {/*    bottom='50%'*/}
     {/*    onClick={() => moveLeft()}*/}
     {/*/>*/}
-    <SliderStyle ref={element}>
-        {items.map(item => {
-          return <>
-          <Card
-              hoverEffect
-              key={item.id}
-              img={item.img}
-              title={item.title}
-              description={item.description}
-          >
-            {item.name}
-          </Card>
-            </>
-        })}
-    </SliderStyle>
-    {/*<Arrow*/}
-    {/*  rightDirection*/}
-    {/*  right='-40px'*/}
-    {/*  bottom='50%'*/}
-    {/*  onClick={() => moveRight()}*/}
-    {/*  />*/}
-      </SliderWrapper>
+      <SliderStyle ref={element}>
+
+            {items.map(item => {
+              return <>
+              <Card
+                  hoverEffect
+                  key={item.id}
+                  img={item.img}
+                  title={item.title}
+                  description={item.description}
+              >
+                {item.name}
+              </Card>
+                </>
+            })}     
+            {/*<Arrow*/}
+      {/*  rightDirection*/}
+      {/*  right='-40px'*/}
+      {/*  bottom='50%'*/}
+      {/*  onClick={() => moveRight()}*/}
+      {/*  />*/}
+      </SliderStyle>
+    </SliderWrapper>
   </>
   )
 }

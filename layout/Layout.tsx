@@ -5,6 +5,8 @@ import Header       from "./Header"
 import Footer       from "./Footer"
 import Wrapper      from "./Wrapper"
 
+import { getAllLayouts } from '../lib/api'
+
 import {
     faTv,
     faWifi,
@@ -17,7 +19,9 @@ import {
 } from "@fortawesome/free-brands-svg-icons"
 
 
-const Layout = ({children}) => {
+const Layout = ({children,allPosts}) => {
+
+    console.log(allPosts)
 
     const menuLinks = [
         {
@@ -35,37 +39,37 @@ const Layout = ({children}) => {
                 {
                     id: 1,
                     icon: faWifi,
-                    name: 'Lexell internet',
-                    url: '/opticalfiber'
+                    name: 'LEXELL internet',
+                    url: '/clientChoose'
                 },
                 {
                     id: 2,
                     icon: faTools,
-                    name: 'Lexell help desk IT',
+                    name: 'LEXELL help desk IT',
                     url: '/service'
                 },
                 {
                     id: 3,
                     icon: faUpload,
-                    name: 'Lexell computer',
+                    name: 'LEXELL computer',
                     url: '/computer'
                 },
                 {
                     id: 4,
                     icon: faUpload,
-                    name: 'Lexell energy',
+                    name: 'LEXELL energy',
                     url: '/energy'
                 },
                 {
                     id: 5,
                     icon: faUpload,
-                    name: 'Lexell smart and security',
+                    name: 'LEXELL smart and security',
                     url: '/monitoring'
                 },
                 {
                     id: 6,
                     icon: faUpload,
-                    name: 'Lexell building',
+                    name: 'LEXELL building',
                     url: '/constructionMachinery'
                 },
             ]
@@ -98,32 +102,32 @@ const Layout = ({children}) => {
             link: [
                 {
                     id: 1,
-                    name: 'Lexell internet',
-                    url: '/opticalfiber'
+                    name: 'LEXELL internet',
+                    url: '/clientChoose'
                 },
                 {
                     id: 2,
-                    name: 'Lexell help desk IT',
+                    name: 'LEXELL help desk IT',
                     url: '/service'
                 },
                 {
                     id: 3,
-                    name: 'Lexell computer',
+                    name: 'LEXELL computer',
                     url: '/computer'
                 },
                 {
                     id: 4,
-                    name: 'Lexell energy',
+                    name: 'LEXELL energy',
                     url: '/energy'
                 },
                 {
                     id: 5,
-                    name: 'Lexell smart and security',
+                    name: 'LEXELL smart and security',
                     url: '/monitoring'
                 }, 
                 {
                     id: 6,
-                    name: 'Lexell building',
+                    name: 'LEXELL building',
                     url: '/constructionMachinery'
                 },
             ]
@@ -149,3 +153,11 @@ const Layout = ({children}) => {
 }
 
 export default Layout
+
+export async function getStaticProps({  previewData }) {
+    const allPosts = await getAllLayouts(previewData)
+    console.log(allPosts.node)
+    return {
+        props: {}
+    }
+  }

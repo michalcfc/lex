@@ -16,6 +16,7 @@ export interface CardProps {
   linkName?: string
   onMouseEnter?: () => void
   onMouseLeave?: () => void
+  onClick?: () => void
   mt?: number
   mb?: number
   p?: number

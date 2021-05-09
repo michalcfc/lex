@@ -17,5 +17,6 @@ interface  Pricing {
 export interface PricingProps {
     isNetworkPricing?: boolean
     isTvPricing?: boolean
+    isRadioPricing?: boolean
     pricing: Pricing[]
 }

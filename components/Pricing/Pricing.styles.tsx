@@ -18,9 +18,7 @@ const progress = (value) => keyframes`
 `;
 
 export const PricingWrapper = styled.div<DataProps>`
-      @media (min-width: 800px) {
-        margin: 4rem 0;
-      }
+
 `;
 
 export const StyledLink = styled.a`

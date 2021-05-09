@@ -43,7 +43,7 @@ export const HeroWrapper = styled.picture`
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -72,8 +72,9 @@ export const HeroContentLeft = styled.div`
   flex: 1 0 0%;
   animation: ${fadeIn} 1s ease-in-out;
   white-space: pre-wrap;
+  justify-content: flex-start;
   @media (min-width: 800px) {
-      flex: 0 0 45%;
+      flex: 0 0 46%;
     }
 `;
 
@@ -101,9 +102,10 @@ export const HeroDescription = styled.p`
 
 export const HeroContentRight = styled.div`
   max-width: 100%;
-  flex: 0 1 50%;
+  flex: 0 0 50%;
   position: relative;
   display: flex;
+  padding: 0 -15px;
   align-self: flex-end;
   @media (max-width: 800px) {
     display: none;

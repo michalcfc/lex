@@ -37,6 +37,7 @@ import Button from "@components/Button"
 const Section: React.FC<PricingProps> = ({
      isNetworkPricing,
     isTvPricing,
+    isRadioPricing,
     pricing
 }) => {
 
@@ -46,16 +47,38 @@ const Section: React.FC<PricingProps> = ({
 
     const choosePack = (packName) => {
         setChoosenPack(packName)
-        localStorage.setItem('choosenPack', packName);
+        localStorage.setItem('choosenPack', mailTopic(packName));
     }
+
+    const mailTopic = (packName) => {
+        switch (packName) {
+            case "300 Mb/s":
+                return "Światłowód 300 Mb/s"
+            case "750 Mb/s":
+                return "Światłowód 750 Mb/s"
+            case "1000 Mb/s":
+                return "Światłowód 1000 Mb/s"
+        }
+    }
+
 
     const changeValue = (packName) => {
         switch (packName) {
-            case "300 Mbps":
+            case "10 Mb/s":
+                return "20"
+            case "20 Mb/s":
+                return "30"
+            case "30 Mb/s":
+                return "35"
+            case "40 Mb/s":
                 return "40"
-            case "750 Mbps":
+            case "50 Mb/s":
+                return "45"
+            case "300 Mb/s":
+                return "60"
+            case "750 Mb/s":
                 return "75"
-            case "1000 Mbps":
+            case "1000 Mb/s":
                 return "100"
             case "2 Gbps":
                 return "100"
@@ -68,7 +91,7 @@ const Section: React.FC<PricingProps> = ({
 
     return (
         <PricingWrapper>
-            {isNetworkPricing && <PricingSwitchWrapper>
+            {(isNetworkPricing || isRadioPricing) && <PricingSwitchWrapper>
                 <PricingSwitchTitle>Wybierz okres umowy:</PricingSwitchTitle>
                 <PricingSwitch>
                     <PricingSwitchInput
@@ -96,7 +119,7 @@ const Section: React.FC<PricingProps> = ({
                             <PricingTitle>{pack.name}</PricingTitle>
                             {!isNetworkPricing && <PricingDescription>Umowa na 24 miesiące</PricingDescription>}
                         </PricingHeader>
-                        {isNetworkPricing
+                        {(isNetworkPricing || isRadioPricing)
                             && <ProgressBar>
                                 <ProgressValue value={`${changeValue(pack.name)}`}></ProgressValue>
                             </ProgressBar>
@@ -150,7 +173,7 @@ const Section: React.FC<PricingProps> = ({
                 ))}
             </Grid>
             <PricingBottom>
-                {!isTvPricing && "Stały adres IP za dopłatą miesięcznie: 5zł"}
+                {!isTvPricing && !isRadioPricing && "Stały adres IP za dopłatą miesięcznie: 5zł"}
             <Modal
             title=""
             text=""

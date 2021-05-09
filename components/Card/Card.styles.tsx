@@ -71,6 +71,7 @@ export const CardTitle = styled.div`
 
 export const CardContent = styled.div<DataProps>`
   flex: 1 1 0%;
+  padding:  ${({theme}) => theme.spacing.sm};
   display: ${({flexContent}) => flexContent && `flex`};
   align-items: ${({flexContent}) => flexContent && `center`};
   margin:  ${({theme}) => theme.spacing.sm};

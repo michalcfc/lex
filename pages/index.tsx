@@ -2,19 +2,18 @@ import { useState, useEffect } from "react"
 
 import Card  from "@components/Card"
 import Grid  from "@components/Grid"
-import Slider from "@components/Slider"
 import Section from "@components/Section"
-import Accordion from "@components/Accordion"
+import Container from "@components/Container"
 import CallWidget from "@components/CallWidget"
 import Cookie from "@components/Cookie"
 import CallToAction from "@components/CallToAction"
-import Button from "@components/Button"
+import Slider from "@components/Slider"
 import GoToTop from "@components/GoToTop"
 import { HomeProps } from "./../Types/Home.d"
 
 import Head from 'next/head'
 
-import { getAllPostsForHome } from '../lib/api'
+import { getAllLayouts } from '../lib/api'
 import { CMS_NAME } from '../lib/constatns'
 
 import {
@@ -31,6 +30,7 @@ import {
     faShippingFast
 } from '@fortawesome/free-solid-svg-icons'
 import React from "react";
+import Heading from "@components/Heading"
 
 const cards = [
     {
@@ -60,9 +60,9 @@ const sections = [
         isReverse: true,
         background: false,
         noRef: true,
-        link: '/networks',
+        link: '/clientChoose',
         img: 'img/section1.jpg',
-        title: "Lexell internet",
+        title: "LEXELL internet",
         desc: "Szybkie łącze internetu radiowego lub światłowodu u Ciebie."
     },
     {
@@ -72,7 +72,7 @@ const sections = [
         background: true,
         link: '/networks',
         img: 'img/section4.jpg',
-        title: "Lexell help desk IT",
+        title: "LEXELL help desk IT",
         desc: "Szybka naprawa Twojego komputera lub laptopa. Zapewniamy profity dla naszych abonentów."
     },
     {
@@ -82,7 +82,7 @@ const sections = [
         background: false,
         link: '/television',
         img: 'img/computer.jpeg',
-        title: "Lexell computer",
+        title: "LEXELL computer",
         desc: "Sprzęt komputerowy od LEXELL to gwarancja wydajności i niezawodności. "
     },
     {
@@ -92,7 +92,7 @@ const sections = [
         background: true,
         link: '/service',
         img: 'img/energy.jpeg',
-        title: "Lexell energy",
+        title: "LEXELL energy",
         desc: "Wszystko co związane z energią odnawialną. Panele fotowoltaiczne oraz instalacje fotowoltaiczne tam gdzie tego potrzebujesz."
     },
     {
@@ -102,7 +102,7 @@ const sections = [
         background: false,
         link: '/monitoring',
         img: 'img/section5.jpg',
-        title: "Lexell smart and security",
+        title: "LEXELL smart and security",
         desc: "Oferujemy nowoczesne rozwiązania w aspekcie Twojego bezpieczeństwa, ochrony i monitoringu."
     },
     {
@@ -112,19 +112,41 @@ const sections = [
         background: true,
         link: '/connections',
         img: 'img/section9.jpg',
-        title: "Lexell building",
+        title: "LEXELL building",
         desc: "Budujemy sieci i przyłącza telekomunikacyjne, elektryczne czy wodno-kanalizacyjno gazowe. Świadczymy usługi pracy mikrokoparki."
     },
 ]
 
+const companies = [
+    {
+        id: 1,
+        name: 'Jachimov',
+        logo: '/img/logo-hotel-berg.png'
+    },
+    {
+        id: 2,
+        name: 'Jachimov',
+        logo: '/img/logo-estato.png'
+    },
+    {
+        id: 3,
+        name: 'Jachimov',
+        logo: '/img/logo-bello.png'
+    },
+    {
+        id: 4,
+        name: 'Jachimov',
+        logo: '/img/logo-celeste.png'
+    },
+    {
+        id: 5,
+        name: 'Jachimov',
+        logo: '/img/logo-hotel-california.png'
+    }
+]
 
-const Home: React.FC<HomeProps> = ( {preview, allPosts}) => {
-    
-    const heroPost = allPosts[0].node
-    // const morePosts = allPosts.slice(1)
 
-    console.log(heroPost.hero_title[0].text)
-
+const Home: React.FC<HomeProps> = () => {
 
     const [isBottom, setIsBottom] = useState(false)
 
@@ -146,7 +168,7 @@ const Home: React.FC<HomeProps> = ( {preview, allPosts}) => {
     return (
     <>
         <Head>
-          <title>{heroPost.hero_title[0].text}</title>
+          {/* <title>{heroPost.hero_title[0].text}</title> */}
         </Head>
         <Section
         >
@@ -183,6 +205,19 @@ const Home: React.FC<HomeProps> = ( {preview, allPosts}) => {
                 />)
             })}
 
+        <Section>
+            <Heading>
+                Polecane firmy
+            </Heading>
+            <Grid
+                columns="repeat(auto-fit, minmax(120px, 1fr));"
+            >
+            {companies.map(company => {
+                return <img style={{maxWidth: "100%"}} src={company.logo} />
+            })}
+            </Grid>
+        </Section>
+
         <CallToAction />
 
         <Cookie/>
@@ -200,9 +235,10 @@ const Home: React.FC<HomeProps> = ( {preview, allPosts}) => {
 
 export default Home
 
-export async function getStaticProps({ preview = false, previewData }) {
-    const allPosts = await getAllPostsForHome(previewData)
+export async function getStaticProps({ previewData }) {
+    const allPosts = await getAllLayouts(previewData)
+    console.log(allPosts)
     return {
-        props: { preview, allPosts },
+        props: { },
     }
   }
