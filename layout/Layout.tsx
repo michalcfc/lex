@@ -19,9 +19,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons"
 
 
-const Layout = ({children,allPosts}) => {
+const Layout = ({children}) => {
 
-    console.log(allPosts)
 
     const menuLinks = [
         {
