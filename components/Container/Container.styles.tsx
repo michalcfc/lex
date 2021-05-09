@@ -30,8 +30,11 @@ const getFlex = (value) => {
 
 export const ContainerStyles = styled.div<DataProps>`
     ${widgetProps};
-    padding: 0 1rem;
-    margin: 0 auto;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 
     // Breakpoint for tablets
     @media (min-width: 576px) {

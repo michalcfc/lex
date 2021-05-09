@@ -9,6 +9,8 @@ import {
     SlideArrow,
 } from "./Carousel.styles"
 
+import Container from "../Container"
+
 import { CarouselProps } from "./Carousel.d"
 
 const Carousel: React.FC<CarouselProps> = ({slides, nbSlides, color}) => {
@@ -52,7 +54,7 @@ const Carousel: React.FC<CarouselProps> = ({slides, nbSlides, color}) => {
     }
 
     return (
-        <>
+        <Container>
             <CarouselStyle>
                 <SlideArrow
                     onClick={() => prevSlide()}
@@ -71,7 +73,7 @@ const Carousel: React.FC<CarouselProps> = ({slides, nbSlides, color}) => {
                     onClick={() => nextSlide()}
                 />
             </CarouselStyle>
-        </>
+        </Container>
     )
 }
 

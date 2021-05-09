@@ -33,6 +33,7 @@ const Card: React.FC<CardProps> = ({
    flexContent,
    onMouseEnter,
    onMouseLeave,
+   onClick,
    active,
     imgFlex,
     children,
@@ -54,6 +55,7 @@ const Card: React.FC<CardProps> = ({
             mt={mt}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
+            onClick={onClick}
             active={active}
             imgFlex={imgFlex}
             pointer={pointer}

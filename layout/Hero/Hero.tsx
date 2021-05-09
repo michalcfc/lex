@@ -33,10 +33,10 @@ const Hero = () => {
             <HeroContentWrapper>
                 <HeroContentLeft>
                 <HeroTitle>
-                    Building Trust Over the Years
+                    Jesteśmy tu dla Ciebie
                 </HeroTitle>
                 <HeroDescription>
-                    Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed.
+                    Nowoczesna technologia. Pomoc. Bezpieczeństwo. Budownictwo. Energia. 
                 </HeroDescription>
                 <HeroButton>
                     <Link
@@ -54,21 +54,6 @@ const Hero = () => {
                     </Link>
                 </HeroButton>
                 </HeroContentLeft>
-                <HeroContentRight>
-                    {/* <Link href="/television">
-                        <HeroIconFirst><img height="60px" src={"/img/tv.png"} /></HeroIconFirst>
-                    </Link>
-                    <Link href="/network">
-                        <HeroIconSecond><img height="60px" src={"/img/wifi.png"} /></HeroIconSecond>
-                    </Link>
-                    <Link href="/tv-network">
-                        <HeroIconThird><img height="60px" src={"/img/serwis.png"} /></HeroIconThird>
-                    </Link> */}
-                    {/* <HeroImg
-                        src="/img/lex_hero.png"
-                        alt="Picture of the author"
-                    /> */}
-                </HeroContentRight>
             </HeroContentWrapper>
             </Container>
         </HeroWrapper>
