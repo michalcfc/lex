@@ -30,7 +30,7 @@ const CallToAction: React.FC<CallToActionProps> = () => {
                 <CallToActionStyle>
                     <CallToActionLeft>
                         <CallToActionImg
-                            src="/img/doradca.png"
+                            src="/img/support.png"
                         />
                     </CallToActionLeft>
                     <CallToActionRight>

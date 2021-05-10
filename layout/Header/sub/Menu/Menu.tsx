@@ -38,7 +38,9 @@ const Menu: React.FC<MenuProps> = ({
                     //     setMenuOpen(false)
                     // }}
                     >
-                   <Link href={link.url}>
+                    {link.name === "Światłowód" 
+                    ? <a href={link.url} target="_blank" >Światłowód</a> 
+                    : <Link href={link.url}>
                        <a>
                        {link.name}
                        {link.hasSubmenu 
@@ -50,7 +52,7 @@ const Menu: React.FC<MenuProps> = ({
                         }</>
                         }
                        </a>
-                    </Link>
+                    </Link>}
                 {link.hasSubmenu
                     && isMenuOpen
                     && link.id == subemnuId
