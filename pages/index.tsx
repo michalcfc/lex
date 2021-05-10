@@ -13,6 +13,8 @@ import { HomeProps } from "./../Types/Home.d"
 
 import Head from 'next/head'
 
+import CookieConsent from "react-cookie-consent";
+
 import { getAllLayouts } from '../lib/api'
 import { CMS_NAME } from '../lib/constatns'
 
@@ -205,7 +207,7 @@ const Home: React.FC<HomeProps> = () => {
                 />)
             })}
 
-        <Section>
+        {/* <Section>
             <Heading>
                 Polecane firmy
             </Heading>
@@ -216,11 +218,17 @@ const Home: React.FC<HomeProps> = () => {
                 return <img style={{maxWidth: "100%"}} src={company.logo} />
             })}
             </Grid>
-        </Section>
+        </Section> */}
 
         <CallToAction />
 
-        <Cookie/>
+        <CookieConsent
+            location="bottom"
+            buttonText="Rozumiem"
+            cookieName="myAwesomeCookieName2"
+        >
+            Korzystając ze strony wyrażasz zgodę na używanie cookies zgodnie z polityką prywatności
+        </CookieConsent>
         
         <CallWidget />
 

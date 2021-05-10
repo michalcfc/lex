@@ -88,7 +88,7 @@ const Header: React.FC<HeaderProps> = ( {
                            <FontAwesomeIcon icon={faClock} /> Pon - Pt: 8:00 - 17:00
                         </HeaderTopInfoItem>
                         <HeaderTopInfoItem>
-                            <FontAwesomeIcon icon={faPhone} /> +48 516-178-131
+                            <FontAwesomeIcon icon={faPhone} /> 516-178-131
                         </HeaderTopInfoItem>
                         {/* <HeaderTopInfoItem>
                           <FontAwesomeIcon icon={faUser} />Panel klienta

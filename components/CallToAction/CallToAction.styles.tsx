@@ -16,13 +16,13 @@ export const CallToActionStyle = styled.div<DataProps>`
 export const CallToActionRight= styled.div<DataProps>`
 line-height: 1.6;
   @media (min-width: 800px) {
-    margin-left: 2rem;
+    margin-left: 4rem;
   }
 `;
 
 export const CallToActionLeft = styled.div<DataProps>`
     @media (min-width: 800px) {
-      margin: -180px 0;
+      margin: -214px 0;
       margin-left: 2rem;
     }
 `;
@@ -31,10 +31,7 @@ export const CallToActionImg = styled.img<DataProps>`
     max-width: 100%;
 `;
 
-export const CallToActionTitle = styled.h2<DataProps>`
-  @media (min-width: 800px) {
-      font-size: ${({ theme }) => theme.fontSize.xxl};
-    }
+export const CallToActionTitle = styled.h3<DataProps>`
 `;
 
 export const CallToActionText = styled.p<DataProps>`
@@ -45,5 +42,3 @@ export const PhoneNumber = styled.p<DataProps>`
     margin-right: ${({ theme }) => theme.spacing.lg} ;
     font-size: ${({ theme }) => theme.fontSize.xl};
 `
-
-

@@ -55,7 +55,7 @@ const Footer = ({
                             </FooterSocialIcon>
                         </FooterSocialIcons>
                 </FooterColumn>
-                    {footerLinks.map(section => (
+                    {/* {footerLinks.map(section => (
                     <FooterColumn key={section.id}>
                         <FooterColumnTitle> 
                             {section.header} 
@@ -72,7 +72,7 @@ const Footer = ({
                             })}
                         </ul>
                     </FooterColumn>
-                    ))}
+                    ))} */}
                     <FooterColumn>
                         <FooterColumnTitle>
                             Adres firmy
