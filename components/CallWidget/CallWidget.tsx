@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import {
     CallWidgetButton,
-    CallWidgetWrapper
+    CallWidgetWrapper,
+    CallWidgetMessage
 
 } from "./CallWidget.styles"
 
@@ -24,6 +25,8 @@ const CallWidget: React.FC<CallWidgetProps> = () => {
     const [mailSent, setmailSent] = useState(false);
     const [error, setError] = useState(null);
 
+    const [showMessage, setShowMessage] = useState(false)
+
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -38,6 +41,12 @@ const CallWidget: React.FC<CallWidgetProps> = () => {
             [field]: value,
         });
     };
+
+    useEffect(() => {
+        setTimeout(() => {
+            setShowMessage(true)
+        }, 4000);
+    }, []);
 
     const handleFormSubmit = e => {
         e.preventDefault();
@@ -56,22 +65,38 @@ const CallWidget: React.FC<CallWidgetProps> = () => {
                 }
             })
             .catch(error => setError( error.message ));
-        console.log(formData)
     };
 
     return (
         <>
-        <CallWidgetWrapper>
-            <CallWidgetButton onClick={() => setPhoneModalOpen(true)}>
-                <FontAwesomeIcon color="#172e57" icon={faPhone} />
-            </CallWidgetButton>
-       </CallWidgetWrapper>
-       {
-        isPhoneModalOpen 
-            && <Modal
+            <CallWidgetWrapper>
+                {showMessage && <CallWidgetMessage>
+                    <h4>👋 Zainteresowała Cię nasza oferta?</h4>
+                    <p>Chciałbyś żebyśmy do Ciebie zadzwonili? Zostaw nam swój numer.</p>
+                    <Button
+                        name={"Tak"}
+                        onClick={() => {
+                            setPhoneModalOpen(true)
+                            setShowMessage(false)
+                        }}
+                    />
+                    <a
+                        href="javascript:void(0);"
+                        onClick={() => setShowMessage(false)}
+                    >
+                        Nie, dziękuję
+                    </a>
+                </CallWidgetMessage>}
+                <CallWidgetButton onClick={() => setPhoneModalOpen(true)}>
+                    <FontAwesomeIcon color="#172e57" icon={faPhone} />
+                </CallWidgetButton>
+            </CallWidgetWrapper>
+            {
+                isPhoneModalOpen
+                && <Modal
                     title="Zamów połączenie"
                     text="Oddzwonimy"
-                    isOpen={isPhoneModalOpen} 
+                    isOpen={isPhoneModalOpen}
                     isClose={() => setPhoneModalOpen(false)}
                 >
                     {mailSent && <Alert text={"Dziękujemy. Postaramy się zadzwonić najszybciej jak to tylko możliwe."} />}
@@ -87,13 +112,13 @@ const CallWidget: React.FC<CallWidgetProps> = () => {
                         label="Numer telefonu"
                         onChange={e => handleChange(e, 'phone')}
                     />
-                    <Button 
+                    <Button
                         name="Zamawiam"
                         onClick={(e: React.MouseEvent) => handleFormSubmit(e)}
                     />
                 </Modal>
-       }
-       </>
+            }
+        </>
     )
 }
 

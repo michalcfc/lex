@@ -7,7 +7,7 @@ import Container from "@components/Container"
 import CallWidget from "@components/CallWidget"
 import Cookie from "@components/Cookie"
 import CallToAction from "@components/CallToAction"
-import Slider from "@components/Slider"
+import LogoCarousel from "@components/LogoCarousel"
 import GoToTop from "@components/GoToTop"
 import { HomeProps } from "./../Types/Home.d"
 
@@ -207,20 +207,11 @@ const Home: React.FC<HomeProps> = () => {
                 />)
             })}
 
-        {/* <Section>
-            <Heading>
-                Polecane firmy
-            </Heading>
-            <Grid
-                columns="repeat(auto-fit, minmax(120px, 1fr));"
-            >
-            {companies.map(company => {
-                return <img style={{maxWidth: "100%"}} src={company.logo} />
-            })}
-            </Grid>
-        </Section> */}
-
         <CallToAction />
+
+        <Container>
+            <LogoCarousel />
+        </Container>
 
         <CookieConsent
             location="bottom"

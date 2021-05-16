@@ -1,23 +1,8 @@
 {
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
-  "/about": "pages/about.html",
-  "/api/contact": "pages/api/contact.js",
-  "/clientChoose": "pages/clientChoose.html",
-  "/computer": "pages/computer.html",
-  "/connections": "pages/connections.html",
-  "/constructionMachinery": "pages/constructionMachinery.html",
-  "/contact": "pages/contact.html",
-  "/energy": "pages/energy.html",
-  "/": "pages/index.js",
-  "/monitoring": "pages/monitoring.html",
-  "/networks": "pages/networks.html",
-  "/opticalfiber": "pages/opticalfiber.html",
-  "/service": "pages/service.html",
-  "/telecommunications": "pages/telecommunications.html",
-  "/television": "pages/television.html",
-  "/transmition": "pages/transmition.html",
-  "/tv-network": "pages/tv-network.html",
   "/_error": "pages/_error.js",
-  "/404": "pages/404.html"
+  "/": "pages/index.js",
+  "/clientChoose": "pages/clientChoose.js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
 }
