@@ -12,6 +12,10 @@ export const FooterWrapper = styled.footer`
   grid-area: footer;
   color: ${({theme}) => theme.colors.white};
   background: ${({theme}) => theme.colors.brand};
+  & a {
+    color: ${({theme}) => theme.colors.white};
+    text-decoration: none;
+  }
 `;
 
 export const FooterContent = styled.div`

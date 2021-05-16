@@ -65,14 +65,14 @@ const sections = [
         link: '/clientChoose',
         img: 'img/section1.jpg',
         title: "LEXELL internet",
-        desc: "Szybkie łącze internetu radiowego lub światłowodu u Ciebie."
+        desc: "Szybkie łącze internetu radiowego dla Ciebie."
     },
     {
         id: 2,
         isFlex: true,
         isReverse: false,
         background: true,
-        link: '/networks',
+        link: '/service',
         img: 'img/section4.jpg',
         title: "LEXELL help desk IT",
         desc: "Szybka naprawa Twojego komputera lub laptopa. Zapewniamy profity dla naszych abonentów."
@@ -82,7 +82,7 @@ const sections = [
         isFlex: true,
         isReverse: true,
         background: false,
-        link: '/television',
+        link: '',
         img: 'img/computer.jpeg',
         title: "LEXELL computer",
         desc: "Sprzęt komputerowy od LEXELL to gwarancja wydajności i niezawodności. "
@@ -92,7 +92,7 @@ const sections = [
         isFlex: true,
         isReverse: false,
         background: true,
-        link: '/service',
+        link: '',
         img: 'img/energy.jpeg',
         title: "LEXELL energy",
         desc: "Wszystko co związane z energią odnawialną. Panele fotowoltaiczne oraz instalacje fotowoltaiczne tam gdzie tego potrzebujesz."
@@ -102,7 +102,7 @@ const sections = [
         isFlex: true,
         isReverse: true,
         background: false,
-        link: '/monitoring',
+        link: '',
         img: 'img/section5.jpg',
         title: "LEXELL smart and security",
         desc: "Oferujemy nowoczesne rozwiązania w aspekcie Twojego bezpieczeństwa, ochrony i monitoringu."
@@ -112,7 +112,7 @@ const sections = [
         isFlex: true,
         isReverse: false,
         background: true,
-        link: '/connections',
+        link: '',
         img: 'img/section9.jpg',
         title: "LEXELL building",
         desc: "Budujemy sieci i przyłącza telekomunikacyjne, elektryczne czy wodno-kanalizacyjno gazowe. Świadczymy usługi pracy mikrokoparki."

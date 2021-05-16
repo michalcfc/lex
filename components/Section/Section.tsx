@@ -84,13 +84,13 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                         <SectionDescription>
                             {description}
                         </SectionDescription>
-                        {/* <SectionFooter>
-                            {link && <Link href={link}><a><Button 
+                        <SectionFooter>
+                            {link && <Link href={link}><a><Button
                                     variant="secondary"
                                     name="Dowiedz się więcej"
                                     onClick={() => {}}
                                     /></a></Link>}
-                        </SectionFooter> */}
+                        </SectionFooter>
                     </SectionBody>
                         {children}
                 </SectionContent>

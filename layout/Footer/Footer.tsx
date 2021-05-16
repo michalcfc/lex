@@ -55,24 +55,24 @@ const Footer = ({
                             </FooterSocialIcon>
                         </FooterSocialIcons>
                 </FooterColumn>
-                    {/* {footerLinks.map(section => (
+                   {footerLinks.map(section => (
                     <FooterColumn key={section.id}>
-                        <FooterColumnTitle> 
-                            {section.header} 
+                        <FooterColumnTitle>
+                            {section.header}
                         </FooterColumnTitle>
                         <ul>
                             {section.link.map(l => {
                                 return (
                                     <FooterLinkItem key={l.id}>
-                                       <StyledLink href={l.url}> 
-                                            {l.name} 
+                                       <StyledLink href={l.url}>
+                                            {l.name}
                                         </StyledLink>
                                     </FooterLinkItem>
                                 )
                             })}
                         </ul>
                     </FooterColumn>
-                    ))} */}
+                    ))}
                     <FooterColumn>
                         <FooterColumnTitle>
                             Adres firmy

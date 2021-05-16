@@ -87,6 +87,7 @@ export const SectionContent = styled.div<DataProps>`
   font-size: 2.4rem;
   display: ${({isFlex}) => isFlex && 'flex' };
   align-items: center;
+  justify-content: space-around;
   flex-wrap: wrap;
   flex-direction: ${({isReverse}) => isReverse && 'row-reverse;' };
 

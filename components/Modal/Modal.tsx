@@ -1,4 +1,4 @@
-import React from "react"
+import React, {RefObject, useEffect, useRef, useState} from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -16,29 +16,39 @@ import {
 
 import { ModalProps } from "./Modal.d"
 
-const Modal: React.FC<ModalProps> = ({
+const Modal = React.forwardRef<RefObject<any>, ModalProps>(({
     isOpen,
     isClose,
     children,
     title,
     text,
- }) => (
-  <>
-      {isOpen
+ }) => {
+
+    return (
+        <>
+        {isOpen
         && <ModalBackground onClick={isClose}>
-         <ModalWrapper>
-             <ModalHeader>
-                {title}
-                <ModalCloseIcon>
-                    <FontAwesomeIcon icon={faTimes} />
-                </ModalCloseIcon>
-             </ModalHeader>
-             <ModalBody>
-              {children}
-             </ModalBody>
-          </ModalWrapper>
-      </ModalBackground>}
-  </>
-)
+            <ModalWrapper
+                onClick={e => {
+                    e.stopPropagation();
+                }}
+            >
+                <ModalHeader>
+                    {title}
+                    <ModalCloseIcon
+                        onClick={isClose}
+                    >
+                        <FontAwesomeIcon icon={faTimes}/>
+                    </ModalCloseIcon>
+                </ModalHeader>
+                <ModalBody>
+                    {children}
+                </ModalBody>
+            </ModalWrapper>
+        </ModalBackground>
+        }
+        </>
+    )
+})
 
 export default Modal;

@@ -29,50 +29,50 @@ const Layout = ({children}) => {
             hasSubmenu: false,
             url: "/"
         },
-        // {
-        //     id: 2,
-        //     name: 'Usługi',
-        //     hasSubmenu: true,
-        //     url: '',
-        //     subLinks: [
-        //         {
-        //             id: 1,
-        //             icon: faWifi,
-        //             name: 'LEXELL internet',
-        //             url: '/clientChoose'
-        //         },
-        //         {
-        //             id: 2,
-        //             icon: faTools,
-        //             name: 'LEXELL help desk IT',
-        //             url: '/service'
-        //         },
-        //         {
-        //             id: 3,
-        //             icon: faUpload,
-        //             name: 'LEXELL computer',
-        //             url: '/computer'
-        //         },
-        //         {
-        //             id: 4,
-        //             icon: faUpload,
-        //             name: 'LEXELL energy',
-        //             url: '/energy'
-        //         },
-        //         {
-        //             id: 5,
-        //             icon: faUpload,
-        //             name: 'LEXELL smart and security',
-        //             url: '/monitoring'
-        //         },
-        //         {
-        //             id: 6,
-        //             icon: faUpload,
-        //             name: 'LEXELL building',
-        //             url: '/constructionMachinery'
-        //         },
-        //     ]
-        // },
+        {
+            id: 2,
+            name: 'Usługi',
+            hasSubmenu: true,
+            url: '',
+            subLinks: [
+                {
+                    id: 1,
+                    icon: faWifi,
+                    name: 'LEXELL internet',
+                    url: '/clientChoose'
+                },
+                {
+                    id: 2,
+                    icon: faTools,
+                    name: 'LEXELL help desk IT',
+                    url: '/service'
+                },
+                // {
+                //     id: 3,
+                //     icon: faUpload,
+                //     name: 'LEXELL computer',
+                //     url: '/computer'
+                // },
+                // {
+                //     id: 4,
+                //     icon: faUpload,
+                //     name: 'LEXELL energy',
+                //     url: '/energy'
+                // },
+                // {
+                //     id: 5,
+                //     icon: faUpload,
+                //     name: 'LEXELL smart and security',
+                //     url: '/monitoring'
+                // },
+                // {
+                //     id: 6,
+                //     icon: faUpload,
+                //     name: 'LEXELL building',
+                //     url: '/constructionMachinery'
+                // },
+            ]
+        },
         {
             id: 3,
             name: 'O nas',
@@ -81,12 +81,6 @@ const Layout = ({children}) => {
         },
         {
             id: 4,
-            name: 'Światłowód',
-            hasSubmenu: false,
-            url: "http://lexell.pl"
-        },
-        {
-            id: 5,
             name: "Kontakt",
             hasSubmenu: false,
             url: "/contact"
@@ -109,26 +103,26 @@ const Layout = ({children}) => {
                     name: 'LEXELL help desk IT',
                     url: '/service'
                 },
-                {
-                    id: 3,
-                    name: 'LEXELL computer',
-                    url: '/computer'
-                },
-                {
-                    id: 4,
-                    name: 'LEXELL energy',
-                    url: '/energy'
-                },
-                {
-                    id: 5,
-                    name: 'LEXELL smart and security',
-                    url: '/monitoring'
-                }, 
-                {
-                    id: 6,
-                    name: 'LEXELL building',
-                    url: '/constructionMachinery'
-                },
+                // {
+                //     id: 3,
+                //     name: 'LEXELL computer',
+                //     url: '/computer'
+                // },
+                // {
+                //     id: 4,
+                //     name: 'LEXELL energy',
+                //     url: '/energy'
+                // },
+                // {
+                //     id: 5,
+                //     name: 'LEXELL smart and security',
+                //     url: '/monitoring'
+                // },
+                // {
+                //     id: 6,
+                //     name: 'LEXELL building',
+                //     url: '/constructionMachinery'
+                // },
             ]
         },
     ]
