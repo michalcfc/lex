@@ -1,67 +1,72 @@
 import React, { useRef, useEffect, useState } from 'react';
+import Link from 'next/link'
 
-import { 
+import {
   SliderStyle,
-  SliderWrapper
+  SliderWrapper,
+  SliderItem,
+  SliderImg
 } from "./Slider.styles"
 
 import { SliderProps } from "./Slider.d"
 
 import Grid from '@components/Grid';
 import Arrow from "@components/Arrow"
-import Card from "@components/Card"
+import Container from "@components/Container"
 
 const Slider: React.FC<SliderProps> = ({
-  items
-}) => {
+                                         items
+                                       }) => {
   const element = useRef(null);
   const [offset, setOffset] = useState(0)
-  
-  useEffect(() => {
-    // Update the document title using the browser API
-    setOffset(element.current.offsetWidth)
-  }, [element]);
- 
+
+
+  // useEffect(() => {
+  // //   const interval = setInterval(() => {
+  // //     setOffset(element.current.scrollLeft + element.current.offsetWidth)
+
+  // //     if(element.current.scrollLeft == 0) {
+  // //       moveRight()
+  // //     } else {
+  // //       element.current.scrollLeft = 0
+  // //     }
+  // // }, 2000);
+  // // return () => clearInterval(interval);
+
+  //   // Update the document title using the browser API
+  // }, [element, offset]);
+
   const moveLeft = () => {
     element.current.scrollLeft -= offset / 2
   }
-  
+
   const moveRight = () => {
     element.current.scrollLeft += offset
   }
   return (
-  <>
-  <SliderWrapper>
-    {/*<Arrow*/}
-    {/*    leftDirection*/}
-    {/*    left='-40px'*/}
-    {/*    bottom='50%'*/}
-    {/*    onClick={() => moveLeft()}*/}
-    {/*/>*/}
-      <SliderStyle ref={element}>
-
+      <>
+        {/*<Arrow*/}
+        {/*    leftDirection*/}
+        {/*    left='-40px'*/}
+        {/*    bottom='50%'*/}
+        {/*    onClick={() => moveLeft()}*/}
+        {/*/>*/}
+        <SliderWrapper ref={element}>
+          <SliderStyle>
             {items.map(item => {
-              return <>
-              <Card
-                  hoverEffect
-                  key={item.id}
-                  img={item.img}
-                  title={item.title}
-                  description={item.description}
-              >
-                {item.name}
-              </Card>
-                </>
-            })}     
-            {/*<Arrow*/}
-      {/*  rightDirection*/}
-      {/*  right='-40px'*/}
-      {/*  bottom='50%'*/}
-      {/*  onClick={() => moveRight()}*/}
-      {/*  />*/}
-      </SliderStyle>
-    </SliderWrapper>
-  </>
+              return <a href={item.url} target={"_blank"}><SliderItem>
+                <SliderImg src={item.img} />
+              </SliderItem></a>
+            })}
+          </SliderStyle>
+        </SliderWrapper>
+        {/*  <Arrow*/}
+        {/*    leftDirection*/}
+        {/*    left='-40px'*/}
+        {/*    bottom='50%'*/}
+        {/*    onClick={() => moveRight()}*/}
+        {/*/>*/}
+      </>
   )
 }
 

@@ -16,6 +16,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 
 import Container from "components/Container"
+import Progress from "components/Progress"
 
 import {
     BrandLogo,
@@ -38,29 +39,32 @@ const SCROLL_DISTANCE = 10
 const Header: React.FC<HeaderProps> = ( {
     links,
 }) => {
-        const [scroll, setScroll] = useState(false)
-        const [isMenuOpen, setMenuOpen] = useState(false)
-         const [isMobile, setMobile] = useState(false)
-            const router = useRouter();
+    const [scrolled, setScroled] = useState(null)
+    const [scroll, setScroll] = useState(false)
+    const [isMenuOpen, setMenuOpen] = useState(false)
+    const [isMobile, setMobile] = useState(false)
+    const router = useRouter();
 
+    const target = React.createRef();
 
-        useEffect(() => {
+    useEffect(() => {
 
-            if (isMenuOpen) {
-                setMenuOpen(!isMenuOpen);
+        if (isMenuOpen) {
+            setMenuOpen(!isMenuOpen);
+        }
+
+        if (typeof window !== 'undefined') {
+            const mobile = window.innerWidth < 900
+            if(mobile) {
+                setMobile(true)
             }
 
-            if (typeof window !== 'undefined') {
-               const mobile = window.innerWidth < 900
-                if(mobile) {
-                    setMobile(true)
-                }
+        }
 
-            }
-          window.addEventListener("scroll", () => {
+        window.addEventListener("scroll", () => {
             setScroll(window.scrollY > SCROLL_DISTANCE);
-          });
-        }, []);
+        });
+    }, []);
 
     return (
         <HeaderWrapper
@@ -88,7 +92,7 @@ const Header: React.FC<HeaderProps> = ( {
                            <FontAwesomeIcon icon={faClock} /> Pon - Pt: 8:00 - 17:00
                         </HeaderTopInfoItem>
                         <HeaderTopInfoItem>
-                            <FontAwesomeIcon icon={faPhone} /> 516-178-131
+                            <FontAwesomeIcon icon={faPhone} /> +48 516-178-131
                         </HeaderTopInfoItem>
                         {/* <HeaderTopInfoItem>
                           <FontAwesomeIcon icon={faUser} />Panel klienta
@@ -121,6 +125,7 @@ const Header: React.FC<HeaderProps> = ( {
                     </HeaderContent>
                 </Container>
             </HeaderContentWrapper>
+            {isHomePage() && <Progress/>}
         </HeaderWrapper>
     )
 }

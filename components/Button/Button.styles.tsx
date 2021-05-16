@@ -51,8 +51,8 @@ export const ButtonWrapper = styled.button<DataProps>`
   line-height: 1.5;
   font-weight: 400;
   text-align: center;
-  margin: ${({theme}) => theme.spacing.xs} 0;
-  border-radius: 50px;
+  margin: ${({theme}) => theme.spacing.xs} ${({theme}) => theme.spacing.xs} 0 0;
+  border-radius: ${({theme}) => theme.borderRadius};
   border: 0;
   color: ${buttonColor};
   padding: ${theme('buttonSize', 'variant')};
