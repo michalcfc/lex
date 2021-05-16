@@ -165,8 +165,7 @@ const Home: React.FC<HomeProps> = () => {
         window.addEventListener('scroll', onScroll)
         return () => window.removeEventListener('scroll', onScroll)
      }, [])
-
-
+    
     return (
     <>
         <Head>
