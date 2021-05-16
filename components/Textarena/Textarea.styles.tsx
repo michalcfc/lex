@@ -3,7 +3,7 @@ import styled from "styled-components";
 type DataProps = {
 }
 
-export const TextareaWrapper = styled.label<DataProps>`
+export const TextareaWrapper = styled.div<DataProps>`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -38,7 +38,7 @@ export const TextareaStyle = styled.textarea<DataProps>`
       & + ${TextareaLabel} {
         opacity: 1;
         padding: 0 ${({theme}) => theme.spacing.sm};
-        transform: scale(0.8) translate3d(0, -7.4rem, 0);
+        transform: scale(0.8) translate3d(0, -8.4rem, 0);
       }
 `;
 

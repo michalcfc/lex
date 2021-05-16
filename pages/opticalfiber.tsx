@@ -125,18 +125,30 @@ const Network: React.FC<HomeProps> = ({
 
             <>
 
-                <h2>Internet rediowy - cennik</h2>
+                <h2>Internet radiowy</h2>
 
-                <p>
-                Mieszkasz w Luboniu, Chwałkówku lub Koninku? 
-                <strong> <a href="https://telecom.lexell.pl" target="_blank"> 
-                Skorzystaj z naszego internetu światłowodowego</a></strong>.<br/> 
-                Twojej lokalizacji nie ma, a chciałbyś korzystać z naszego internetu? <strong><Link href={"/contact"}>Napisz do nas i zgłoś swoje miasto </Link></strong>.
-                </p>
+                <p>Taryfy KOMFORT charakteryzują się bardziej optymalną konfiguracją
+                    prędkości łącza w obu kierunkach (do i od odbiorcy) w porównaniu do
+                    ofert konkurencji i oferują zdecydowanie wyższy komfort pracy w sieci za
+                    umiarkowaną cenę.</p><br/>
+
+                   <p> Z cennika skorzystać mogą nowi oraz aktualni klienci Lexell, pod
+                    warunkiem nie posiadania na dzień podpisania umowy/aneksu zaległości
+                    płatniczych wobec Lexell.</p><br/>
+
+                    <p>Prędkość łącza wskazana w taryfie jest wartością podstawową. W godzinach
+                    nocnych (00:00 - 7:00) prędkość jest nawet 2 razy większa.</p>
+
                     <Pricing
                         isRadioPricing={true}
                         pricing={pricingRadio}
                     />
+
+                    <p>
+                        Jeżeli mieszkasz w Luboniu, Chwałkówku lub Koninku, możesz skorzystać z
+                        usług internetu światłowodowego naszej drugiej firmy.<br/>
+                        Więcej na informacji na stronie: <a href="http://telecom.lexell.pl" target="_blank">http://telecom.lexell.pl/</a>
+                    </p>
             </>  
             </Container>
         </>
