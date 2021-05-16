@@ -6,8 +6,9 @@ type DataProps = {
 
 
 export const MenuWrapper = styled.div<DataProps>`
-  top: 160%;
+  top: 140%;
   position: absolute;
+  z-index: 999;
   transform: translateX(-40%);
   border-radius:  ${({ theme }) => theme.borderRadius};
   color: ${({ theme }) => theme.colors.black};
@@ -16,12 +17,8 @@ export const MenuWrapper = styled.div<DataProps>`
 `;
 
 export const MenuColumns = styled.ul<DataProps>`
-  padding: 1rem;
   margin: 0;
-  column-count: 2;
-  column-gap: 40px;
-  column-rule: 1px double #eee;
- 
+
 `
 
 export const MenuContent = styled.div<DataProps>`
@@ -29,54 +26,54 @@ export const MenuContent = styled.div<DataProps>`
 `
 
 export const MenuItem: any = styled.li`
-    cursor: pointer;
-    white-space:nowrap;
-    position: relative;
-    width: fit-content;
-    & a {
-      overflow: hidden;
-      display: inline-block;
-      margin-bottom: 8px;
-      white-space: nowrap;
-      &:hover {
-        color: ${({ theme }) => lighten(0.2, theme.colors.black)};
-        transition: all 1s ease;
-        &:before {
-            background: rgb(13, 26, 38);
-            width: 100%;
-            transition: width 0.5s cubic-bezier((0.22, 0.61, 0.36, 1));
-        }
-        &:after {
-          background: transparent;
-        }
-      };
-      &:before, &:after {
-        content: '';
-        position: absolute;
-        width: 0%;
-        height: 1px;
-        bottom: 20%;
-        background: rgb(13, 26, 38);
-        left: 0;
-        transition: 0.5s;
-      };
+  cursor: pointer;
+  white-space:nowrap;
+  position: relative;
+  width: fit-content;
+  & a {
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    &:hover {
+      color: ${({ theme }) => lighten(0.2, theme.colors.black)};
+      transition: all 1s ease;
       &:before {
-        left: 0;
-        transition: 0.5s;
+        background: rgb(13, 26, 38);
+        width: 100%;
+        transition: width 0.5s cubic-bezier((0.22, 0.61, 0.36, 1));
       }
       &:after {
-        background: rgb(13, 26, 38);
-        right: 0;
+        background: transparent;
       }
+    };
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 1px;
+      bottom: 20%;
+      background: rgb(13, 26, 38);
+      left: 0;
+      transition: 0.5s;
+    };
+    &:before {
+      left: 0;
+      transition: 0.5s;
+    }
+    &:after {
+      background: rgb(13, 26, 38);
+      right: 0;
+    }
   }
 `;
 
-export const MenuLink = styled.div`
-    color: ${({ theme }) => theme.colors.black};
-    & svg {
-      font-size: 1.4rem;
-      color: ${({theme}) => theme.colors.brand};
-    }
+export const MenuLink = styled.span`
+  color: ${({ theme }) => theme.colors.black};
+  & svg {
+    font-size: 1.4rem;
+    color: ${({theme}) => theme.colors.brand};
+  }
 `
 
 export const Icon = styled(MenuItem)`
