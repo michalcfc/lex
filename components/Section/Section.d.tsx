@@ -1,3 +1,9 @@
+interface Categories {
+    id: number,
+    name: string
+}
+
+
 export interface SectionProps {
     customPadding?: string
     title?: string
@@ -7,6 +13,7 @@ export interface SectionProps {
     isReverse?: boolean
     children?: React.ReactNode
     isVisible?: boolean
+    logo?: string
     className?: string
     link?: string
     description?: string
@@ -19,4 +26,5 @@ export interface SectionProps {
     p?: number
     m?: number
     noRef?: boolean
+    categories?: Categories[]
 }

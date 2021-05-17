@@ -30,7 +30,8 @@ import {
     FooterColumnTitle,
     FooterLogo,
     FooterLinkItem,
-    StyledLink
+    StyledLink,
+    FooterLinkList
 } from "./Footer.styles"
 
 const Footer = ({
@@ -41,7 +42,7 @@ const Footer = ({
             <Container>
             <FooterContent>
                 <FooterColumn>
-                    <FooterLogo src="/img/lex_white.png" alt="lexell.pl" />
+                    <FooterLogo src="/img/logos/lex_white.png" alt="lexell.pl" />
                     <p>
                         LEXELL to firma działająca na rynku od 1992 roku. 
                         W swojej ofercie mamy internet radiowy oraz serwis komputerów i laptopów. 
@@ -60,7 +61,7 @@ const Footer = ({
                         <FooterColumnTitle>
                             {section.header}
                         </FooterColumnTitle>
-                        <ul>
+                        <FooterLinkList>
                             {section.link.map(l => {
                                 return (
                                     <FooterLinkItem key={l.id}>
@@ -70,7 +71,7 @@ const Footer = ({
                                     </FooterLinkItem>
                                 )
                             })}
-                        </ul>
+                        </FooterLinkList>
                     </FooterColumn>
                     ))}
                     <FooterColumn>

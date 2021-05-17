@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { isHomePage } from "./../../utilis/api"
+import { isHomePage, currentPath } from "./../../utilis/api"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faClock,
@@ -66,6 +66,18 @@ const Header: React.FC<HeaderProps> = ( {
         });
     }, []);
 
+    const changeLogo = () => {
+        switch (currentPath()) {
+            case '/':
+                return '/img/logos/lex_white.png'
+            case '/clientChoose':
+                return '/img/logos/internet.png'
+            case '/service':
+                return '/img/logos/help_desk.png'
+        }
+    }
+
+
     return (
         <HeaderWrapper
           position={isHomePage() && scroll}
@@ -108,10 +120,10 @@ const Header: React.FC<HeaderProps> = ( {
                 <Container>
                     <HeaderContent>
                         <BrandLogo>
-                         {scroll || !isHomePage() ?<Link href="/">
+                         {scroll ? <Link href="/">
                                 <img src="/img/logo.png"/>
                             </Link> :   <Link href="/">
-                                <img src="/img/lex_white.png"/>
+                                <img src={changeLogo()}/>
                             </Link>}
                         </BrandLogo>
                         {!isMobile ? <Menu

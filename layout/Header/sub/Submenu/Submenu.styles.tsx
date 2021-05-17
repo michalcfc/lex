@@ -18,7 +18,7 @@ export const MenuWrapper = styled.div<DataProps>`
 
 export const MenuColumns = styled.ul<DataProps>`
   margin: 0;
-
+  list-style: none;
 `
 
 export const MenuContent = styled.div<DataProps>`
