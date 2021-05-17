@@ -90,6 +90,10 @@ export const FooterLinkItem = styled.li`
   }
 `;
 
+export const FooterLinkList = styled.ul`
+    list-style: none;
+  `
+
 export const StyledLink = styled.a`
   &:hover {
     opacity: 1 !important;

@@ -10,7 +10,10 @@ import {
     SectionBody,
     SectionDescription,
     SectionFooter,
-    SectionImg
+    SectionImg,
+    SectionLinks,
+    SectionFigure,
+    AbsoluteText
 } from "./Section.styles"
 
 import Container from "@components/Container"
@@ -29,6 +32,8 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
     children,
     background,
     style,
+    logo,
+    categories,
     customPadding,
     description,
     isFlex,
@@ -70,11 +75,20 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                     isReverse={isReverse}
                     customPadding={customPadding}
                 >
-                   {img && <SectionImg 
-                        src={img} 
-                        alt={title}
-                        isReverse={isReverse}
-                    />}
+                    <div>
+                   {img && <Link href={link}>
+                       <a>
+                           <SectionFigure>
+                           <SectionImg
+                            src={img}
+                            alt={title}
+                            isReverse={isReverse}
+                        />
+                           <AbsoluteText src={logo} />
+                       </SectionFigure>
+                    </a>
+                   </Link>}
+                    </div>
                     <SectionBody
                          isReverse={isReverse}
                     >
@@ -84,6 +98,13 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                         <SectionDescription>
                             {description}
                         </SectionDescription>
+                        <SectionLinks>
+                            {categories && categories.map(category => {
+                                return (<li>
+                                    {category.name}
+                                </li>)
+                            })}
+                        </SectionLinks>
                         <SectionFooter>
                             {link && <Link href={link}><a><Button
                                     variant="secondary"

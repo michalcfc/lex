@@ -97,16 +97,56 @@ export const SectionContent = styled.div<DataProps>`
   }
 `;
 
+export const SectionFigure = styled.figure<DataProps>`
+  position: relative;
+  overflow: hidden;
+  box-shadow: rgb(0 0 0 / 20%) 0px 26px 26px;
+  border-radius: .42rem;
+  & > img {
+    transform: scale(1);
+    transition: all ease-in-out 0.3s;
+  }
+  &:hover {
+    cursor: pointer;
+    & > img {
+      transform: scale(1.1);
+    }
+    &:before {
+      background: ${({theme}) => theme.colors.brand};
+      content: "";
+      height: 100%;
+      left: 0;
+      opacity: .5;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
+  }
+`
+
 export const SectionImg = styled.img<DataProps>`
-  max-width: 100%;
-  height: auto;
   margin-bottom: 2rem;
   border-radius: .42rem;
+  display: block;
   @media (min-width: 800px) {
+    margin-bottom: 0;
     border-radius: .42rem;
-    box-shadow: 0 26px 26px rgb(0 0 0 / 20%);
   }
 `;
+
+export const AbsoluteText = styled.img<DataProps>`
+  position: absolute;
+  top: 0%;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  z-index: 99;
+  left: 0%;
+  &:hover {
+    opacity: 1;
+  }
+`
 
 export const SectionDescription = styled.p<DataProps>`
   font-size: 1.2rem;
@@ -123,6 +163,11 @@ export const SectionBody = styled.div<DataProps>`
 `}
 }
 
+`
+
+export const SectionLinks = styled.div<DataProps>`
+  line-height: 1.8;
+  //column-count: 2;
 `
 
 

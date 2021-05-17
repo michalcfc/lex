@@ -9,7 +9,6 @@ export const GlobalStyles = createGlobalStyle`
       font-size: 1rem;
     }
     ul {
-      list-style: none;
       padding: 0;
     }
   `

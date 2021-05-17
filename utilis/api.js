@@ -11,3 +11,8 @@ export async function getGlobalData() {
       const isHomePage = router.pathname == '/'
       return isHomePage
   }
+
+export function currentPath() {
+    const router = useRouter()
+    return router.pathname
+}
