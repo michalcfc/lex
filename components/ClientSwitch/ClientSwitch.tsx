@@ -24,7 +24,7 @@ const ClientSwitch: React.FC<ClientSwitchProps> = ({
         {
             id: 1,
             icon: faUser,
-            link: 'opticalfiber',
+            link: 'internet',
             desc: "Kliknij aby wyświetlić cennik i poznać szeczegóły oferty.",
             name: 'Klient indywidualny',
         },

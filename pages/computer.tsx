@@ -12,9 +12,12 @@ const Connections: React.FC<HomeProps> = ({
     return (
         <Container>
             <Head>
-                <title>Lexell energy</title>
+                <title>LEXELL computer</title>
             </Head>
-            <h2>Lexell energy</h2>
+            <h2>LEXELL computer</h2>
+            <p>
+                Sprzęt komputerowy od LEXELL to gwarancja wydajności i niezawodności.
+            </p>
         </Container>
     )
 }

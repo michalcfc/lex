@@ -92,7 +92,7 @@ const Footer = ({
                                 <FontAwesomeIcon icon={faPhone} />
                             </FooterSocialIcon>
                                 61 814-38-25 <br/>
-                                +48 516-178-131
+                                516-178-131
                         </FooterContactItem>
 
                         <FooterContactItem>

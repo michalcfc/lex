@@ -72,8 +72,20 @@ const Header: React.FC<HeaderProps> = ( {
                 return '/img/logos/lex_white.png'
             case '/clientChoose':
                 return '/img/logos/internet.png'
-            case '/service':
+            case '/internet':
+                return '/img/logos/internet.png'
+            case '/helpDesk':
                 return '/img/logos/help_desk.png'
+            case '/computer':
+                return '/img/logos/computer.png'
+            case '/energy':
+                return '/img/logos/energy.png'
+            case '/smart':
+                return '/img/logos/smart.png'
+            case '/building':
+                return '/img/logos/building.png'
+            default:
+                return '/img/logos/logo.png'
         }
     }
 
@@ -104,7 +116,10 @@ const Header: React.FC<HeaderProps> = ( {
                            <FontAwesomeIcon icon={faClock} /> Pon - Pt: 8:00 - 17:00
                         </HeaderTopInfoItem>
                         <HeaderTopInfoItem>
-                            <FontAwesomeIcon icon={faPhone} /> +48 516-178-131
+                            <FontAwesomeIcon icon={faPhone} />
+                            <a href="tel:+48516178131">
+                                516-178-131
+                            </a>
                         </HeaderTopInfoItem>
                         {/* <HeaderTopInfoItem>
                           <FontAwesomeIcon icon={faUser} />Panel klienta

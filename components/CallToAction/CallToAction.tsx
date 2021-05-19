@@ -41,7 +41,7 @@ const CallToAction: React.FC<CallToActionProps> = () => {
                                 <FontAwesomeIcon icon={faPhone} /> 61 814-38-25
                             </PhoneNumber>
                             <PhoneNumber>
-                                <FontAwesomeIcon icon={faPhone} /> +48 516-178-131
+                                <FontAwesomeIcon icon={faPhone} /> 516-178-131
                             </PhoneNumber>
                         </CallToActionText>
                     </CallToActionRight>

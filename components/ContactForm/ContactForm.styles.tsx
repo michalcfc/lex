@@ -36,7 +36,7 @@ export const ContactItem = styled.div<DataProps>`
 
 export const ContactItemText = styled.div<DataProps>`
   line-height: 1.4;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 `;
 
 export const ContactIcon = styled.div<DataProps>`
@@ -47,5 +47,5 @@ export const ContactIcon = styled.div<DataProps>`
   margin: 0 ${({theme}) => theme.spacing.md} 0 0;
   border-radius: ${({ theme }) => theme.borderRadius};
   background: ${({theme}) => lighten(0.1, theme.colors.brand)};
-  padding: ${({theme}) => theme.spacing.md};
+  padding: ${({theme}) => theme.spacing.sm};
 `;

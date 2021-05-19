@@ -58,6 +58,11 @@ const Slider: React.FC<SliderProps> = ({
                 <SliderImg src={item.img} />
               </SliderItem></a>
             })}
+              {items.map(item => {
+                  return <a href={item.url} target={"_blank"}><SliderItem>
+                      <SliderImg src={item.img} />
+                  </SliderItem></a>
+              })}
           </SliderStyle>
         </SliderWrapper>
         {/*  <Arrow*/}

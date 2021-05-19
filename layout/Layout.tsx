@@ -5,7 +5,7 @@ import Header       from "./Header"
 import Footer       from "./Footer"
 import Wrapper      from "./Wrapper"
 
-import { getAllLayouts } from '../lib/api'
+import { getAllHomepages } from '../lib/api'
 
 import {
     faTv,
@@ -31,7 +31,7 @@ const Layout = ({children}) => {
         },
         {
             id: 2,
-            name: 'Usługi',
+            name: 'Nasze firmy',
             hasSubmenu: true,
             url: '',
             subLinks: [
@@ -45,32 +45,32 @@ const Layout = ({children}) => {
                     id: 2,
                     icon: faTools,
                     name: 'LEXELL help desk IT',
-                    url: '/service'
+                    url: '/helpDesk'
                 },
-                // {
-                //     id: 3,
-                //     icon: faUpload,
-                //     name: 'LEXELL computer',
-                //     url: '/computer'
-                // },
-                // {
-                //     id: 4,
-                //     icon: faUpload,
-                //     name: 'LEXELL energy',
-                //     url: '/energy'
-                // },
-                // {
-                //     id: 5,
-                //     icon: faUpload,
-                //     name: 'LEXELL smart and security',
-                //     url: '/monitoring'
-                // },
-                // {
-                //     id: 6,
-                //     icon: faUpload,
-                //     name: 'LEXELL building',
-                //     url: '/constructionMachinery'
-                // },
+                {
+                    id: 3,
+                    icon: faUpload,
+                    name: 'LEXELL computer',
+                    url: '/computer'
+                },
+                {
+                    id: 4,
+                    icon: faUpload,
+                    name: 'LEXELL energy',
+                    url: '/energy'
+                },
+                {
+                    id: 5,
+                    icon: faUpload,
+                    name: 'LEXELL smart and security',
+                    url: '/smart'
+                },
+                {
+                    id: 6,
+                    icon: faUpload,
+                    name: 'LEXELL building',
+                    url: '/building'
+                },
             ]
         },
         {
@@ -91,7 +91,7 @@ const Layout = ({children}) => {
     const footerLinks = [
         {
             id: 1,
-            header: 'Usługi',
+            header: 'Nasze firmy',
             link: [
                 {
                     id: 1,
@@ -101,28 +101,28 @@ const Layout = ({children}) => {
                 {
                     id: 2,
                     name: 'LEXELL help desk IT',
-                    url: '/service'
+                    url: '/helpDesk'
                 },
-                // {
-                //     id: 3,
-                //     name: 'LEXELL computer',
-                //     url: '/computer'
-                // },
-                // {
-                //     id: 4,
-                //     name: 'LEXELL energy',
-                //     url: '/energy'
-                // },
-                // {
-                //     id: 5,
-                //     name: 'LEXELL smart and security',
-                //     url: '/monitoring'
-                // },
-                // {
-                //     id: 6,
-                //     name: 'LEXELL building',
-                //     url: '/constructionMachinery'
-                // },
+                {
+                    id: 3,
+                    name: 'LEXELL computer',
+                    url: '/computer'
+                },
+                {
+                    id: 4,
+                    name: 'LEXELL energy',
+                    url: '/energy'
+                },
+                {
+                    id: 5,
+                    name: 'LEXELL smart and security',
+                    url: '/smart'
+                },
+                {
+                    id: 6,
+                    name: 'LEXELL building',
+                    url: '/building'
+                },
             ]
         },
     ]
@@ -147,10 +147,10 @@ const Layout = ({children}) => {
 
 export default Layout
 
-export async function getStaticProps({  previewData }) {
-    const allPosts = await getAllLayouts(previewData)
-    console.log(allPosts.node)
-    return {
-        props: {}
-    }
-  }
+// export async function getStaticProps({  previewData }) {
+//     const allPosts = await getAllLayouts(previewData)
+//     console.log(allPosts.node)
+//     return {
+//         props: {}
+//     }
+//   }

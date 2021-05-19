@@ -63,6 +63,10 @@ export const HeaderTopInfoItem = styled.div<DataProps>`
   &:last-child {
    padding-right: 0;
   }
+  & a {
+    color: inherit;
+    text-decoration: none;
+  }
 `
 
 export const HeaderContentWrapper = styled.div<DataProps>`
