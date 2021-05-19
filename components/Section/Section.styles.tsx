@@ -181,10 +181,16 @@ export const SectionBody = styled.div<DataProps>`
 
 export const SectionLinks = styled.div<DataProps>`
   line-height: 1.8;
+  position: absolute;
+  padding: ${({theme}) => theme.spacing.md};
+  margin: ${({theme}) => theme.spacing.sm} 0;
+  z-index: 99;
+  box-shadow: ${({theme}) => theme.colors.boxShadow};
   //column-count: 2;
 `
 
 
 export const SectionFooter = styled.div<DataProps>`
   margin: 1rem 0;
+  position: relative;
 `

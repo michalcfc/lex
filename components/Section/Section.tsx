@@ -46,6 +46,7 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
 
     const domRef = React.useRef();
     const [isVisible, setVisible] = useState(false);
+    const [showServices, setShowServices] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(entries => {
@@ -101,19 +102,38 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                         <SectionDescription>
                             {description}
                         </SectionDescription>
-                        <SectionLinks>
-                            {categories && categories.map(category => {
-                                return (<li>
-                                    {category.name}
-                                </li>)
-                            })}
-                        </SectionLinks>
                         <SectionFooter>
-                            {link && <Link href={link}><a><Button
-                                    variant="secondary"
-                                    name="Dowiedz się więcej"
-                                    onClick={() => {}}
-                                    /></a></Link>}
+                            {link
+                                && <Link
+                                        href={link}
+                                    >
+                                    <a onMouseEnter={() => setShowServices(true)}>
+                                        <Button
+                                            variant="secondary"
+                                            name="Dowiedz się więcej"
+                                            onClick={() => {}}
+                                            onMouseEnter={() => setShowServices(true)}
+                                        />
+                                    </a>
+                            </Link>}
+                            {showServices
+                            && <SectionLinks
+                                onMouseLeave={() => setShowServices(false)}
+                            >
+                                {categories && categories.map(category => {
+                                    return (
+                                       <Link
+                                           href={category.url}
+                                       >
+                                           <a>
+                                           <li>
+                                            {category.name}
+                                           </li>
+                                       </a>
+                                       </Link>
+                                    )
+                                })}
+                            </SectionLinks>}
                         </SectionFooter>
                     </SectionBody>
                         {children}
