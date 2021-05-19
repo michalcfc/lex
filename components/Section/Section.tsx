@@ -13,7 +13,8 @@ import {
     SectionImg,
     SectionLinks,
     SectionFigure,
-    AbsoluteText
+    AbsoluteText,
+    AbsoluteContent
 } from "./Section.styles"
 
 import Container from "@components/Container"
@@ -84,7 +85,9 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                             alt={title}
                             isReverse={isReverse}
                         />
-                           <AbsoluteText src={logo} />
+                           <AbsoluteContent>
+                                <AbsoluteText src={logo} />
+                           </AbsoluteContent>
                        </SectionFigure>
                     </a>
                    </Link>}

@@ -69,21 +69,54 @@ export const HeroContentWrapper = styled.div`
 `
 
 export const HeroContentLeft = styled.div`
-  flex: 1 0 0%;
+  display: flex;
+  align-items: center;
   animation: ${fadeIn} 1s ease-in-out;
-  white-space: pre-wrap;
-  justify-content: flex-start;
   @media (min-width: 800px) {
-      flex: 0 0 46%;
-    }
+    flex: 0 0 48%;
+    max-width: 48%;
+  }
 `;
+
+export const HeroText = styled.div`
+`
 
 export const HeroTitle = styled.h2`
     font-weight: 700;
     margin-bottom: 1rem;
+    font-size: 2.2rem;
+    text-shadow:  0 0 10px rgb(0 0 0 / 20%);
     @media (min-width: 800px) {
-        font-size: 3.2rem;;
+        font-size: 3.2rem;
     }
+`
+
+export const HeroBubbles = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+`
+
+export const HeroBubble = styled.div`
+  border: 1px solid  ${({theme}) => theme.colors.white};;
+  background: rgba(10,10,10,.3);
+  border-radius: 50px;
+  margin: .4rem .8rem .4rem 0;
+  &:hover {
+    cursor: pointer;
+    background: ${({theme}) => lighten(0.2, theme.colors.brand)};
+  }
+  & a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    padding: .6rem;
+    color: inherit;
+    text-decoration: none;
+    @media (min-width: 800px) {
+      padding: .8rem 1rem;
+    }
+  }
 `
 
 

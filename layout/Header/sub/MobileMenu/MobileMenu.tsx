@@ -60,7 +60,7 @@ const MobileMenu: React.FC<MenuProps> = ({
                 ))}
                 <MenuItem>
                     <LinkStyled href="tel:+48516178131">
-                        +48 516-178-131
+                        516-178-131
                     </LinkStyled>
                 </MenuItem>
                 </ul>

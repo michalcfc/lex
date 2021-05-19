@@ -99,7 +99,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
     };
 
     return (
-        <Container>
+        <>
             <ContactWrapper>
 
                 <ContactLeft>
@@ -118,7 +118,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                             <FontAwesomeIcon icon={faPhone} />
                         </ContactIcon>
                             <ContactItemText>
-                                +48 516-178-131
+                                516-178-131
                             </ContactItemText>
                     </ContactItem>
 
@@ -169,7 +169,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                     </form>
                 </ContactFormContent>
             </ContactWrapper>
-        </Container>
+        </>
     )
 }
 

@@ -17,14 +17,50 @@ import {
     HeroContentWrapper,
     StyledLink,
     HeroButton,
+    HeroBubble,
+    HeroBubbles,
     PhoneNumber,
     StyledIcon,
     HeroContentLeft,
     HeroContentRight,
     HeroTitle,
     HeroDescription,
-    HeroImg
+    HeroText
 } from "./Hero.styles"
+
+const bubbles = [
+    {
+        id: 1,
+        name: 'LEXELL internet',
+        url: '/clientChoose'
+    },
+    {
+        id: 2,
+        name: 'LEXELL help desk IT',
+        url: '/helpDesk'
+    },
+    {
+        id: 3,
+        name: "LEXELL computer",
+        url: '/computer'
+    },
+    {
+        id: 4,
+        name: "LEXELL energy",
+        url: '/energy'
+    },
+    {
+        id: 5,
+        name: "LEXELL smart and security",
+        url: '/smart'
+    },
+    {
+        id: 6,
+        name: "LEXELL building",
+        url: '/building'
+    },
+
+]
 
 const Hero = () => {
     return (
@@ -32,27 +68,23 @@ const Hero = () => {
             <Container>
             <HeroContentWrapper>
                 <HeroContentLeft>
-                <HeroTitle>
-                    Jesteśmy tu dla Ciebie
-                </HeroTitle>
-                <HeroDescription>
-                    Nowoczesna technologia. Pomoc. Bezpieczeństwo. Budownictwo. Energia. 
-                </HeroDescription>
-                <HeroButton>
-                    <Link
-                        href="contact"
-            
-                    >
-                        <StyledLink>
-                            <StyledIcon>
-                                <FontAwesomeIcon color="black" icon={faPhone} />
-                            </StyledIcon>
-                            <PhoneNumber>
-                                +48 516-178-131
-                            </PhoneNumber>
-                        </StyledLink>
-                    </Link>
-                </HeroButton>
+                    <HeroText>
+                        <HeroTitle>
+                            Jesteśmy tu dla Ciebie
+                        </HeroTitle>
+                        <HeroDescription>
+                            Nowoczesna technologia. Pomoc. Bezpieczeństwo. Budownictwo. Energia.
+                        </HeroDescription>
+                        <HeroBubbles>
+                            {bubbles.map(bubble => {
+                                return <HeroBubble>
+                                    <Link href={bubble.url}>
+                                        {bubble.name}
+                                    </Link>
+                                </HeroBubble>
+                            })}
+                        </HeroBubbles>
+                    </HeroText>
                 </HeroContentLeft>
             </HeroContentWrapper>
             </Container>

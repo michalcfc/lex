@@ -90,7 +90,6 @@ export const SectionContent = styled.div<DataProps>`
   justify-content: space-around;
   flex-wrap: wrap;
   flex-direction: ${({isReverse}) => isReverse && 'row-reverse;' };
-
   @media (min-width: 800px) {
     flex-wrap: nowrap;
     width: 100%;
@@ -100,11 +99,19 @@ export const SectionContent = styled.div<DataProps>`
 export const SectionFigure = styled.figure<DataProps>`
   position: relative;
   overflow: hidden;
+  margin-bottom: 2rem;
   box-shadow: rgb(0 0 0 / 20%) 0px 26px 26px;
-  border-radius: .42rem;
+  @media (min-width: 800px) {
+    margin-bottom: 0;
+    border-radius: .42rem;
+  }
   & > img {
+    width: 100%;
     transform: scale(1);
     transition: all ease-in-out 0.3s;
+    @media (min-width: 800px) {
+      width: auto;
+    }
   }
   &:hover {
     cursor: pointer;
@@ -126,7 +133,6 @@ export const SectionFigure = styled.figure<DataProps>`
 `
 
 export const SectionImg = styled.img<DataProps>`
-  margin-bottom: 2rem;
   border-radius: .42rem;
   display: block;
   @media (min-width: 800px) {
@@ -135,9 +141,11 @@ export const SectionImg = styled.img<DataProps>`
   }
 `;
 
-export const AbsoluteText = styled.img<DataProps>`
+export const AbsoluteContent = styled.div`
   position: absolute;
   top: 0%;
+  display: grid;
+  place-items: center;
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -146,6 +154,12 @@ export const AbsoluteText = styled.img<DataProps>`
   &:hover {
     opacity: 1;
   }
+
+`
+
+export const AbsoluteText = styled.img<DataProps>`
+  height: 50%;
+  width: 50%;
 `
 
 export const SectionDescription = styled.p<DataProps>`

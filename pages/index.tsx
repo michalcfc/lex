@@ -15,7 +15,7 @@ import Head from 'next/head'
 
 import CookieConsent from "react-cookie-consent";
 
-import { getAllLayouts } from '../lib/api'
+import {getAllHomepages } from '../lib/api'
 import { CMS_NAME } from '../lib/constatns'
 
 import {
@@ -64,7 +64,7 @@ const sections = [
         noRef: true,
         link: '/clientChoose',
         img: 'img/section1.jpg',
-        logo: 'img/logos/telecom_white.png',
+        logo: 'img/logos/internet_white.png',
         title: "LEXELL internet",
         desc: "Szybkie łącze internetu radiowego dla Ciebie.",
     },
@@ -236,7 +236,12 @@ const companies = [
 ]
 
 
-const Home: React.FC<HomeProps> = () => {
+const Home: React.FC<HomeProps> = ({
+   allPosts
+}) => {
+
+    // const test = allPosts
+    // console.log(test[0].node.body[0].primary.heading[0].text)
 
     const [isBottom, setIsBottom] = useState(false)
 
@@ -259,26 +264,30 @@ const Home: React.FC<HomeProps> = () => {
         <Head>
           {/* <title>{heroPost.hero_title[0].text}</title> */}
         </Head>
-        <Section
-        >
-            <Grid
-                gridGap="20px"
-                columns="repeat(auto-fit, minmax(220px, 1fr));"
-                customMargin={-12}
-            >
-                {cards.map(card => {
-                return (
-                    <Card
-                    p={3}
-                    key={card.id}
-                    cardIcon={card.cardIcon}
-                    title={card.name}
-                    description={card.desc}
-                    >
-                    </Card>
-                )})}
-            </Grid>
-        </Section>
+
+        <Container>
+            <LogoCarousel />
+        </Container>
+
+        {/*<Section*/}
+        {/*>*/}
+        {/*    <Grid*/}
+        {/*        gridGap="20px"*/}
+        {/*        columns="repeat(auto-fit, minmax(220px, 1fr));"*/}
+        {/*    >*/}
+        {/*        {cards.map(card => {*/}
+        {/*        return (*/}
+        {/*            <Card*/}
+        {/*            p={3}*/}
+        {/*            key={card.id}*/}
+        {/*            cardIcon={card.cardIcon}*/}
+        {/*            title={card.name}*/}
+        {/*            description={card.desc}*/}
+        {/*            >*/}
+        {/*            </Card>*/}
+        {/*        )})}*/}
+        {/*    </Grid>*/}
+        {/*</Section>*/}
 
         {sections.map(section => {
             return (<Section
@@ -298,10 +307,6 @@ const Home: React.FC<HomeProps> = () => {
 
         <CallToAction />
 
-        <Container>
-            <LogoCarousel />
-        </Container>
-
         <CookieConsent
             location="bottom"
             buttonText="Rozumiem"
@@ -314,7 +319,7 @@ const Home: React.FC<HomeProps> = () => {
 
         {isBottom 
             && <GoToTop />
-            }
+        }
 
     
     </>
@@ -324,9 +329,10 @@ const Home: React.FC<HomeProps> = () => {
 export default Home
 
 export async function getStaticProps({ previewData }) {
-    const allPosts = await getAllLayouts(previewData)
-    console.log(allPosts)
+    const allPosts = await getAllHomepages(previewData)
     return {
-        props: { },
+        props: {
+            allPosts
+        },
     }
   }
