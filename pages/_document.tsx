@@ -21,16 +21,12 @@ export default class MyDocument extends Document {
                 href="https://fonts.gstatic.com" 
               />
               <link 
-                rel="preconnect" 
-                href="https://fonts.gstatic.com" 
-                />
-              <link 
                 href="https://fonts.googleapis.com/css?family=Lato:300,400,700" 
                 rel="stylesheet" 
               />
 
               <link
-                  href="https://fonts.googleapis.com/css2?family=Poppins:300,400,700"
+                  href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
                   rel="stylesheet"
               />
           </Head>

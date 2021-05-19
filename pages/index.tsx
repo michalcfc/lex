@@ -236,12 +236,8 @@ const companies = [
 ]
 
 
-const Home: React.FC<HomeProps> = ({
-   allPosts
-}) => {
+const Home: React.FC<HomeProps> = () => {
 
-    // const test = allPosts
-    // console.log(test[0].node.body[0].primary.heading[0].text)
 
     const [isBottom, setIsBottom] = useState(false)
 
@@ -331,8 +327,6 @@ export default Home
 export async function getStaticProps({ previewData }) {
     const allPosts = await getAllHomepages(previewData)
     return {
-        props: {
-            allPosts
-        },
+        props: {},
     }
   }

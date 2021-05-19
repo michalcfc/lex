@@ -50,6 +50,6 @@ export const SliderItem = styled.div<DataProps>`
 `;
 
 export const SliderImg = styled.img<DataProps>`
-  animation: ${bouncingLoader} 10s linear infinite ;
+  animation: ${bouncingLoader} 10s linear infinite;
   height: 120px;
 `
