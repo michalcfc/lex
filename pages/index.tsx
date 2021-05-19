@@ -73,7 +73,7 @@ const sections = [
         isFlex: true,
         isReverse: false,
         background: true,
-        link: '/service',
+        link: '/helpDesk',
         img: 'img/section4.jpg',
         logo: 'img/logos/help_desk_white.png',
         title: "LEXELL help desk IT",
@@ -81,11 +81,13 @@ const sections = [
         categories: [
             {
                 id: 1,
-                name: "Obsługa serwisowa"
+                name: "Obsługa serwisowa",
+                url: ''
             },
             {
                 id: 2,
-                name: "Zlecone prace serwisowe w zakresie usług it"
+                name: "Zlecone prace serwisowe w zakresie usług it",
+                url: ''
             },
         ]
     },
@@ -94,7 +96,7 @@ const sections = [
         isFlex: true,
         isReverse: true,
         background: false,
-        link: '',
+        link: '/computer',
         img: 'img/computer.jpeg',
         logo: 'img/logos/computer_white.png',
         title: "LEXELL computer",
@@ -102,11 +104,13 @@ const sections = [
         categories: [
             {
                 id: 1,
-                name: "Komputery"
+                name: "Komputery",
+                url: ''
             },
             {
                 id: 2,
-                name: "Notebooki"
+                name: "Notebooki",
+                url: ''
             }
         ]
     },
@@ -115,7 +119,7 @@ const sections = [
         isFlex: true,
         isReverse: false,
         background: true,
-        link: '',
+        link: '/energy',
         img: 'img/energy.jpeg',
         logo: 'img/logos/energy_white.png',
         title: "LEXELL energy",
@@ -123,27 +127,33 @@ const sections = [
         categories: [
             {
                 id: 1,
-                name: "Instalacje fotowoltaiczne"
+                name: "Instalacje fotowoltaiczne",
+                url: ''
             },
             {
                 id: 2,
-                name: "Banki energii"
+                name: "Banki energii",
+                url: ''
             },
             {
                 id: 3,
-                name: "Pompy ciepła"
+                name: "Pompy ciepła",
+                url: ''
             },
             {
                 id: 4,
-                name: "Ogrzewanie budynkowe"
+                name: "Ogrzewanie budynkowe",
+                url: ''
             },
             {
                 id: 5,
-                name: "Panele na podczerwień elektryczne"
+                name: "Panele na podczerwień elektryczne",
+                url: ''
             },
             {
                 id: 6,
-                name: "Rekuperacja"
+                name: "Rekuperacja",
+                url: ''
             }
         ]
     },
@@ -152,7 +162,7 @@ const sections = [
         isFlex: true,
         isReverse: true,
         background: false,
-        link: '',
+        link: '/smart',
         img: 'img/section5.jpg',
         logo: 'img/logos/smart_white.png',
         title: "LEXELL smart and security",
@@ -160,19 +170,23 @@ const sections = [
         categories: [
             {
                 id: 1,
-                name: "Kamery"
+                name: "Kamery",
+                url: ''
             },
             {
                 id: 2,
-                name: "Alarmy"
+                name: "Alarmy",
+                url: ''
             },
             {
                 id: 3,
-                name: "Monitoring"
+                name: "Monitoring",
+                url: ''
             },
             {
                 id: 4,
-                name: "Kontrola dostępu"
+                name: "Kontrola dostępu",
+                url: ''
             }
         ]
     },
@@ -181,7 +195,7 @@ const sections = [
         isFlex: true,
         isReverse: false,
         background: true,
-        link: '',
+        link: '/building',
         img: 'img/section9.jpg',
         logo: 'img/logos/building_white.png',
         title: "LEXELL building",
@@ -189,19 +203,23 @@ const sections = [
         categories: [
             {
                 id: 1,
-                name: "Transmisje danych w budynkach"
+                name: "Transmisje danych w budynkach",
+                url: ''
             },
             {
                 id: 2,
-                name: "Sieci telekomunikacyjne"
+                name: "Sieci telekomunikacyjne",
+                url: ''
             },
             {
                 id: 3,
-                name: "Przyłącza wodne i konalizacyjne"
+                name: "Przyłącza wodne i konalizacyjne",
+                url: ''
             },
             {
                 id: 4,
-                name: "Projekty i okablowanie energetyczne i światłowodowe"
+                name: "Projekty i okablowanie energetyczne i światłowodowe",
+                url: ''
             }
         ]
     },

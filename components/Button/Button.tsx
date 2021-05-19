@@ -15,12 +15,16 @@ const Button: React.FC<ButtonProps> = ({
     buttonBackground,
     hero,
     onClick,
+    onMouseEnter,
+    onMouseLeave
 }) => { 
     return (
         <ButtonWrapper
             hero={hero}
             variant={variant}
-            onClick={onClick} 
+            onClick={onClick}
+            onMouseLeave={onMouseLeave}
+            onMouseEnter={onMouseEnter}
         >
             {name}
         </ButtonWrapper>
