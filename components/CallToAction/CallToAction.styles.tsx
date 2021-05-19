@@ -22,7 +22,7 @@ line-height: 1.6;
 
 export const CallToActionLeft = styled.div<DataProps>`
     @media (min-width: 800px) {
-      margin: -214px 0;
+      margin: -176px 0;
       margin-left: 2rem;
     }
 `;
