@@ -45,7 +45,7 @@ const Header: React.FC<HeaderProps> = ( {
     const [isMobile, setMobile] = useState(false)
     const router = useRouter();
 
-    const target = React.createRef();
+    console.log(router.pathname)
 
     useEffect(() => {
 
@@ -74,15 +74,27 @@ const Header: React.FC<HeaderProps> = ( {
                 return '/img/logos/internet.png'
             case '/internet':
                 return '/img/logos/internet.png'
+            case '/internet/[slug]':
+                return '/img/logos/internet.png'
             case '/helpDesk':
+                return '/img/logos/help_desk.png'
+            case '/helpDesk/[slug]':
                 return '/img/logos/help_desk.png'
             case '/computer':
                 return '/img/logos/computer.png'
+            case '/computer/[slug]':
+                return '/img/logos/computer.png'
             case '/energy':
+                return '/img/logos/energy.png'
+            case '/energy/[slug]':
                 return '/img/logos/energy.png'
             case '/smart':
                 return '/img/logos/smart.png'
+            case '/smart[slug]':
+                return '/img/logos/smart.png'
             case '/building':
+                return '/img/logos/building.png'
+            case '/building[slug]':
                 return '/img/logos/building.png'
             default:
                 return '/img/logos/logo.png'
@@ -106,7 +118,6 @@ const Header: React.FC<HeaderProps> = ( {
                             <SocialIcon><FontAwesomeIcon icon={faInstagram} /></SocialIcon>
                         </HeaderTopInfoItems>
                         <HeaderTopInfoItems>
-                            <HeaderTopInfoItem>Dla domu</HeaderTopInfoItem>
                             <HeaderTopInfoItem>Dla firmy</HeaderTopInfoItem>
                             <HeaderTopInfoItem>Dla dewelopera</HeaderTopInfoItem>
                         </HeaderTopInfoItems>

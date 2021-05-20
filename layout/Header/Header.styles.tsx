@@ -32,7 +32,7 @@ export const HeaderWrapper = styled.header<DataProps>`
     position:  ${({theme, position}) => position ? "fixed" :  ""};
     background: ${({theme, position}) => position ? theme.colors.white : 'transparent'};
     color: ${({theme, position}) => position ? theme.colors.black : theme.colors.white};
-    box-shadow:  ${({homePage, position}) => position && "0 8px 20px 0 rgba(0, 0, 0, 0.1)"};
+    box-shadow:  ${({homePage, position}) => (position || !homePage) && "0 8px 20px 0 rgba(0, 0, 0, 0.1)"};
 `;
 
 export const HeaderTopInfoWrapper = styled.div<DataProps>`

@@ -94,7 +94,8 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                    </Link>}
                     </div>
                     <SectionBody
-                         isReverse={isReverse}
+                        onMouseLeave={() => setShowServices(false)}
+                        isReverse={isReverse}
                     >
                         {title && <SectionTitle>
                             {title}
@@ -102,7 +103,7 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                         <SectionDescription>
                             {description}
                         </SectionDescription>
-                        <SectionFooter>
+                        <SectionFooter >
                             {link
                                 && <Link
                                         href={link}
@@ -116,11 +117,9 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                                         />
                                     </a>
                             </Link>}
-                            {showServices
-                            && <SectionLinks
-                                onMouseLeave={() => setShowServices(false)}
-                            >
-                                {categories && categories.map(category => {
+                            {showServices && categories
+                            && <SectionLinks>
+                                {categories.map(category => {
                                     return (
                                        <Link
                                            href={category.url}

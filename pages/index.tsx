@@ -225,37 +225,12 @@ const sections = [
     },
 ]
 
-const companies = [
-    {
-        id: 1,
-        name: 'Jachimov',
-        logo: '/img/logo-hotel-berg.png'
-    },
-    {
-        id: 2,
-        name: 'Jachimov',
-        logo: '/img/logo-estato.png'
-    },
-    {
-        id: 3,
-        name: 'Jachimov',
-        logo: '/img/logo-bello.png'
-    },
-    {
-        id: 4,
-        name: 'Jachimov',
-        logo: '/img/logo-celeste.png'
-    },
-    {
-        id: 5,
-        name: 'Jachimov',
-        logo: '/img/logo-hotel-california.png'
-    }
-]
 
+const Home: React.FC<HomeProps> = ({
+   allPosts
+}) => {
 
-const Home: React.FC<HomeProps> = () => {
-
+    console.log(allPosts)
 
     const [isBottom, setIsBottom] = useState(false)
 
@@ -345,6 +320,8 @@ export default Home
 export async function getStaticProps({ previewData }) {
     const allPosts = await getAllHomepages(previewData)
     return {
-        props: {},
+        props: {
+            allPosts: allPosts[0].node.body[0]
+        },
     }
   }

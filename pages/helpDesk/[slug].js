@@ -2,12 +2,12 @@ import { useRouter } from 'next/router'
 import Grid from "@components/Grid"
 import MenuAside from "@components/MenuAside"
 import Container from "@components/Container"
+import {getAllPages} from "../../lib/api";
 
 const Post = () => {
 
     const router = useRouter()
     const { slug } = router.query
-
 
     const categories = [
         {
@@ -24,20 +24,17 @@ const Post = () => {
         },
     ]
 
-    const post = categories[router.query.slug];
+    // const post = categories[router.query.slug];
 
     return <Container>
-        <h2>LEXELL help desk IT</h2>
-        <Grid
-            gridGap=".75rem"
-            autoFlow="column"
-        >
+
             <MenuAside
                 categories={categories}
             />
-            {post}
-        </Grid>
+
     </Container>
 }
 
+
 export default Post
+

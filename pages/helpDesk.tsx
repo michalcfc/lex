@@ -4,9 +4,10 @@ import Head from "next/head";
 import Container from "@components/Container"
 import Grid from "@components/Grid"
 import MenuAside from "@components/MenuAside"
+import { getAllPages } from "../lib/api";
 
 const HelpDesk: React.FC<HomeProps> = ({
-
+   text
   }) => {
 
     const categories = [
@@ -27,22 +28,36 @@ const HelpDesk: React.FC<HomeProps> = ({
             <Head>
                 <title>LEXELL help desk IT</title>
             </Head>
-            <h2>LEXELL help desk IT</h2>
 
             <Grid
-                gridGap=".75rem"
                 autoFlow="column"
             >
                 <MenuAside
                     categories={categories}
                 />
 
-                <p>
-                    Szybka naprawa Twojego komputera lub laptopa. Zapewniamy profity dla naszych abonentów.
-                </p>
+
+                <div>
+                {text.map(t => {
+                    return <>
+                        {t.type === 'heading2'
+                            && <h2>{t.text}</h2>}
+                        {t.text}
+                    </>
+                })}
+                </div>
             </Grid>
         </Container>
     )
 }
 
 export default HelpDesk
+
+export async function getStaticProps({ previewData }) {
+    const allPages = await getAllPages(previewData)
+    return {
+        props: {
+            text: allPages[0].node.description
+        },
+    }
+}
