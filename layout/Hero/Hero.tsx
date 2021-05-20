@@ -70,11 +70,11 @@ const Hero = () => {
                 <HeroContentLeft>
                     <HeroText>
                         <HeroTitle>
-                            Jesteśmy tu dla Ciebie
+                            Nowoczesne rozwiązania technologiczne
                         </HeroTitle>
-                        <HeroDescription>
-                            Nowoczesna technologia. Pomoc. Bezpieczeństwo. Budownictwo. Energia.
-                        </HeroDescription>
+                        {/*<HeroDescription>*/}
+                        {/*    Nowoczesna technologia. Pomoc. Bezpieczeństwo. Budownictwo. Energia.*/}
+                        {/*</HeroDescription>*/}
                         <HeroBubbles>
                             {bubbles.map(bubble => {
                                 return <HeroBubble>
