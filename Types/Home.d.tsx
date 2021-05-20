@@ -1,3 +1,9 @@
+interface Text {
+    id: number
+    text: string
+    type: string
+}
+
 interface Movie {
     id: number
     title: string
@@ -9,4 +15,5 @@ export interface HomeProps {
     movies: [Movie]
     preview: string
     allPosts: any
+    text: Text[]
 }

@@ -183,10 +183,18 @@ export const SectionLinks = styled.div<DataProps>`
   line-height: 1.8;
   position: absolute;
   padding: ${({theme}) => theme.spacing.md};
+  border-radius: ${({theme}) => theme.borderRadius};
   margin: ${({theme}) => theme.spacing.sm} 0;
-  z-index: 99;
-  box-shadow: ${({theme}) => theme.colors.boxShadow};
-  //column-count: 2;
+  transform: translateX(12rem);
+  background: ${({theme}) =>  theme.colors.white};
+  z-index: 999;
+  top: -4rem;
+  box-shadow: 0px 6px 26px 0px rgb(55 99 236 / 40%);
+  & li {
+    list-style: none;
+    font-size: .875rem;
+    text-decoration: none;
+  }
 `
 
 

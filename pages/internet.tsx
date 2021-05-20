@@ -102,17 +102,6 @@ const Network: React.FC<HomeProps> = ({
                 noTimeActive: '',
                 noTimeAbo: '90 zł/mc*'
             },
-    ],
-
-    clients = [
-        {
-            id: 1,
-            name: 'individual'
-        },
-        {
-            id: 2,
-            name: 'bussines'
-        }
     ]
 
 
@@ -127,10 +116,7 @@ const Network: React.FC<HomeProps> = ({
 
                 <h2>Internet radiowy</h2>
 
-                <p>Taryfy KOMFORT charakteryzują się bardziej optymalną konfiguracją
-                    prędkości łącza w obu kierunkach (do i od odbiorcy) w porównaniu do
-                    ofert konkurencji i oferują zdecydowanie wyższy komfort pracy w sieci za
-                    umiarkowaną cenę.</p><br/>
+                <p>Usługi Internetu radiowego świadczymy już w wielu miastach! Poniżej przedstawiamy cennik wraz z mapą zasięgów.</p><br/>
 
                    <p> Z cennika skorzystać mogą nowi oraz aktualni klienci Lexell, pod
                     warunkiem nie posiadania na dzień podpisania umowy/aneksu zaległości
@@ -145,10 +131,16 @@ const Network: React.FC<HomeProps> = ({
                     />
 
                     <p>
-                        Jeżeli mieszkasz w Luboniu, Chwałkówku lub Koninku, możesz skorzystać z
-                        usług internetu światłowodowego naszej drugiej firmy.<br/>
-                        Więcej na informacji na stronie: <a href="http://telecom.lexell.pl" target="_blank">http://telecom.lexell.pl/</a>
+                        Kliencie, jeśli mieszkasz na terenie Lubonia, Chwałkówka lub Koninka, zapraszamy do zapoznania się z ofertą naszej drugiej spółki Lexell telecom,
+                        która oferuje Internet światłowodowy w najlepszej cenie!
+                        Poniżej przedstawiamy cennik!<br/>
+                        Więcej informacji na stronie: <a href="http://telecom.lexell.pl" target="_blank">http://telecom.lexell.pl/</a>
                     </p>
+
+                    <Pricing
+                        isNetworkPricing={true}
+                        pricing={pricing}
+                    />
             </>  
             </Container>
         </>

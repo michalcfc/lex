@@ -6,7 +6,12 @@ type DataProps = {
 }
 
 export const MenuAsideWrapper = styled.div<DataProps>`
-  flex: 0 0 40%;
+  font-size: .875rem;
+  border-left: 1px solid #efefef;
+`
+
+export const MenuAsideContent = styled.div<DataProps>`
+  margin: 0 2rem;
 `
 
 export const CurrentPage = styled.div<DataProps>`

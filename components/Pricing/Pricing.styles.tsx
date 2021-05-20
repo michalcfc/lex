@@ -148,9 +148,9 @@ export const PricingDescription = styled.div<DataProps>`
 `
 
 export const PricingItemPrice = styled.div<DataProps>`
-  font-size: 2.4rem;
+  font-size: 1.4rem;
   font-weight: bold;
-  padding: 1.2rem 0;
+  padding: .6rem 0;
   color: ${({theme}) => theme.colors.brand};
 `;
 export const PricingItem = styled.div<DataProps>`

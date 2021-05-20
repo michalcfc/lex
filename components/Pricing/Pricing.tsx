@@ -95,12 +95,12 @@ const Section: React.FC<PricingProps> = ({
                 <PricingSwitchTitle>Wybierz okres umowy:</PricingSwitchTitle>
                 <PricingSwitch>
                     <PricingSwitchInput
-                        id="pack"
+                        id={isNetworkPricing ? '1' : '2'}
                         type="checkbox"
                         checked={isNoTime}
                         onChange={() => setPrices(!isNoTime)}
                     />
-                    <PricingSwitchLabel htmlFor="pack">
+                    <PricingSwitchLabel htmlFor={isNetworkPricing ? '1' : '2'}>
                         <PricingSwitchSelect
                             data-checked="Bezterminowo"
                             data-unchecked="24 miesiące"

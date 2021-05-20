@@ -9,6 +9,7 @@ export const MenuWrapper = styled.div<DataProps>`
   top: 140%;
   position: absolute;
   z-index: 999;
+  transition: .5s;
   transform: translateX(-40%);
   border-radius:  ${({ theme }) => theme.borderRadius};
   color: ${({ theme }) => theme.colors.black};
