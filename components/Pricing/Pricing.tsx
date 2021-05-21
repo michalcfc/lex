@@ -52,6 +52,16 @@ const Section: React.FC<PricingProps> = ({
 
     const mailTopic = (packName) => {
         switch (packName) {
+            case "10 Mb/s":
+                return "Internet radiowy 10 Mb/s"
+            case "20 Mb/s":
+                return "Internet radiowy 20 Mb/s"
+            case "30 Mb/s":
+                return "Internet radiowy 30 Mb/s"
+            case "40 Mb/s":
+                return "Internet radiowy 40 Mb/s"
+            case "50 Mb/s":
+                return "Internet radiowy 50 Mb/s"
             case "300 Mb/s":
                 return "Światłowód 300 Mb/s"
             case "750 Mb/s":

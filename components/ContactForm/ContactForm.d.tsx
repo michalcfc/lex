@@ -6,5 +6,6 @@ interface Options {
 
 export interface ContactFormProps {
     messageTopic: Options[]
-    choosenPack: string
+    choosenPack?: string
+    isContactPage?: boolean
 }

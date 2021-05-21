@@ -67,8 +67,9 @@ const Contact: React.FC<HomeProps> = (
                     Kontakt
                 </Heading>
                 <ContactForm
-                    messageTopic={checkChoosenPack()}
+                    isContactPage
                     choosenPack={choosenPack}
+                    messageTopic={checkChoosenPack()}
                 />
             </Container>
         </>

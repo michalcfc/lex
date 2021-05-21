@@ -31,7 +31,7 @@ const ClientSwitch: React.FC<ClientSwitchProps> = ({
         {
             id: 2,
             icon: faUserTie,
-            link: 'contact',
+            link: 'biznes',
             desc: "Przejdź do forumlarza kontaktowego, aby ustalić warunki współpracy.",
             name: 'Klient biznesowy',
         }

@@ -117,10 +117,10 @@ const Header: React.FC<HeaderProps> = ( {
                             <SocialIcon><FontAwesomeIcon icon={faFacebookF} /></SocialIcon>
                             <SocialIcon><FontAwesomeIcon icon={faInstagram} /></SocialIcon>
                         </HeaderTopInfoItems>
-                        <HeaderTopInfoItems>
+                        {/* <HeaderTopInfoItems>
                             <HeaderTopInfoItem>Dla firmy</HeaderTopInfoItem>
                             <HeaderTopInfoItem>Dla dewelopera</HeaderTopInfoItem>
-                        </HeaderTopInfoItems>
+                        </HeaderTopInfoItems> */}
                     </HeaderTopInfoItems>
                     <HeaderTopInfoItems>
                         <HeaderTopInfoItem>
