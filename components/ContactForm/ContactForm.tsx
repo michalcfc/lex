@@ -32,8 +32,9 @@ import {
 
 const ContactForm: React.FC<ContactFormProps> = ({
      messageTopic,
-     choosenPack
-    }) => {
+     choosenPack,
+     isContactPage
+}) => {
 
 
     const [mailSent, setmailSent] = useState(false);
@@ -102,7 +103,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
         <>
             <ContactWrapper>
 
-                <ContactLeft>
+                {isContactPage && <ContactLeft>
 
                     <ContactItem>
                         <ContactIcon>
@@ -132,7 +133,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                         </ContactItemText>
                     </ContactItem>
 
-                </ContactLeft>
+                </ContactLeft>}
                 <ContactFormContent>
                     {mailSent && <Alert text={"Dziękujemy. Wiadomość została wysłana."} />}
                     {error && <Alert variant={'danger'} text={"Uzupełnij wszystkie pola."} />}
