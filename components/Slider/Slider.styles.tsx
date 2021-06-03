@@ -4,8 +4,11 @@ type DataProps = {
 }
 
 const bouncingLoader = keyframes`
+  0% {
+    transform: translateX(0px);
+  }
   100% {
-    transform: translateX(-200%);
+    transform: translateX(-220px);
   }
 `
 
@@ -50,6 +53,6 @@ export const SliderItem = styled.div<DataProps>`
 `;
 
 export const SliderImg = styled.img<DataProps>`
-  animation: ${bouncingLoader} 10s linear infinite;
+  animation: ${bouncingLoader} 4s linear infinite;
   height: 120px;
 `

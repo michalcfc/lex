@@ -55,6 +55,9 @@ export const HeroWrapper = styled.picture`
     background-repeat: no-repeat;
     background-image: url("img/lex2.png");
     @media (min-width: 800px) {
+      min-height: 38rem;
+    }
+    @media (min-width: 1400px) {
       min-height: 44rem;
     }
 `;
@@ -84,10 +87,11 @@ export const HeroText = styled.div`
 export const HeroTitle = styled.h2`
     font-weight: 700;
     margin-bottom: 1rem;
+    line-height: 1.4;
     font-size: 2.2rem;
     text-shadow:  0 0 10px rgb(0 0 0 / 20%);
     @media (min-width: 800px) {
-        font-size: 3.2rem;
+        font-size: 2.6rem;
     }
 `
 

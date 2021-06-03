@@ -45,6 +45,8 @@ const Connections: React.FC<HomeProps> = ({
 
             <Grid
                 autoFlow="column"
+                gridGap="2rem"
+                columns="360px 1fr"
             >
                 <MenuAside
                     categories={categories}

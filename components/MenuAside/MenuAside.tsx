@@ -7,7 +7,9 @@ import Flexbox from "@components/Flexbox"
 
 import {
     MenuAsideWrapper,
-    CurrentPage, MenuAsideContent
+    CurrentPage,
+    MenuAsideContent,
+    MenuItem
 } from "./MenuAside.styles"
 
 
@@ -17,21 +19,19 @@ const MenuAside = ({
     const [item, setItem] = useState(null)
 
     return (
-        <Flexbox
-
-        >
+        <>
             <MenuAsideWrapper>
                 <MenuAsideContent>
                     <h4>Usługi:</h4>
                     <ul>
                         {categories.map(category => {
-                            return <li>
+                            return <MenuItem>
                                 <Link href={category.url}>
                                     <CurrentPage fontBold={item === category.id} onClick={() => setItem(category.id)}>
                                         {category.name}
                                     </CurrentPage>
                                 </Link>
-                            </li>
+                            </MenuItem>
                         })}
                     </ul>
                 </MenuAsideContent>
@@ -44,7 +44,7 @@ const MenuAside = ({
                     }
                 </>
             })}
-        </Flexbox>
+        </>
 
     )
 }

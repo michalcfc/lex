@@ -45,8 +45,6 @@ const Header: React.FC<HeaderProps> = ( {
     const [isMobile, setMobile] = useState(false)
     const router = useRouter();
 
-    console.log(router.pathname)
-
     useEffect(() => {
 
         if (isMenuOpen) {

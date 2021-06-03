@@ -23,7 +23,6 @@ export const GridStyles = styled.div<DataProps>`
     column-gap: ${({columnGap}) => columnGap};
     align-items:  ${({alignItems}) => alignItems};
     grid-template-rows: ${({rows}) => rows};
-    grid-template-columns: ${({columns}) => columns};
     grid-auto-columns:  ${({autoColumns}) => autoColumns};
     grid-auto-flow: ${({autoFlow}) => autoFlow};
     margin-top: ${({customMargin}) => `${customMargin / 2}rem`};
@@ -31,6 +30,7 @@ export const GridStyles = styled.div<DataProps>`
         text-decoration: none;
     }
     @media (min-width: 800px) {
-        margin-top: ${({customMargin}) => `${customMargin}rem`}
+        grid-template-columns: ${({columns}) => columns};
+        margin-top: ${({customMargin}) => `${customMargin}rem`};
       }
 `
