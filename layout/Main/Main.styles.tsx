@@ -7,7 +7,6 @@ type DataProps = {
 export const MainWrapper = styled.main<DataProps>`
   display: grid;
   grid-area: main;
-  background:  ${({theme}) => theme.backgroundMain};
 `;
 
 export const MainContainer = styled.div<DataProps>`

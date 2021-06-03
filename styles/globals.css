@@ -5,7 +5,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #f5f8fb;
+  /*background: #f5f8fb;*/
 }
 
 html {
@@ -19,6 +19,10 @@ html {
 
 * {
   box-sizing: border-box;
+}
+
+a {
+  color: #172e57;
 }
 
 

@@ -1,8 +1,5 @@
-interface Text {
-    id: number
-    text: string
-    type: string
-}
+import { RichTextBlock} from "prismic-reactjs";
+
 
 interface Movie {
     id: number
@@ -15,5 +12,5 @@ export interface HomeProps {
     movies: [Movie]
     preview: string
     allPosts: any
-    text: Text[]
+    text: RichTextBlock[]
 }

@@ -2,62 +2,56 @@ import React, { useState } from "react"
 import Link from "next/link"
 import {
     ClientSwitchWrapper,
+    StyledLink,
+    LeftSide,
+    SwitchButtons
 } from "./ClientSwitch.styles"
-
 import {ClientSwitchProps } from "./ClientSwitch.d"
+
 import Card from "@components/Card"
-import Grid from "@components/Grid";
+import Flexbox from "@components/Flexbox"
+import Button from "@components/Button";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faUser,
     faUserTie,
+    faUserSecret
 } from '@fortawesome/free-solid-svg-icons'
 
 const ClientSwitch: React.FC<ClientSwitchProps> = ({
 
-}) => {
+   }) => {
 
     const [client, setClient] = useState('')
 
-    const clients = [
-        {
-            id: 1,
-            icon: faUser,
-            link: 'internet',
-            desc: "Kliknij aby wyświetlić cennik i poznać szeczegóły oferty.",
-            name: 'Klient indywidualny',
-        },
-        {
-            id: 2,
-            icon: faUserTie,
-            link: 'biznes',
-            desc: "Przejdź do forumlarza kontaktowego, aby ustalić warunki współpracy.",
-            name: 'Klient biznesowy',
-        }
-    ]
-
     return (
         <ClientSwitchWrapper>
-             <Grid
-                gridGap="1rem"
-                columns="repeat(auto-fit, minmax(320px, 1fr));"
-                mt={4}
+            <Flexbox
+                wrap
+                align="center"
+                justify="space-between"
             >
-                {clients.map(client => {
-                    return <Link href={client.link} >
-                        <Card 
+                <LeftSide>
+                    <Link href='/internet'>
+                        <Card
                             hoverEffect
-                            key={client.id}
-                            description={client.desc}
-                            title={client.name}
-                            cardIcon={client.icon}
-                            onClick={() => setClient(client.name)}
+                            title={'Klient indywidualny'}
+                            description={"Kliknij aby wyświetlić cennik i poznać szeczegóły oferty."}
+                            cardIcon={faUser}
+                            onClick={() => setClient('Klient indywidualny')}
                         >
                         </Card>
                     </Link>
-                })}
-            </Grid>
+                </LeftSide>
+                <SwitchButtons>
+                    <Link href='/biznes'>
+                        <StyledLink>
+                            Dla biznesu
+                        </StyledLink>
+                    </Link>
+                </SwitchButtons>
+            </Flexbox>
 
         </ClientSwitchWrapper>
     )

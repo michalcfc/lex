@@ -4,11 +4,17 @@ import Head from "next/head";
 import Container from "@components/Container"
 import Grid from "@components/Grid"
 import MenuAside from "@components/MenuAside"
+import MenuAsideMobile from "@components/MenuAsideMobile"
 import { getAllPages } from "../lib/api";
+import { isMobile }  from "./../utilis/api"
+import {useState} from "react";
+import { RichText } from 'prismic-reactjs'
 
 const HelpDesk: React.FC<HomeProps> = ({
    text
   }) => {
+
+    console.log(text)
 
     const categories = [
         {
@@ -30,21 +36,18 @@ const HelpDesk: React.FC<HomeProps> = ({
             </Head>
 
             <Grid
-                autoFlow="column"
+                gridGap="2rem"
+                columns="360px 1fr"
             >
-                <MenuAside
-                    categories={categories}
-                />
-
-
+                {isMobile()
+                    ? <MenuAsideMobile
+                        categories={categories}
+                    />
+                    : <MenuAside
+                        categories={categories}
+                />}
                 <div>
-                {text.map(t => {
-                    return <>
-                        {t.type === 'heading2'
-                            && <h2>{t.text}</h2>}
-                        {t.text}
-                    </>
-                })}
+                    <RichText render={text}/>
                 </div>
             </Grid>
         </Container>
