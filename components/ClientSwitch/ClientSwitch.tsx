@@ -50,6 +50,11 @@ const ClientSwitch: React.FC<ClientSwitchProps> = ({
                             Dla biznesu
                         </StyledLink>
                     </Link>
+                    <Link href='/developer'>
+                        <StyledLink>
+                            Dla dewelopera
+                        </StyledLink>
+                    </Link>
                 </SwitchButtons>
             </Flexbox>
 

@@ -14,7 +14,8 @@ import {
 
 
 const MenuAside = ({
-   categories
+   categories,
+    tag
 }) => {
     const [item, setItem] = useState(null)
 
@@ -22,28 +23,38 @@ const MenuAside = ({
         <>
             <MenuAsideWrapper>
                 <MenuAsideContent>
-                    <h4>Usługi:</h4>
+                    <h4>Rozwiązania:</h4>
                     <ul>
-                        {categories.map(category => {
-                            return <MenuItem>
-                                <Link href={category.url}>
-                                    <CurrentPage fontBold={item === category.id} onClick={() => setItem(category.id)}>
-                                        {category.name}
+                        {categories && categories.map(category => {
+                            return <MenuItem key={category.node._meta.uid}>
+                                <Link href={`/${tag}/${category.node._meta.uid}`}>
+                                    <a>
+                                    <CurrentPage
+                                        fontBold={item === category.node._meta.uid}
+                                        onClick={() => setItem(category.node._meta.uid)}
+                                    >
+                                        {category.node.page_title[0].text}
                                     </CurrentPage>
+                                    </a>
                                 </Link>
                             </MenuItem>
                         })}
+                        <MenuItem>
+                            <Link href='/realization'>
+                                Nasze realizacje
+                            </Link>
+                        </MenuItem>
                     </ul>
                 </MenuAsideContent>
             </MenuAsideWrapper>
-            {categories.map(category => {
-                return <>
-                    {item === category.id
-                       ? <p>{category.desc}</p>
-                        : ''
-                    }
-                </>
-            })}
+            {/*{categories.map(category => {*/}
+            {/*    return <>*/}
+            {/*        {item === category.id*/}
+            {/*           ? <p>{category.desc}</p>*/}
+            {/*            : ''*/}
+            {/*        }*/}
+            {/*    </>*/}
+            {/*})}*/}
         </>
 
     )

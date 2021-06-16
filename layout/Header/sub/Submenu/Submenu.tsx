@@ -40,6 +40,9 @@ const Submenu: React.FC<SubmenuProps> = ({
                return <MenuItem
                    key={id}
                >
+                   {link.name == 'LEXELL telecom' ? <a href="http://telecom.lexell.pl" target={"_blank"}>
+                       <MenuLink>{link.name} </MenuLink>
+                   </a>  :
                    <Link href={link.url}>
                        <a>
                        <MenuLink>
@@ -48,7 +51,8 @@ const Submenu: React.FC<SubmenuProps> = ({
                        </MenuLink>
                        </a>
                    </Link>
-                </MenuItem> 
+                   }
+                </MenuItem>
             })}
             </MenuColumns>
             </MenuContent>

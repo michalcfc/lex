@@ -38,8 +38,8 @@ const Menu: React.FC<MenuProps> = ({
                     //     setMenuOpen(false)
                     // }}
                     >
-                    {link.name === "Światłowód" 
-                    ? <a href={link.url} target="_blank" >Światłowód</a> 
+                    {link.name === "Światłowód"
+                    ? <a href={link.url} target="_blank" rel={'noopener'} >Światłowód</a>
                     : <Link href={link.url}>
                        <a>
                        {link.name}

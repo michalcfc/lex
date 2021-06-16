@@ -45,7 +45,8 @@ const Footer = ({
                     <FooterLogo src="/img/logos/lex_white.png" alt="lexell.pl" />
                     <p>
                         LEXELL to firma działająca na rynku od 1992 roku. 
-                        W swojej ofercie mamy internet radiowy oraz serwis komputerów i laptopów. 
+                        W swojej ofercie mamy <StyledLink href={"/clientChoose"}>internet radiowy</StyledLink> oraz <StyledLink href={"http://telecom.lexell.pl"}>światłowodowy</StyledLink>.
+                        Jak również obsługę IT i bezpieczeństwa. Oferujemy także przyłącza telekomunikacyjne i energetyczne.
                     </p>
                     <FooterSocialIcons>
                             <FooterSocialIcon>

@@ -2,12 +2,9 @@ import {useRef, useState} from "react"
 import { HomeProps } from "./../Types/Home.d"
 import Pricing from "@components/Pricing"
 import Container from "@components/Container"
-import Card from "@components/Card"
-import ClientSwitch from "@components/ClientSwitch"
-
+import Flexbox from "@components/Flexbox"
 
 import Head from "next/head";
-import Link from "next/link"
 
 const Network: React.FC<HomeProps> = ({
 
@@ -129,6 +126,18 @@ const Network: React.FC<HomeProps> = ({
                         isRadioPricing={true}
                         pricing={pricingRadio}
                     />
+
+                    <h2>Mapa zasięgu</h2>
+                    <iframe src="https://www.google.com/maps/d/embed?mid=1nVsbWjf9tpuZRH6ssqi3jVXwCVhEQJ4u" width="100%" height="480"></iframe>
+
+                    <Flexbox
+                        align={'center'}
+                    >
+                        <h2>Internet światłowodowy </h2>
+                        <a href="http://telecom.lexell.pl" target="_blank">
+                            <img src={"/img/logos/telecom.png"}  height={"40px"} style={{marginLeft: '1rem'}}/>
+                        </a>
+                    </Flexbox>
 
                     <p>
                         Kliencie, jeśli mieszkasz na terenie Lubonia, Chwałkówka lub Koninka, zapraszamy do zapoznania się z ofertą naszej drugiej spółki Lexell telecom,

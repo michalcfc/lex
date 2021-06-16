@@ -15,8 +15,8 @@ import Arrow from "@components/Arrow"
 import Container from "@components/Container"
 
 const Slider: React.FC<SliderProps> = ({
-                                         items
-                                       }) => {
+     items
+   }) => {
   const element = useRef(null);
   const [offset, setOffset] = useState(0)
 

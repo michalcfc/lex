@@ -51,13 +51,23 @@ const bubbles = [
     },
     {
         id: 5,
+        name: "LEXELL building",
+        url: '/building'
+    },
+    {
+        id: 6,
+        name: "LEXELL telecom",
+        url: '/building'
+    },
+    {
+        id: 7,
         name: "LEXELL smart and security",
         url: '/smart'
     },
     {
-        id: 6,
-        name: "LEXELL building",
-        url: '/building'
+        id: 8,
+        name: "Fineinvest",
+        url: '/fineinvest'
     },
 
 ]
@@ -78,9 +88,12 @@ const Hero = () => {
                         <HeroBubbles>
                             {bubbles.map(bubble => {
                                 return <HeroBubble>
+                                    {bubble.name === "LEXELL telecom" ?
+                                        <a href="http://telecom.lexell.pl" target={"_blank"}>{bubble.name}</a>:
                                     <Link href={bubble.url}>
                                         {bubble.name}
                                     </Link>
+                                    }
                                 </HeroBubble>
                             })}
                         </HeroBubbles>
