@@ -28,7 +28,7 @@ const Energy: React.FC<HomeProps> = () => {
     return (
         <Container>
             <Head>
-                <title>LEXELL Building</title>
+                <title>LEXELL Computer</title>
             </Head>
 
             <Grid
