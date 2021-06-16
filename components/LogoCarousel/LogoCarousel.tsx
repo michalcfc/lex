@@ -1,13 +1,12 @@
-import React, {RefObject, useEffect, useRef, useState} from 'react';
-
 import Slider from "@components/Slider"
+import Section from "@components/Section"
 
 import {
 
 } from "./LogoCarousel.styles"
 
-import { 
-    LogoCarouselProps 
+import {
+    LogoCarouselProps
 } from "./LogoCarousel.d"
 
 const LogoCarousel: React.FC<LogoCarouselProps> = ({
@@ -51,12 +50,21 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
             img: "/img/logos/large/building.png",
             url: '/building'
         },
+        {
+            id: 7,
+            name: 'Lexell',
+            img: "/img/logos/large/telecom.png",
+            url: '/building'
+        },
     ]
 
     return (
-        <Slider 
-            items={logos} 
-        />
+        <>
+            <h2>Nasi partnerzy</h2>
+            <Slider
+                items={logos}
+            />
+        </>
     )
 }
 

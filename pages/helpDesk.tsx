@@ -5,62 +5,58 @@ import Container from "@components/Container"
 import Grid from "@components/Grid"
 import MenuAside from "@components/MenuAside"
 import MenuAsideMobile from "@components/MenuAsideMobile"
-import { getAllPages } from "../lib/api";
+import { getAllPages } from "../utilis/query";
 import { isMobile }  from "./../utilis/api"
 import {useState} from "react";
-import { RichText } from 'prismic-reactjs'
+import {RichText} from "prismic-reactjs";
 
-const HelpDesk: React.FC<HomeProps> = ({
-   text
-  }) => {
+const Energy: React.FC<HomeProps> = () => {
 
-    console.log(text)
+    const text = getAllPages('help')
 
-    const categories = [
-        {
-            id: 1,
-            name: "Obsługa serwisowa",
-            url: '/helpDesk/obsługa-serwisowa'
-        },
-        {
-            id: 2,
-            name: "Zlecone prace serwisowe w zakresie usług it",
-            url: '/helpDesk/zlecone-prace-serwisowe-w-zakresie-uslug-it'
-        },
-    ]
+    const renderText = () => {
+        const test = text?.data.allPagess.edges.filter(e => e.node._meta.id == "YKY8qhAAACAA88kf").pop()
+        return test && test.node.description
+    }
+
+    const getCategories = () => {
+        const categroies = text?.data.allPagess.edges.filter(e => e.node._meta.id !== "YKY8qhAAACAA88kf")
+        return categroies
+    }
 
     return (
         <Container>
             <Head>
-                <title>LEXELL help desk IT</title>
+                <title>LEXELL Help Desk IT</title>
             </Head>
 
             <Grid
                 gridGap="2rem"
                 columns="360px 1fr"
             >
-                {isMobile()
+                {isMobile() && text
                     ? <MenuAsideMobile
-                        categories={categories}
+                        categories={getCategories()}
                     />
                     : <MenuAside
-                        categories={categories}
-                />}
+                        categories={getCategories()}
+                        tag={'help'}
+                    />}
                 <div>
-                    <RichText render={text}/>
+                    <RichText render={renderText()}/>
                 </div>
             </Grid>
         </Container>
     )
 }
 
-export default HelpDesk
+export default Energy
 
-export async function getStaticProps({ previewData }) {
-    const allPages = await getAllPages(previewData)
-    return {
-        props: {
-            text: allPages[0].node.description
-        },
-    }
-}
+// export async function getStaticProps({ previewData }) {
+//     const allPages = await getAllPages(previewData)
+//     return {
+//         props: {
+//             text: allPages[0].node.description
+//         },
+//     }
+// }

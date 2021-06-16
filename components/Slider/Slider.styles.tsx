@@ -8,7 +8,7 @@ const bouncingLoader = keyframes`
     transform: translateX(0px);
   }
   100% {
-    transform: translateX(-220px);
+    transform: translateX(-440px);
   }
 `
 
@@ -53,6 +53,6 @@ export const SliderItem = styled.div<DataProps>`
 `;
 
 export const SliderImg = styled.img<DataProps>`
-  animation: ${bouncingLoader} 4s linear infinite;
+  animation: ${bouncingLoader} 8s linear infinite;
   height: 120px;
 `

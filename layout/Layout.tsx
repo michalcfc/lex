@@ -5,7 +5,6 @@ import Header       from "./Header"
 import Footer       from "./Footer"
 import Wrapper      from "./Wrapper"
 
-import { getAllHomepages } from '../lib/api'
 
 import {
     faTv,
@@ -31,7 +30,7 @@ const Layout = ({children}) => {
         },
         {
             id: 2,
-            name: 'Nasze firmy',
+            name: 'Nasze rozwiązania',
             hasSubmenu: true,
             url: '',
             subLinks: [
@@ -71,6 +70,18 @@ const Layout = ({children}) => {
                     name: 'LEXELL building',
                     url: '/building'
                 },
+                {
+                    id: 7,
+                    icon: faUpload,
+                    name: 'LEXELL telecom',
+                    url: ''
+                },
+                {
+                    id: 8,
+                    icon: faUpload,
+                    name: 'Fineinvest',
+                    url: '/fineinvest'
+                },
             ]
         },
         {
@@ -91,7 +102,7 @@ const Layout = ({children}) => {
     const footerLinks = [
         {
             id: 1,
-            header: 'Nasze firmy',
+            header: 'Nasze rozwiązania',
             link: [
                 {
                     id: 1,
@@ -122,6 +133,18 @@ const Layout = ({children}) => {
                     id: 6,
                     name: 'LEXELL building',
                     url: '/building'
+                },
+                {
+                    id: 7,
+                    icon: faUpload,
+                    name: 'LEXELL telecom',
+                    url: 'https://telecom.lexell.pl'
+                },
+                {
+                    id: 8,
+                    icon: faUpload,
+                    name: 'Fineinvest',
+                    url: '/fineinvest'
                 },
             ]
         },

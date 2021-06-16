@@ -9,8 +9,9 @@ import Container    from "@components/Container"
 const Post = () => {
 
     const router = useRouter()
-    const posts = getAllPages('energy')
+    const posts = getAllPages('computer')
     const getText = posts && posts.data.allPagess.edges.find(e => e.node._meta.uid == router.query.slug)
+    const getCategories = posts && posts.data.allPagess.edges.filter(e => e.node._meta.uid !== "help-desk-it")
 
     return <Container>
 
@@ -19,8 +20,8 @@ const Post = () => {
             columns="360px 1fr"
         >
             <MenuAside
-                categories={posts && posts.data.allPagess.edges}
-                tag={"energy"}
+                categories={getCategories}
+                tag={"computer"}
             />
             <div>
                 {posts && <RichText render={getText.node.description}/>}

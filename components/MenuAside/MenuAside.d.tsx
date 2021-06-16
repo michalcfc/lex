@@ -6,5 +6,6 @@ interface Categories {
 
 
 export interface InputProps {
-    categories?: Categories[]
+    categories: Categories[]
+    tag: string
 }

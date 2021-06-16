@@ -33,6 +33,5 @@ const [mobile, setMobile] = useState(false)
     }, []);
 
     return mobile
-
 }
 

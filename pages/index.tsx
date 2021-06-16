@@ -15,7 +15,6 @@ import Head from 'next/head'
 
 import CookieConsent from "react-cookie-consent";
 
-import {getAllHomepages } from '../lib/api'
 import { CMS_NAME } from '../lib/constatns'
 
 import {
@@ -31,8 +30,6 @@ import {
     faTv,
     faShippingFast
 } from '@fortawesome/free-solid-svg-icons'
-import React from "react";
-import Heading from "@components/Heading"
 
 const cards = [
     {
@@ -229,9 +226,7 @@ const sections = [
 const Home: React.FC<HomeProps> = ({
    allPosts
 }) => {
-
-    console.log(allPosts)
-
+    
     const [isBottom, setIsBottom] = useState(false)
 
     useEffect(() => {
@@ -317,11 +312,11 @@ const Home: React.FC<HomeProps> = ({
 
 export default Home
 
-export async function getStaticProps({ previewData }) {
-    const allPosts = await getAllHomepages(previewData)
-    return {
-        props: {
-            allPosts: allPosts[0].node.body[0]
-        },
-    }
-  }
+// export async function getStaticProps({ previewData }) {
+//     const allPosts = await getAllHomepages(previewData)
+//     return {
+//         props: {
+//             allPosts: allPosts[0].node.body[0]
+//         },
+//     }
+//   }

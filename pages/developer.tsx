@@ -29,8 +29,6 @@ const Developer: React.FC<HomeProps> = ({
                     Dla dewelopera
                 </Heading>
                 <p>
-                    Nasza firma oferuje kompleksowe wykonanie sieci światłowodowych.
-                    Zaprojektujemy dla Ciebie sieci światłowodowe, wykonamy je, a na koniec zapewnimy dostęp dla danego osiedla bądź budynku.
                     Jeśli jesteś zainteresowany współpracą z naszą firmą, możesz zostawić zapytanie w formularzu bądź napisać e-mail na adres: <a href="mailto:biuro@lexell.com.pl">biuro@lexell.com.pl</a>
                 </p><br/>
                 <ContactForm
