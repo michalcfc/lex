@@ -1,28 +1,38 @@
+import {useEffect, useState} from "react";
+
 import { HomeProps } from "./../Types/Home.d"
 import Head from "next/head";
 
 import Container from "@components/Container"
 import Grid from "@components/Grid"
+import Loader from "@components/Loader"
 import MenuAside from "@components/MenuAside"
 import MenuAsideMobile from "@components/MenuAsideMobile"
 import { getAllPages } from "../utilis/query";
 import { isMobile }  from "./../utilis/api"
-import {useState} from "react";
 import {RichText} from "prismic-reactjs";
 
 const Energy: React.FC<HomeProps> = () => {
 
+    const [loader, setLoader] = useState(true)
+
     const text = getAllPages('help')
+
+    useEffect(() => {
+        setLoader(false)
+    }, [text]);
 
     const renderText = () => {
         const test = text?.data.allPagess.edges.filter(e => e.node._meta.id == "YKY8qhAAACAA88kf").pop()
-        return test && test.node.description
+        return test?.node.description
     }
 
     const getCategories = () => {
         const categroies = text?.data.allPagess.edges.filter(e => e.node._meta.id !== "YKY8qhAAACAA88kf")
         return categroies
     }
+
+    console.log(loader)
 
     return (
         <Container>
@@ -42,9 +52,9 @@ const Energy: React.FC<HomeProps> = () => {
                         categories={getCategories()}
                         tag={'help'}
                     />}
-                <div>
+                {loader ? <Loader/> : <div>
                     <RichText render={renderText()}/>
-                </div>
+                </div>}
             </Grid>
         </Container>
     )

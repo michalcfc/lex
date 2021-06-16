@@ -42,11 +42,11 @@ const CallWidget: React.FC<CallWidgetProps> = () => {
         });
     };
 
-    useEffect(() => {
-        setTimeout(() => {
-            setShowMessage(true)
-        }, 4000);
-    }, []);
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setShowMessage(true)
+    //     }, 4000);
+    // }, []);
 
     const handleFormSubmit = e => {
         e.preventDefault();
