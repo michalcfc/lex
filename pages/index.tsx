@@ -30,6 +30,7 @@ import {
     faTv,
     faShippingFast
 } from '@fortawesome/free-solid-svg-icons'
+import {queryHomeContent} from "../utilis/prismicQueries";
 
 const cards = [
     {
@@ -229,7 +230,22 @@ const Home: React.FC<HomeProps> = ({
     
     const [isBottom, setIsBottom] = useState(false)
 
+    const [homeDoc, setHomeDoc] = useState(null);
+    const [notFound, toggleNotFound] = useState(false);
+
+
+
     useEffect(() => {
+        const fetchPrismicContent = async () => {
+            const queryResponse = await queryHomeContent();
+            const homeDocContent = queryResponse;
+            if (homeDocContent) {
+                setHomeDoc(homeDocContent);
+            } else {
+                toggleNotFound(true);
+            }
+        };
+        fetchPrismicContent();
         const onScroll = function () {
            if (window.innerHeight + window.scrollY >= document.documentElement.clientHeight) {
             setIsBottom(true)
@@ -242,6 +258,8 @@ const Home: React.FC<HomeProps> = ({
         window.addEventListener('scroll', onScroll)
         return () => window.removeEventListener('scroll', onScroll)
      }, [])
+
+    console.log(homeDoc)
     
     return (
     <>
