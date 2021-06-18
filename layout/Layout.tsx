@@ -1,9 +1,12 @@
-import React from 'react';
+import {useEffect, useState} from "react";
 
 import Main         from "./Main"
 import Header       from "./Header"
 import Footer       from "./Footer"
 import Wrapper      from "./Wrapper"
+
+import { queryHomeContent } from './../utilis/prismicQueries'
+import { client } from './../utilis/prismicHelpers';
 
 
 import {
@@ -19,6 +22,7 @@ import {
 
 
 const Layout = ({children}) => {
+
 
 
     const menuLinks = [
