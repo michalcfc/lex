@@ -259,7 +259,7 @@ const Home: React.FC<HomeProps> = ({
         return () => window.removeEventListener('scroll', onScroll)
      }, [])
 
-    console.log(homeDoc)
+    console.log(homeDoc?.data.allHomepages.edges[0].node.body[0].primary.heading[0].text)
     
     return (
     <>

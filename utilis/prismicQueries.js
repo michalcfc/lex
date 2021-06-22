@@ -12,7 +12,9 @@ allHomepages {
       node {
        body {
        ...on HomepageBodyCta_feature {
-                type
+            primary {
+                heading
+            }
           }
        }
       }

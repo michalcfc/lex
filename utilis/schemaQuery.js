@@ -1,16 +1,17 @@
 /* eslint-disable no-console */
 const fetch = require('node-fetch');
 const fs = require('fs');
+const resultsFileName = 'possibleTypes';
 
 const repoId = 'lexell';
 
-fetch(`https://${repoId}.cdn.prismic.io/api`)
+fetch(`https://${repoId}.cdn.prismic.io/api/v2`)
     .then((r) => r.json())
     .then((data) => {
         const ref = data.refs.find((r) => r.id === 'master');
         if (!ref) return;
         fetch(
-            `https://${repoId}.cdn.prismic.io/api`,
+            `https://${repoId}.prismic.io/graphql?query=%7B%20__schema%20%7B%20types%20%7B%20kind%20name%20possibleTypes%20%7B%20name%20%7D%20%7D%20%7D%20%7D`,
             {
                 headers: {
                     'prismic-ref': ref.ref,
@@ -25,9 +26,10 @@ fetch(`https://${repoId}.cdn.prismic.io/api`)
                     (type) => type.possibleTypes !== null,
                 );
                 filteredResults.data.__schema.types = filteredData;
-                fs.writeFileSync('./src/utils/fragmentTypes.json', JSON.stringify(filteredResults.data), (err) => {
+
+                fs.writeFile(`./utils/${resultsFileName}.json`, JSON.stringify(possibleTypes), err => {
                     if (err) {
-                        console.error('Error writing fragmentTypes file', err);
+                        console.error('Error writing possibleTypes.json', err);
                     } else {
                         console.log('Fragment types successfully extracted!');
                     }
