@@ -1,13 +1,9 @@
-import React from 'react';
-import Image from 'next/image'
+import {useEffect, useState} from 'react';
 import Link from 'next/link'
 
-import Button from "components/Button"
 import Container from "components/Container"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-    faPhone,
-} from '@fortawesome/free-solid-svg-icons'
+import { RichText } from 'prismic-reactjs';
+import {queryHomeContent} from "./../../utilis/prismicQueries";
 
 import {
     HeroIconFirst,
@@ -72,38 +68,67 @@ const bubbles = [
 
 ]
 
-const Hero = () => {
-    return (
-        <HeroWrapper>
-            <Container>
-            <HeroContentWrapper>
-                <HeroContentLeft>
-                    <HeroText>
-                        <HeroTitle>
-                            Nowoczesne rozwiązania technologiczne
-                        </HeroTitle>
-                        {/*<HeroDescription>*/}
-                        {/*    Nowoczesna technologia. Pomoc. Bezpieczeństwo. Budownictwo. Energia.*/}
-                        {/*</HeroDescription>*/}
-                        <HeroBubbles>
-                            {bubbles.map(bubble => {
-                                return <HeroBubble>
-                                    {bubble.name === "LEXELL telecom" ?
-                                        <a href="http://telecom.lexell.pl" target={"_blank"}>{bubble.name}</a>:
-                                    <Link href={bubble.url}>
-                                        {bubble.name}
-                                    </Link>
-                                    }
-                                </HeroBubble>
-                            })}
-                        </HeroBubbles>
-                    </HeroText>
-                </HeroContentLeft>
-            </HeroContentWrapper>
-            </Container>
-        </HeroWrapper>
 
-    )
+const Hero = () => {
+
+    const [homeDoc, setHomeDoc] = useState(null);
+    const [notFound, toggleNotFound] = useState(false);
+
+// Fetch the Prismic initial Prismic content on page load
+    useEffect(() => {
+        const fetchPrismicContent = async () => {
+            const queryResponse = await queryHomeContent();
+            const homeDocContent = queryResponse.data.allHomepages.edges[0].node;
+            if (homeDocContent) {
+                setHomeDoc(homeDocContent);
+            } else {
+                toggleNotFound(true);
+            }
+        };
+        fetchPrismicContent();
+    }, []);
+
+    if (homeDoc) {
+        const heroText = homeDoc.body[0].primary.heading[0].text;
+        console.log(heroText)
+
+        return (
+            <HeroWrapper>
+                <Container>
+                    <HeroContentWrapper>
+                        <HeroContentLeft>
+                            <HeroText>
+                                <HeroTitle>
+                                    {heroText}
+                                </HeroTitle>
+                                {/*<HeroDescription>*/}
+                                {/*    Nowoczesna technologia. Pomoc. Bezpieczeństwo. Budownictwo. Energia.*/}
+                                {/*</HeroDescription>*/}
+                                <HeroBubbles>
+                                    {bubbles.map(bubble => {
+                                        return <HeroBubble>
+                                            {bubble.name === "LEXELL telecom" ?
+                                                <a href="http://telecom.lexell.pl" target={"_blank"}>{bubble.name}</a> :
+                                                <Link href={bubble.url}>
+                                                    {bubble.name}
+                                                </Link>
+                                            }
+                                        </HeroBubble>
+                                    })}
+                                </HeroBubbles>
+                            </HeroText>
+                        </HeroContentLeft>
+                    </HeroContentWrapper>
+                </Container>
+            </HeroWrapper>
+
+        )
+    }
+    if (notFound) {
+        return <>loading</>;
+    }
+
+    return null;
 }
 
 export default Hero

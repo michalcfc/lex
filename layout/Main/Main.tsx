@@ -1,6 +1,8 @@
 import React from 'react';
 import { isHomePage } from "./../../utilis/api"
 
+import {queryHomeContent} from "./../../utilis/prismicQueries";
+
 import {
     MainWrapper,MainContainer
 } from "./Main.styles"
