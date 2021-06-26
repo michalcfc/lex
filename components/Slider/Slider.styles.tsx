@@ -3,48 +3,52 @@ import styled, { keyframes }  from "styled-components";
 type DataProps = {
 }
 
-const bouncingLoader = keyframes`
+const loopOne = keyframes`
   0% {
-    transform: translateX(0px);
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(-440px);
+    transform: translateX(calc(-250px * 7));
   }
 `
 
 export const SliderWrapper = styled.div<DataProps>`
-  overflow-x: hidden;
+  box-shadow: 0 10px 0px -5px rgba(0, 0, 0, 0.125);
+  height: 100px;
+  margin: auto;
+  overflow: hidden;
   position: relative;
-  //&:before,
-  //&:after {
-  //  width: 70px;
-  //  height: 80px;
-  //  content: '';
-  //  top: 0;
-  //  background-size: 100%;
-  //  position: absolute;
-  //  z-index: 1;
-  //}
-  //&:before {
-  //  left: 0;
-  //  background: linear-gradient(270deg,rgba(255,255,255,0) 0,#edf2f7d1 100%);
-  //}
-  //&:after {
-  //  right: 0;
-  //  background: linear-gradient(90deg,rgba(255,255,255,0) 0,#edf2f7d1 100%);
-  //}
+  width: 100%;
+  &:before,
+  &:after {
+    background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
+    content: "";
+    height: 100px;
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+  }
+  &:before {
+    left: 0;
+    top: 0;
+  }
+  &:after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+  }
 `
 
 export const SliderStyle = styled.div<DataProps>`
   display: flex;
   align-items: center;
-  width: 100px;
+  width: calc(250px * 14);
 
 `;
 
 export const SliderItem = styled.div<DataProps>`
-  margin: 0 1rem;
   opacity: 0.25;
+  width: 250px;
   &:hover {
     cursor: pointer;
     opacity: 1;
@@ -53,6 +57,6 @@ export const SliderItem = styled.div<DataProps>`
 `;
 
 export const SliderImg = styled.img<DataProps>`
-  animation: ${bouncingLoader} 8s linear infinite;
   height: 120px;
+  animation: ${loopOne} 30s linear infinite;
 `

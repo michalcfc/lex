@@ -5,29 +5,40 @@ type DataProps = {
   display?: "block" | "inline-block"
 }
 
-const bouncingLoader = keyframes`
-    to {
-        opacity: 0.1;
-        transform: translate3d(0, -1rem, 0);
-    }
+const ripple = keyframes`
+  0% {
+    top: 32px;
+    left: 32px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    width: 64px;
+    height: 64px;
+    opacity: 0;
+  }
 `
 
-export const LoaderStyles = styled.div<DataProps>`
-    display: flex;
-    justify-content: center;
+export const LoaderWrapper = styled.div<DataProps>`
+  display: grid;
+  place-items: center;
 `;
 
-export const LoaderDot = styled.div<DataProps>`
-    width: 1rem;
-    height: 1rem;
-    margin: 3rem 0.2rem;
-    background: #663399;
-    border-radius: 50%;
-    animation: ${bouncingLoader} 0.6s infinite alternate;
-    :nth-child(2) {
-        animation-delay: 0.2s;
-    }
-    &:nth-child(3) {
-        animation-delay: 0.4s;
-    }
+export const LoaderStyles = styled.div<DataProps>`
+  position: relative;
+  width: 64px;
+  height: 64px;
 `;
+
+export const LoaderCircle = styled.div<DataProps>`
+  position: absolute;
+  border: 4px solid ${({theme}) => theme.colors.brand};
+  border-radius: 50%;
+  animation: ${ripple} 1s ease-out infinite;
+  :nth-child(2) {
+    animation-delay: -0.5s;
+  }
+`

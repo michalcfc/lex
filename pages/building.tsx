@@ -3,52 +3,75 @@ import Head from "next/head";
 
 import Container from "@components/Container"
 import Grid from "@components/Grid"
-import MenuAside from "@components/MenuAside"
-import MenuAsideMobile from "@components/MenuAsideMobile"
-import { getAllPages } from "../utilis/query";
-import { isMobile }  from "./../utilis/api"
-import {useState} from "react";
+import MenuAside from "@components/CategoriesMenu/MenuAside"
+import MenuAsideMobile from "@components/CategoriesMenu/MenuAsideMobile"
+
 import {RichText} from "prismic-reactjs";
+import {useEffect, useState} from "react";
+import {queryPageContent} from "../utilis/prismicQueries";
+import Loader from "@components/Loader";
+import CategoriesMenu from "@components/CategoriesMenu";
 
 const Energy: React.FC<HomeProps> = () => {
 
-    const text = getAllPages('building')
+    const [loader, setLoader] = useState(true)
+    const [pageDoc, setPageDoc] = useState(null);
+
+    // Fetch the Prismic initial Prismic content on page load
+    const tag = "building"
+    useEffect(() => {
+        const fetchPrismicContent = async () => {
+            const queryResponse = await queryPageContent(tag);
+            const pageDocContent = queryResponse;
+            if (pageDocContent) {
+                setPageDoc(pageDocContent);
+                setLoader(false);
+            }
+        };
+        fetchPrismicContent();
+    }, [loader]);
 
     const renderText = () => {
-        const test = text && text.data.allPagess.edges.filter(e => e.node._meta.id == "YMMWdRQAACcAZPmI").pop()
-        return test && test.node.description
+        const text = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.id == "YMMWdRQAACcAZPmI").pop()
+        return text?.node.description
     }
 
 
     const getCategories = () => {
-        const categroies = text && text.data.allPagess.edges.filter(e => e.node._meta.id !== "YMMWdRQAACcAZPmI")
+        const categroies = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.id !== "YMMWdRQAACcAZPmI")
         return categroies
     }
 
-    return (
-        <Container>
-            <Head>
-                <title>LEXELL Building</title>
-            </Head>
+    if(loader) {
+        return <Loader />;
+    }
 
-            <Grid
-                gridGap="2rem"
-                columns="360px 1fr"
-            >
-                {isMobile() && text
-                    ? <MenuAsideMobile
-                        categories={getCategories()}
+    if(pageDoc) {
+        const title = RichText.asText(pageDoc.headlin)
+        return (
+            <Container>
+                <Head>
+                    <title>{title}</title>
+                </Head>
+
+                <Grid
+                    gridGap="2rem"
+                    columns="360px 1fr"
+                >
+                    <CategoriesMenu
+                        tag={tag}
+                        isContent={pageDoc}
+                        categories={getCategories}
                     />
-                    : <MenuAside
-                        categories={getCategories()}
-                        tag={'building'}
-                    />}
-                <div>
-                    <RichText render={renderText()}/>
-                </div>
-            </Grid>
-        </Container>
-    )
+                    {title}
+                    <div>
+                        <RichText render={renderText()}/>
+                    </div>
+                </Grid>
+            </Container>
+        )
+
+    }
 }
 
 export default Energy

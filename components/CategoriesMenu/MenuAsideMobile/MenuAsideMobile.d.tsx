@@ -7,4 +7,5 @@ interface Categories {
 
 export interface MenuAsideMobile {
     categories?: Categories[]
+    tag: string
 }
