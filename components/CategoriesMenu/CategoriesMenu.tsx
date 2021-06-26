@@ -14,9 +14,9 @@ import {
 import { useMobileDetect }  from "./../../utilis/api"
 
 const CategoriesMenu: React.FC<CategoriesMenuProps> = ({
-    tag,
     isContent,
-    categories
+    categories,
+    tag
 }) => {
 
     const detectMobile = useMobileDetect()
@@ -27,6 +27,7 @@ const CategoriesMenu: React.FC<CategoriesMenuProps> = ({
       <>
           {isMobile && isContent
               ? <MenuAsideMobile
+                  tag={tag}
                   categories={getCategories}
               />
               : <MenuAside

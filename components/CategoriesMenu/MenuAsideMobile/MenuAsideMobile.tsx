@@ -17,7 +17,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 const MenuAsideMobile = ({
-       categories
+       categories,
+    tag,
    }) => {
     const [item, setItem] = useState(null)
     const [isOpen, setIsOpen] = useState(false)
