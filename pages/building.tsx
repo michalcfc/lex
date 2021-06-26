@@ -59,6 +59,7 @@ const Energy: React.FC<HomeProps> = () => {
                     columns="360px 1fr"
                 >
                     <CategoriesMenu
+                        tag={tag}
                         isContent={pageDoc}
                         categories={getCategories}
                     />
