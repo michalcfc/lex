@@ -3,52 +3,70 @@ import Head from "next/head";
 
 import Container from "@components/Container"
 import Grid from "@components/Grid"
-import MenuAside from "@components/MenuAside"
-import MenuAsideMobile from "@components/MenuAsideMobile"
-import { getAllPages } from "../utilis/query";
-import { isMobile }  from "./../utilis/api"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {RichText} from "prismic-reactjs";
+import CategoriesMenu from "@components/CategoriesMenu";
+import {queryPageContent} from "../utilis/prismicQueries";
+import Loader from "@components/Loader";
 
 const Smart: React.FC<HomeProps> = () => {
 
+    const [loader, setLoader] = useState(true)
+    const [pageDoc, setPageDoc] = useState(null);
 
-    const text = getAllPages('smart')
+    // Fetch the Prismic initial Prismic content on page load
+    const tag = "smart"
+    useEffect(() => {
+        const fetchPrismicContent = async () => {
+            const queryResponse = await queryPageContent(tag);
+            const pageDocContent = queryResponse;
+            if (pageDocContent) {
+                setPageDoc(pageDocContent);
+                setLoader(false);
+            }
+        };
+        fetchPrismicContent();
+    }, [loader]);
 
     const renderText = () => {
-        const mainText = text && text.data.allPagess.edges.filter(e => e.node._meta.id == "YLAIrxAAACYAZLYi").pop()
-        return mainText && mainText.node.description
+        const text = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.id == "YLAIrxAAACYAZLYi").pop()
+        return text?.node.description
     }
 
     const getCategories = () => {
-        const categroies = text && text.data.allPagess.edges.filter(e => e.node._meta.id !== "YLAIrxAAACYAZLYi")
+        const categroies = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.id !== "YLAIrxAAACYAZLYi")
         return categroies
     }
 
-    return (
-        <Container>
-            <Head>
-                <title>LEXELL smart and security</title>
-            </Head>
+    if(loader) {
+        return <Loader />;
+    }
 
-            <Grid
-                gridGap="2rem"
-                columns="360px 1fr"
-            >
-                {isMobile() && text
-                    ? <MenuAsideMobile
-                        categories={getCategories()}
+    if(pageDoc) {
+        const title = RichText.asText(pageDoc.headline)
+        return (
+            <Container>
+                <Head>
+                    <title>{title}</title>
+                </Head>
+
+                <Grid
+                    gridGap="2rem"
+                    columns="360px 1fr"
+                >
+                    <CategoriesMenu
+                        tag={tag}
+                        isContent={pageDoc}
+                        categories={getCategories}
                     />
-                    : <MenuAside
-                        categories={getCategories()}
-                        tag={'smart'}
-                    />}
-                <div>
-                    <RichText render={renderText()}/>
-                </div>
-            </Grid>
-        </Container>
-    )
+                    {title}
+                    <div>
+                        <RichText render={renderText()}/>
+                    </div>
+                </Grid>
+            </Container>
+        )
+    }
 }
 
 export default Smart

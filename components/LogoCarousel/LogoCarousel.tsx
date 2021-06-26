@@ -56,6 +56,48 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
             img: "/img/logos/large/telecom.png",
             url: '/building'
         },
+        {
+            id: 8,
+            name: 'Lexell',
+            img: "/img/logos/large/internet.png",
+            url: '/internet'
+        },
+        {
+            id: 9,
+            name: 'Lexell',
+            img: "/img/logos/large/help_desk.png",
+            url: '/helpDesk'
+        },
+        {
+            id: 10,
+            name: 'Lexell',
+            img: "/img/logos/large/computer.png",
+            url: '/computer'
+        },
+        {
+            id: 11,
+            name: 'Lexell',
+            img: "/img/logos/large/energy.png",
+            url: '/energy'
+        },
+        {
+            id: 12,
+            name: 'Lexell',
+            img: "/img/logos/large/smart.png",
+            url: '/smart'
+        },
+        {
+            id: 13,
+            name: 'Lexell',
+            img: "/img/logos/large/building.png",
+            url: '/building'
+        },
+        {
+            id: 14,
+            name: 'Lexell',
+            img: "/img/logos/large/telecom.png",
+            url: '/building'
+        },
     ]
 
     return (

@@ -90,8 +90,6 @@ const Hero = () => {
 
     if (homeDoc) {
         const heroText = homeDoc.body[0].primary.heading[0].text;
-        console.log(heroText)
-
         return (
             <HeroWrapper>
                 <Container>

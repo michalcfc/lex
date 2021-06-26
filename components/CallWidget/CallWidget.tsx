@@ -42,11 +42,19 @@ const CallWidget: React.FC<CallWidgetProps> = () => {
         });
     };
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setShowMessage(true)
-    //     }, 4000);
-    // }, []);
+    const handleMessageShow = (value) => {
+        setShowMessage(false)
+        localStorage.setItem('callModalClick', value)
+    }
+
+    useEffect(() => {
+        const isCallModalClose = localStorage.getItem('callModalClick')
+       if(!isCallModalClose) {
+        setTimeout(() => {
+            setShowMessage(true)
+        }, 4000);
+       }
+    }, []);
 
     const handleFormSubmit = e => {
         e.preventDefault();
@@ -77,12 +85,12 @@ const CallWidget: React.FC<CallWidgetProps> = () => {
                         name={"Tak"}
                         onClick={() => {
                             setPhoneModalOpen(true)
-                            setShowMessage(false)
+                            handleMessageShow(false)
                         }}
                     />
                     <a
                         href="javascript:void(0);"
-                        onClick={() => setShowMessage(false)}
+                        onClick={() => handleMessageShow(false)}
                     >
                         Nie, dziękuję
                     </a>

@@ -2,10 +2,10 @@ import React, { useRef, useEffect, useState } from 'react';
 import Link from 'next/link'
 
 import {
-  SliderStyle,
-  SliderWrapper,
-  SliderItem,
-  SliderImg
+    SliderStyle,
+    SliderWrapper,
+    SliderItem,
+    SliderImg
 } from "./Slider.styles"
 
 import { SliderProps } from "./Slider.d"
@@ -53,16 +53,11 @@ const Slider: React.FC<SliderProps> = ({
         {/*/>*/}
         <SliderWrapper ref={element}>
           <SliderStyle>
-            {items.map(item => {
-              return <a href={item.url} target={"_blank"}><SliderItem>
-                <SliderImg src={item.img} />
-              </SliderItem></a>
-            })}
-              {items.map(item => {
+                {items.map(item => {
                   return <a href={item.url} target={"_blank"}><SliderItem>
-                      <SliderImg src={item.img} />
+                    <SliderImg src={item.img} />
                   </SliderItem></a>
-              })}
+                })}
           </SliderStyle>
         </SliderWrapper>
         {/*  <Arrow*/}

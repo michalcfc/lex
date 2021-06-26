@@ -19,11 +19,10 @@ import {
 import {
     faChromecast,
 } from "@fortawesome/free-brands-svg-icons"
+import Loader from "@components/Loader";
 
 
 const Layout = ({children}) => {
-
-
 
     const menuLinks = [
         {
@@ -154,23 +153,44 @@ const Layout = ({children}) => {
         },
     ]
 
+    const [homeDoc, setHomeDoc] = useState(null);
+    const [loader, setLoader] = useState(true);
 
-    return (
-       
-        <Wrapper>
-            <Header
-                links={menuLinks}
-                isMobile={children.props.isMobile}
-            />
-            <Main>
-                {children}
-            </Main>
-            <Footer
-                footerLinks={footerLinks}
-            />
-        </Wrapper>
-        
-    )
+// Fetch the Prismic initial Prismic content on page load
+    useEffect(() => {
+        const fetchPrismicContent = async () => {
+            const queryResponse = await queryHomeContent();
+            const homeDocContent = queryResponse.data.allHomepages.edges[0].node;
+            if (homeDocContent) {
+                setHomeDoc(homeDocContent);
+                setLoader(false);
+            }
+        };
+        fetchPrismicContent();
+    }, []);
+
+    if(loader) {
+        return <Loader/>
+    }
+
+    if(homeDoc) {
+        return (
+
+            <Wrapper>
+                <Header
+                    links={menuLinks}
+                    isMobile={children.props.isMobile}
+                />
+                <Main>
+                    {children}
+                </Main>
+                <Footer
+                    footerLinks={footerLinks}
+                />
+            </Wrapper>
+
+        )
+    }
 }
 
 export default Layout

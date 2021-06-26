@@ -15,43 +15,8 @@ import Head from 'next/head'
 
 import CookieConsent from "react-cookie-consent";
 
-import { CMS_NAME } from '../lib/constatns'
-
-import {
-    faPhone,
-} from '@fortawesome/free-solid-svg-icons'
-
-
-import {
-    faHeadset,
-    faAward,
-    faTools,
-    faWifi,
-    faTv,
-    faShippingFast
-} from '@fortawesome/free-solid-svg-icons'
 import {queryHomeContent} from "../utilis/prismicQueries";
-
-const cards = [
-    {
-        id: 1,
-        name: "Jakość i doświaczenie",
-        cardIcon: faAward,
-        desc: "Nasza firma to zespół profesjonalistów i specjalistów w swojej dziedzinie."
-    },
-    {
-        id: 2,
-        name: "Szybka realizacja",
-        cardIcon: faShippingFast,
-        desc: "Internet oraz telewizję założymy u Ciebie w kilkanaście dni od złożenia zamówienia."
-    },
-    {
-        id: 3,
-        name: "Sprawna obsługa klienta",
-        cardIcon: faHeadset,
-        desc: "Doradzimy i rozwiążemy każdy problem związany z naszymi usługami."
-    }
-]
+import Loader from "@components/Loader";
 
 const sections = [
     {
@@ -231,18 +196,17 @@ const Home: React.FC<HomeProps> = ({
     const [isBottom, setIsBottom] = useState(false)
 
     const [homeDoc, setHomeDoc] = useState(null);
-    const [notFound, toggleNotFound] = useState(false);
+    const [loader, setLoader] = useState(true);
 
 
 
     useEffect(() => {
         const fetchPrismicContent = async () => {
             const queryResponse = await queryHomeContent();
-            const homeDocContent = queryResponse;
+            const homeDocContent = queryResponse.data.allHomepages.edges[0].node.body;
             if (homeDocContent) {
                 setHomeDoc(homeDocContent);
-            } else {
-                toggleNotFound(true);
+                setLoader(false)
             }
         };
         fetchPrismicContent();
@@ -257,84 +221,77 @@ const Home: React.FC<HomeProps> = ({
 
         window.addEventListener('scroll', onScroll)
         return () => window.removeEventListener('scroll', onScroll)
-     }, [])
+     }, [loader])
 
-    console.log(homeDoc?.data.allHomepages.edges[0].node.body[0].primary.heading[0].text)
-    
-    return (
-    <>
-        <Head>
-          {/* <title>{heroPost.hero_title[0].text}</title> */}
-        </Head>
+    console.log(homeDoc)
 
-        <Container>
-            <LogoCarousel />
-        </Container>
 
-        {/*<Section*/}
-        {/*>*/}
-        {/*    <Grid*/}
-        {/*        gridGap="20px"*/}
-        {/*        columns="repeat(auto-fit, minmax(220px, 1fr));"*/}
-        {/*    >*/}
-        {/*        {cards.map(card => {*/}
-        {/*        return (*/}
-        {/*            <Card*/}
-        {/*            p={3}*/}
-        {/*            key={card.id}*/}
-        {/*            cardIcon={card.cardIcon}*/}
-        {/*            title={card.name}*/}
-        {/*            description={card.desc}*/}
-        {/*            >*/}
-        {/*            </Card>*/}
-        {/*        )})}*/}
-        {/*    </Grid>*/}
-        {/*</Section>*/}
+    if(loader) {
+        return <Loader/>
+    }
 
-        {sections.map(section => {
-            return (<Section
-                key={section.id}
-                title={section.title}
-                link={section.link}
-                noRef={section.noRef}
-                isFlex={section.isFlex}
-                isReverse={section.isReverse}
-                background={section.background}
-                description={section.desc}
-                logo={section.logo}
-                img={section.img}
-                categories={section.categories}
-                />)
-            })}
+    if(homeDoc) {
+        return (
+            <>
+                <Head>
+                    {/* <title>{heroPost.hero_title[0].text}</title> */}
+                </Head>
 
-        <CallToAction />
+                <Container>
+                    <LogoCarousel />
+                </Container>
 
-        <CookieConsent
-            location="bottom"
-            buttonText="Rozumiem"
-            cookieName="myAwesomeCookieName2"
-        >
-            Korzystając ze strony wyrażasz zgodę na używanie cookies zgodnie z polityką prywatności
-        </CookieConsent>
-        
-        <CallWidget />
+                {homeDoc.map((section, index) => {
+                    if(section.type === 'feature') {
+                        console.log(section)
+                        return (<Section
+                            title={section.primary.heading[0].text}
+                            description={section.primary.text[0].text}
+                            isFlex={true}
+                            isReverse={index%2 == 1}
+                            background={index%2 == 0}
+                            link={"section.link"}
+                            img={section.primary.featured_image.url}
+                            logo={section.primary.logo.url}
+                        />)
+                    }
+                })}
 
-        {isBottom 
-            && <GoToTop />
-        }
+                {/*{sections.map(section => {*/}
+                {/*    return (<Section*/}
+                {/*        key={section.id}*/}
+                {/*        title={section.title}*/}
+                {/*        link={section.link}*/}
+                {/*        noRef={section.noRef}*/}
+                {/*        isFlex={section.isFlex}*/}
+                {/*        isReverse={section.isReverse}*/}
+                {/*        background={section.background}*/}
+                {/*        description={section.desc}*/}
+                {/*        logo={section.logo}*/}
+                {/*        img={section.img}*/}
+                {/*        categories={section.categories}*/}
+                {/*    />)*/}
+                {/*})}*/}
 
-    
-    </>
-  )
+                <CallToAction />
+
+                <CookieConsent
+                    location="bottom"
+                    buttonText="Rozumiem"
+                    cookieName="myAwesomeCookieName2"
+                >
+                    Korzystając ze strony wyrażasz zgodę na używanie cookies zgodnie z polityką prywatności
+                </CookieConsent>
+
+                <CallWidget />
+
+                {isBottom
+                && <GoToTop />
+                }
+            </>
+        )
+
+    }
 }
 
 export default Home
-
-// export async function getStaticProps({ previewData }) {
-//     const allPosts = await getAllHomepages(previewData)
-//     return {
-//         props: {
-//             allPosts: allPosts[0].node.body[0]
-//         },
-//     }
-//   }

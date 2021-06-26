@@ -7,92 +7,68 @@ import Container from "@components/Container"
 import { queryPageContent } from './../utilis/prismicQueries'
 import Grid from "@components/Grid"
 import Loader from "@components/Loader"
-import MenuAside from "@components/MenuAside"
-import MenuAsideMobile from "@components/MenuAsideMobile"
-import { getAllPages } from "../utilis/query";
-import { isMobile }  from "./../utilis/api"
+import CategoriesMenu from "@components/CategoriesMenu"
+import { useMobileDetect }  from "./../utilis/api"
 import {RichText} from "prismic-reactjs";
 
 const Energy: React.FC<HomeProps> = () => {
 
     const [loader, setLoader] = useState(true)
-    const [text, setText] = useState(null)
-    const [homeDoc, setHomeDoc] = useState(null);
-    const [notFound, toggleNotFound] = useState(false);
-
-    // useEffect(() => {
-    // setText(getAllPages('help'))
-    //     if(text) {
-    //         setLoader(false)
-    //     }
-    // }, [text]);
+    const [pageDoc, setPageDoc] = useState(null);
 
     // Fetch the Prismic initial Prismic content on page load
-    const t = "help-desk"
+    const tag = "help"
     useEffect(() => {
         const fetchPrismicContent = async () => {
-            const queryResponse = await queryPageContent(t);
-            const homeDocContent = queryResponse;
-            if (homeDocContent) {
-                setHomeDoc(homeDocContent);
-            } else {
-                toggleNotFound(true);
+            const queryResponse = await queryPageContent(tag);
+            const pageDocContent = queryResponse;
+            if (pageDocContent) {
+                setPageDoc(pageDocContent);
+                setLoader(false);
             }
         };
         fetchPrismicContent();
-    }, []);
+    }, [loader]);
 
 
     const renderText = () => {
-        const test = homeDoc?.data.allPagess.edges.filter(e => e.node._meta.id == "YKY8qhAAACAA88kf").pop()
-        return test?.node.description
+        const text = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.id == "YKY8qhAAACAA88kf").pop()
+        return text?.node.description
     }
 
     const getCategories = () => {
-        const categroies = homeDoc?.data.allPagess.edges.filter(e => e.node._meta.id !== "YKY8qhAAACAA88kf")
+        const categroies = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.id !== "YKY8qhAAACAA88kf")
         return categroies
     }
 
+    if(loader) {
+        return <Loader />;
+    }
 
     // Return the page if a document was retrieved from Prismic
-    if (homeDoc) {
-        const title = RichText.asText(homeDoc.headline);
+    if (pageDoc) {
+        const title = RichText.asText(pageDoc.headline);
         return (
             <Container>
                 <Head>
-                    <title>LEXELL Help Desk IT</title>
+                    <title>{title}</title>
                 </Head>
-
 
                 <Grid
                     gridGap="2rem"
                     columns="360px 1fr"
                 >
-
-                    {/*{isMobile() && text*/}
-                    {/*    ? <MenuAsideMobile*/}
-                    {/*        categories={getCategories()}*/}
-                    {/*    />*/}
-                    {/*    : <MenuAside*/}
-                    {/*        categories={getCategories()}*/}
-                    {/*        tag={'help'}*/}
-                    {/*    />}*/}
-                    <MenuAside
-                        categories={getCategories()}
-                        tag={'help'}
+                    <CategoriesMenu
+                        isContent={pageDoc}
+                        categories={getCategories}
                     />
                     {title}
                     <div>
                         <RichText render={renderText()}/>
                     </div>
                 </Grid>
-
             </Container>
         )
-    }
-
-    if (notFound) {
-        return <Loader />;
     }
 
     return null;

@@ -18,20 +18,26 @@ export function currentPath() {
     return router.pathname
 }
 
-export function isMobile() {
-const [mobile, setMobile] = useState(false)
+const getMobileDetect = (userAgent) => {
+    const isAndroid =boolean => Boolean(userAgent.match(/Android/i));
+    const isIos = boolean => Boolean(userAgent.match(/iPhone|iPad|iPod/i));
+    const isOpera =  boolean => Boolean(userAgent.match(/Opera Mini/i));
+    const isWindows = boolean => Boolean(userAgent.match(/IEMobile/i));
+    const isSSR =  boolean => Boolean(userAgent.match(/SSR/i));
 
-    useEffect(() => {
+    const isMobile =  boolean => Boolean(isAndroid() || isIos() || isOpera() || isWindows());
+    const isDesktop =  boolean => Boolean(!isMobile() && !isSSR());
+    return {
+        isMobile,
+        isDesktop,
+        isAndroid,
+        isIos,
+        isSSR
+    };
+};
 
-        if (typeof window !== 'undefined') {
-            const mobile = window.innerWidth < 900
-            if(mobile) {
-                setMobile(true)
-            }
-
-        }
-    }, []);
-
-    return mobile
+export const useMobileDetect = () => {
+    const userAgent = typeof navigator === 'undefined' ? 'SSR' : navigator.userAgent;
+    return getMobileDetect(userAgent);
 }
 

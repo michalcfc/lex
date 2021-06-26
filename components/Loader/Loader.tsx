@@ -2,17 +2,17 @@ import React from "react"
 
 import { 
     LoaderStyles,
-    LoaderDot
+    LoaderCircle,
+    LoaderWrapper
 } from "./Loader.styles"
 
 const Loader = () => (
-    <>
+    <LoaderWrapper>
         <LoaderStyles>
-            <LoaderDot/>
-            <LoaderDot/>
-            <LoaderDot/>
+            <LoaderCircle/>
+            <LoaderCircle/>
         </LoaderStyles>
-    </>
+    </LoaderWrapper>
 )
 
 export default Loader
