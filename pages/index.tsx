@@ -223,8 +223,6 @@ const Home: React.FC<HomeProps> = ({
         return () => window.removeEventListener('scroll', onScroll)
      }, [loader])
 
-    console.log(homeDoc)
-
 
     if(loader) {
         return <Loader/>
@@ -243,7 +241,6 @@ const Home: React.FC<HomeProps> = ({
 
                 {homeDoc.map((section, index) => {
                     if(section.type === 'feature') {
-                        console.log(section)
                         return (<Section
                             title={section.primary.heading[0].text}
                             description={section.primary.text[0].text}

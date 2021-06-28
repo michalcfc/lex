@@ -36,18 +36,18 @@ const Submenu: React.FC<SubmenuProps> = ({
         >
             <MenuContent>
                 <MenuColumns>
-            {links.map((link, id) => {
+            {links?.map((link, id) => {
                return <MenuItem
                    key={id}
                >
-                   {link.name == 'LEXELL telecom' ? <a href="http://telecom.lexell.pl" target={"_blank"}>
-                       <MenuLink>{link.name} </MenuLink>
+                   {link.sub_nav_link._meta.uid == 'LEXELL telecom' ? <a href="http://telecom.lexell.pl" target={"_blank"}>
+                       <MenuLink>{link.sub_nav_link._meta.uid} </MenuLink>
                    </a>  :
-                   <Link href={link.url}>
+                   <Link href={link.sub_nav_link._meta.uid}>
                        <a>
                        <MenuLink>
                            {/* <FontAwesomeIcon icon={link.icon} /> */}
-                           <span>{link.name}</span>
+                           <span>{link.sub_nav_link._meta.uid}</span>
                        </MenuLink>
                        </a>
                    </Link>

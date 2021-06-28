@@ -7,13 +7,39 @@ import { client } from './prismicHelpers';
  */
 const menuQuery = gql`
 query menuQuery {
- allNavigations {
+  allNavigations {
     edges {
-     node {
-      navigation_links {
-          label
+      node {
+        nav {
+          ... on NavigationNavNav_item {
+            label
+            primary {
+               submenu
+              label
+              link {
+                ...on Pages {
+                  _meta {
+                    uid
+                  }
+                }
+              }
+            }
+            label
+            fields {
+            sub_nav_link_label 
+              sub_nav_link {
+                _linkType
+                ... on Pages {
+                _meta {
+                    uid
+                    
+                  }
+                }
+              }
+            }
+          }
         }
-      } 
+      }
     }
   }
 }

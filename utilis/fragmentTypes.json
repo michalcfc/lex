@@ -1,0 +1,1 @@
+{"__schema":{"types":[{"kind":"UNION","name":"HomepageBody","possibleTypes":[{"name":"HomepageBodyCta_feature"}, {"name": "HomepageBodyCentered_text"}, {"name":  "HomepageBodyFeature"}]}]}}
