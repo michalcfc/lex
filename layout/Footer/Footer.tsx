@@ -1,8 +1,10 @@
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Link from "next/link"
 
 import Container from "components/Container"
+
+import {RichText} from "prismic-reactjs";
 
 import { 
     FontAwesomeIcon 
@@ -33,91 +35,115 @@ import {
     StyledLink,
     FooterLinkList
 } from "./Footer.styles"
+import {queryFooterContent} from "../../utilis/prismicQueries";
 
-const Footer = ({
-    footerLinks
-    }) => {
-    return (
-        <FooterWrapper>
-            <Container>
-            <FooterContent>
-                <FooterColumn>
-                    <FooterLogo src="/img/logos/lex_white.png" alt="lexell.pl" />
-                    <p>
-                        LEXELL to firma działająca na rynku od 1992 roku. 
-                        W swojej ofercie mamy <StyledLink href={"/clientChoose"}>internet radiowy</StyledLink> oraz <StyledLink href={"http://telecom.lexell.pl"}>światłowodowy</StyledLink>.
-                        Jak również obsługę IT i bezpieczeństwa. Oferujemy także przyłącza telekomunikacyjne i energetyczne.
-                    </p>
-                    <FooterSocialIcons>
-                            <FooterSocialIcon>
-                                <FontAwesomeIcon icon={faFacebookF} />
-                            </FooterSocialIcon>
-                            <FooterSocialIcon>
-                                <FontAwesomeIcon icon={faInstagram} />
-                            </FooterSocialIcon>
-                        </FooterSocialIcons>
-                </FooterColumn>
-                   {footerLinks.map(section => (
-                    <FooterColumn key={section.id}>
-                        <FooterColumnTitle>
-                            {section.header}
-                        </FooterColumnTitle>
-                        <FooterLinkList>
-                            {section.link.map(l => {
-                                return (
-                                    <FooterLinkItem key={l.id}>
-                                       <StyledLink href={l.url}>
-                                            {l.name}
-                                        </StyledLink>
-                                    </FooterLinkItem>
-                                )
-                            })}
-                        </FooterLinkList>
-                    </FooterColumn>
-                    ))}
-                    <FooterColumn>
-                        <FooterColumnTitle>
-                            Adres firmy
-                        </FooterColumnTitle>
-                        
-                        <FooterContactItem>
-                            <FooterSocialIcon>
-                                <FontAwesomeIcon icon={faMapMarked} />
-                            </FooterSocialIcon>
-                            ul. Przylesie 6, <br/>
-                            60-185 Skórzewo
-                        </FooterContactItem>
-                            
-                        <FooterContactItem>
-                            <FooterSocialIcon>
-                                <FontAwesomeIcon icon={faPhone} />
-                            </FooterSocialIcon>
-                                61 814-38-25 <br/>
-                                516-178-131
-                        </FooterContactItem>
+const Footer = () => {
 
-                        <FooterContactItem>
-                            <FooterSocialIcon>
-                                <FontAwesomeIcon icon={faEnvelope} />
-                            </FooterSocialIcon>
-                                <StyledLink href={"/contact"}> 
-                                    Napisz do nas
+    const [footerDoc, setFooterDoc] = useState(null);
+    const [loader, setLoader] = useState(true);
+
+    // Fetch the Prismic initial Prismic content on page load
+    useEffect(() => {
+        const fetchPrismicContent = async () => {
+            const queryResponse = await queryFooterContent();
+            const homeDocContent = queryResponse.data.allFooters.edges[0].node;
+            if (homeDocContent) {
+                setFooterDoc(homeDocContent);
+                setLoader(false)
+            }
+        };
+        fetchPrismicContent();
+    }, []);
+
+    if (loader) {
+        return <>loading</>;
+    }
+
+    if(footerDoc) {
+
+        return (
+            <FooterWrapper>
+                <Container>
+                    <FooterContent>
+                        <FooterColumn>
+                            <FooterLogo src="/img/logos/lex_white.png" alt="lexell.pl" />
+                            <p>
+                                <RichText render={footerDoc.about_us} />
+                            </p>
+                            <FooterSocialIcons>
+                                <FooterSocialIcon>
+                                    <FontAwesomeIcon icon={faFacebookF} />
+                                </FooterSocialIcon>
+                                <FooterSocialIcon>
+                                    <FontAwesomeIcon icon={faInstagram} />
+                                </FooterSocialIcon>
+                            </FooterSocialIcons>
+                        </FooterColumn>
+                            <FooterColumn>
+                                <FooterColumnTitle>
+                                    Nasze rozwiązania
+                                </FooterColumnTitle>
+                                <FooterLinkList>
+                                    {footerDoc.footer_links.map((link, id) => {
+                                        return (
+                                            <FooterLinkItem key={id}>
+                                                {link.link._linkType == 'Link.web' ? <StyledLink href={link.link.url} target={"_blank"}>
+                                                        {link.link_label[0].text}
+                                                    </StyledLink>  :
+                                                <StyledLink href={link.link._meta.uid}>
+                                                    {link.link_label[0].text}
+                                                </StyledLink>}
+                                            </FooterLinkItem>
+                                        )
+                                    })}
+                                </FooterLinkList>
+                            </FooterColumn>
+                        <FooterColumn>
+                            <FooterColumnTitle>
+                                Adres firmy
+                            </FooterColumnTitle>
+
+                            <FooterContactItem>
+                                <FooterSocialIcon>
+                                    <FontAwesomeIcon icon={faMapMarked} />
+                                </FooterSocialIcon>
+                                {footerDoc.street} <br/>
+                                {footerDoc.city}
+                            </FooterContactItem>
+
+                            <FooterContactItem>
+                                <FooterSocialIcon>
+                                    <FontAwesomeIcon icon={faPhone} />
+                                </FooterSocialIcon>
+                                {footerDoc.phone_one} <br/>
+                                {footerDoc.phone_two}
+                            </FooterContactItem>
+
+                            <FooterContactItem>
+                                <FooterSocialIcon>
+                                    <FontAwesomeIcon icon={faEnvelope} />
+                                </FooterSocialIcon>
+                                <StyledLink href={"/contact"}>
+                                    {footerDoc.contact_label}
                                 </StyledLink>
-                        </FooterContactItem>
+                            </FooterContactItem>
 
-                    </FooterColumn>
-            </FooterContent>
-            <FooterBottom>
-           
-                <Link href="https://jachimov.pl">
-                    <a target="_blank" rel="noreferrer">
-                    © 2021 Jachimov.pl | All Rights Reserved
-                    </a>
-                </Link>
-            </FooterBottom>
-            </Container>
-        </FooterWrapper>
-    )
+                        </FooterColumn>
+                    </FooterContent>
+                    <FooterBottom>
+
+                        <Link href="https://jachimov.pl">
+                            <a target="_blank" rel="noreferrer">
+                                © 2021 Jachimov.pl | All Rights Reserved
+                            </a>
+                        </Link>
+                    </FooterBottom>
+                </Container>
+            </FooterWrapper>
+        )
+
+    }
+
 }
 
 export default Footer

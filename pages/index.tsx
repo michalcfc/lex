@@ -223,9 +223,6 @@ const Home: React.FC<HomeProps> = ({
         return () => window.removeEventListener('scroll', onScroll)
      }, [loader])
 
-    console.log(homeDoc)
-
-
     if(loader) {
         return <Loader/>
     }
@@ -237,43 +234,37 @@ const Home: React.FC<HomeProps> = ({
                     {/* <title>{heroPost.hero_title[0].text}</title> */}
                 </Head>
 
-                <Container>
-                    <LogoCarousel />
-                </Container>
 
                 {homeDoc.map((section, index) => {
+                    if(section.type === 'partners') {
+                        return (
+                            <Container>
+                                <LogoCarousel
+                                    logos={section.fields}
+                                />
+                            </Container>
+                        )
+                    }
                     if(section.type === 'feature') {
-                        console.log(section)
                         return (<Section
                             title={section.primary.heading[0].text}
                             description={section.primary.text[0].text}
                             isFlex={true}
                             isReverse={index%2 == 1}
                             background={index%2 == 0}
-                            link={"section.link"}
+                            link={section.primary.url._meta ? `/${section.primary.url._meta.uid}` : '/'}
                             img={section.primary.featured_image.url}
                             logo={section.primary.logo.url}
                         />)
                     }
+
+                    if(section.type === 'centered_text') {
+                     return   <CallToAction
+                                data={section.primary}
+                            />
+                    }
                 })}
 
-                {/*{sections.map(section => {*/}
-                {/*    return (<Section*/}
-                {/*        key={section.id}*/}
-                {/*        title={section.title}*/}
-                {/*        link={section.link}*/}
-                {/*        noRef={section.noRef}*/}
-                {/*        isFlex={section.isFlex}*/}
-                {/*        isReverse={section.isReverse}*/}
-                {/*        background={section.background}*/}
-                {/*        description={section.desc}*/}
-                {/*        logo={section.logo}*/}
-                {/*        img={section.img}*/}
-                {/*        categories={section.categories}*/}
-                {/*    />)*/}
-                {/*})}*/}
-
-                <CallToAction />
 
                 <CookieConsent
                     location="bottom"
@@ -290,7 +281,6 @@ const Home: React.FC<HomeProps> = ({
                 }
             </>
         )
-
     }
 }
 

@@ -37,10 +37,13 @@ const MenuAsideMobile = ({
                     {!isOpen && <h4>Usługi:</h4>}
                     <ul>
                         {categories.map(category => {
-                            return <MenuItem>
-                                <Link href={category.url}>
-                                    <CurrentPage fontBold={item === category.id} onClick={() => setItem(category.id)}>
-                                        {category.name}
+                            return <MenuItem key={category.node._meta.uid}>
+                                <Link href={`/${tag}/${category.node._meta.uid}`}>
+                                    <CurrentPage
+                                        fontBold={item === category.node._meta.uid}
+                                        onClick={() => setItem(category.node._meta.uid)}
+                                    >
+                                        {category.node.page_title[0].text}
                                     </CurrentPage>
                                 </Link>
                             </MenuItem>

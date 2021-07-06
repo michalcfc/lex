@@ -22,6 +22,7 @@ const Modal = React.forwardRef<RefObject<any>, ModalProps>(({
     children,
     title,
     text,
+    autoWidth
  }) => {
 
     return (
@@ -32,6 +33,7 @@ const Modal = React.forwardRef<RefObject<any>, ModalProps>(({
                 onClick={e => {
                     e.stopPropagation();
                 }}
+                autoWidth={autoWidth}
             >
                 <ModalHeader>
                     {title}

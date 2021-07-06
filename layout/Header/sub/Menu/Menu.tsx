@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     MenuWrapper,
     MenuItem,
@@ -15,53 +15,72 @@ import {
     faChevronUp,
     faChevronDown
 } from '@fortawesome/free-solid-svg-icons'
+import {queryMenuContent} from "../../../../utilis/prismicQueries";
 
 
-const Menu: React.FC<MenuProps> = ({
-    links,
-}) => {
+const Menu: React.FC<MenuProps> = () => {
 
     const [isMenuOpen, setMenuOpen] = useState(false)
     const [subemnuId, setSubemnuId] = useState(null)
 
+    const [homeDoc, setHomeDoc] = useState(null);
+    const [notFound, toggleNotFound] = useState(false);
+
+    // Fetch the Prismic initial Prismic content on page load
+    useEffect(() => {
+        const fetchPrismicContent = async () => {
+            const queryResponse = await queryMenuContent();
+            const homeDocContent = queryResponse.data.allNavigations.edges[0].node;
+            if (homeDocContent) {
+                setHomeDoc(homeDocContent);
+            } else {
+                toggleNotFound(true);
+            }
+        };
+        fetchPrismicContent();
+    }, []);
+
     return (
         <MenuWrapper>
-            {links.map((link) => {
-               return <MenuItem
-                    key={link.id}
+
+            {homeDoc?.nav.map(link => {
+                return <>{!link.primary.link?.url?.includes("tel") &&
+                <MenuItem
+                    key={link.primary.label[0].text}
                     onMouseEnter={() => {
-                        setSubemnuId(link.id)
+                        setSubemnuId(link.primary.label[0].text)
                         setMenuOpen(true)
                     }}
-                    // onMouseLeave={() => {
-                    //     setSubemnuId(link.id)
-                    //     setMenuOpen(false)
-                    // }}
+                >
+                    <Link href={link.primary.link?._meta
+                        ? `/${link.primary.link?._meta?.uid}`
+                        : '/'
+                    }
                     >
-                    {link.name === "Światłowód"
-                    ? <a href={link.url} target="_blank" rel={'noopener'} >Światłowód</a>
-                    : <Link href={link.url}>
-                       <a>
-                       {link.name}
-                       {link.hasSubmenu 
-                        &&  <>{
-                            isMenuOpen
-                                && link.id == subemnuId 
-                                    ? <FontAwesomeIcon icon={faChevronUp} /> 
-                                    : <FontAwesomeIcon icon={faChevronDown} />
-                        }</>
-                        }
-                       </a>
-                    </Link>}
-                {link.hasSubmenu
+                        <a>
+                            {link.primary.label[0].text}
+                            {link.primary.submenu
+                            && <>{
+                                isMenuOpen
+                                && link.primary.label[0].text == subemnuId
+                                    ? <FontAwesomeIcon icon={faChevronUp}/>
+                                    : <FontAwesomeIcon icon={faChevronDown}/>
+                            }
+                            </>
+                            }
+                        </a>
+                    </Link>
+                    {link.primary.submenu
                     && isMenuOpen
-                    && link.id == subemnuId
+                    && link.primary.label[0].text == subemnuId
                     && <Submenu
-                        links={link.subLinks}
+                        links={link.fields}
                         setMenuOpen={setMenuOpen}
                     />}
                 </MenuItem>
+            }</>
             })}
+
         </MenuWrapper>
     )
 }

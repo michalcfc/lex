@@ -1,5 +1,6 @@
 import { HomeProps } from "./../Types/Home.d"
 import Head from "next/head";
+import Image from 'next/image'
 
 import Container from "@components/Container"
 import Grid from "@components/Grid"
@@ -11,6 +12,7 @@ import {useEffect, useState} from "react";
 import {queryPageContent} from "../utilis/prismicQueries";
 import Loader from "@components/Loader";
 import CategoriesMenu from "@components/CategoriesMenu";
+import {ImageLoader} from "./../utilis/imageLoader";
 
 const Energy: React.FC<HomeProps> = () => {
 
@@ -42,6 +44,17 @@ const Energy: React.FC<HomeProps> = () => {
         return categroies
     }
 
+    const getCurrentPage = () => {
+        const currentPage = pageDoc?.data.allPagess.edges.find(e => e.node.main_img !== null)
+        return currentPage
+    }
+
+    const currentPage = getCurrentPage()
+
+    const myLoader = ({ src, width, quality }) => {
+        return `${currentPage.node.main_img.url}/${src}?w=${width}&q=${quality || 75}`
+    }
+
     if(loader) {
         return <Loader />;
     }
@@ -65,7 +78,14 @@ const Energy: React.FC<HomeProps> = () => {
                     />
                     {title}
                     <div>
-                        <RichText render={renderText()}/>
+                        <img
+                            width="100%"
+                            height={"320"}
+                            src={currentPage.node.main_img.url}
+                        />
+                        <RichText
+                            render={renderText()}
+                        />
                     </div>
                 </Grid>
             </Container>

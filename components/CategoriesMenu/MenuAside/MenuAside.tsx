@@ -39,22 +39,9 @@ const MenuAside = ({
                                 </Link>
                             </MenuItem>
                         })}
-                        <MenuItem>
-                            <Link href='/realization'>
-                                Nasze realizacje
-                            </Link>
-                        </MenuItem>
                     </ul>
                 </MenuAsideContent>
             </MenuAsideWrapper>
-            {/*{categories.map(category => {*/}
-            {/*    return <>*/}
-            {/*        {item === category.id*/}
-            {/*           ? <p>{category.desc}</p>*/}
-            {/*            : ''*/}
-            {/*        }*/}
-            {/*    </>*/}
-            {/*})}*/}
         </>
 
     )

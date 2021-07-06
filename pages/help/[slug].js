@@ -21,7 +21,7 @@ const Post = () => {
     const [pagePosts, setPagePosts] = useState(null)
 
     // Fetch the Prismic initial Prismic content on page load
-    const tag = "building"
+    const tag = "help"
     useEffect(() => {
         const fetchPrismicContent = async () => {
             const queryResponse = await queryPageContent(tag);
@@ -47,7 +47,7 @@ const Post = () => {
         return categroies
     }
 
-    const isPageWithPosts = router.query.slug === 'building-realization'
+    const isPageWithPosts = router.query.slug === 'help-realization'
 
     if(loader) {
         return <Loader />

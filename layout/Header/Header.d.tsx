@@ -16,6 +16,5 @@ interface Links {
 }
 
 export interface HeaderProps {
-    links: Links[]
     isMobile: boolean
 }

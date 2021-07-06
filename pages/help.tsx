@@ -1,25 +1,25 @@
+import {useEffect, useState} from "react";
+
 import { HomeProps } from "./../Types/Home.d"
 import Head from "next/head";
 
 import Container from "@components/Container"
+import { queryPageContent } from './../utilis/prismicQueries'
 import Grid from "@components/Grid"
-import MenuAside from "@components/CategoriesMenu/MenuAside"
-import MenuAsideMobile from "@components/CategoriesMenu/MenuAsideMobile"
-import {queryPageContent} from "../utilis/prismicQueries";
+import Loader from "@components/Loader"
+import CategoriesMenu from "@components/CategoriesMenu"
+import { useMobileDetect }  from "./../utilis/api"
 import {RichText} from "prismic-reactjs";
-import {useEffect, useState} from "react";
-import Loader from "@components/Loader";
-import CategoriesMenu from "@components/CategoriesMenu";
 import Image from "next/image";
 import {ImageLoader} from "./../utilis/imageLoader";
 
-const Energy: React.FC<HomeProps> = () => {
+const Help: React.FC<HomeProps> = () => {
 
     const [loader, setLoader] = useState(true)
     const [pageDoc, setPageDoc] = useState(null);
 
     // Fetch the Prismic initial Prismic content on page load
-    const tag = "energy"
+    const tag = "help"
     useEffect(() => {
         const fetchPrismicContent = async () => {
             const queryResponse = await queryPageContent(tag);
@@ -32,14 +32,14 @@ const Energy: React.FC<HomeProps> = () => {
         fetchPrismicContent();
     }, [loader]);
 
+
     const renderText = () => {
-        const text = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.id == "YNR_FRIAACMAnmJG").pop()
+        const text = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.id == "YKY8qhAAACAA88kf").pop()
         return text?.node.description
     }
 
-
     const getCategories = () => {
-        const categroies = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.id !== "YNR_FRIAACMAnmJG")
+        const categroies = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.id !== "YKY8qhAAACAA88kf")
         return categroies
     }
 
@@ -54,7 +54,8 @@ const Energy: React.FC<HomeProps> = () => {
         return <Loader />;
     }
 
-    if(pageDoc) {
+    // Return the page if a document was retrieved from Prismic
+    if (pageDoc) {
         const title = RichText.asText(pageDoc.headline);
         return (
             <Container>
@@ -87,15 +88,7 @@ const Energy: React.FC<HomeProps> = () => {
         )
     }
 
+    return null;
 }
 
-export default Energy
-
-// export async function getStaticProps({ previewData }) {
-//     const allPages = await getAllPages(previewData)
-//     return {
-//         props: {
-//             text: allPages[0].node.description
-//         },
-//     }
-// }
+export default Help

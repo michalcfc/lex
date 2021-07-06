@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     MenuWrapper,
     MenuHeader,
@@ -9,8 +9,6 @@ import {
     CloseBtn
 } from "./MobileMenu.styles"
 
-import Link from 'next/link'
-
 import { MenuProps } from "./MobileMenu.d"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -18,13 +16,29 @@ import {
     faBars,
     faTimes
 } from '@fortawesome/free-solid-svg-icons'
-
+import {queryMenuContent} from "../../../../utilis/prismicQueries";
 
 const MobileMenu: React.FC<MenuProps> = ({
-    links,
     isOpen,
      setMenuOpen
 }) => {
+
+    const [homeDoc, setHomeDoc] = useState(null);
+    const [notFound, toggleNotFound] = useState(false);
+
+    // Fetch the Prismic initial Prismic content on page load
+    useEffect(() => {
+        const fetchPrismicContent = async () => {
+            const queryResponse = await queryMenuContent();
+            const homeDocContent = queryResponse.data.allNavigations.edges[0].node;
+            if (homeDocContent) {
+                setHomeDoc(homeDocContent);
+            } else {
+                toggleNotFound(true);
+            }
+        };
+        fetchPrismicContent();
+    }, []);
 
     return (
         <>
@@ -42,27 +56,42 @@ const MobileMenu: React.FC<MenuProps> = ({
             </MenuHeader>
             <ManuContent>
                 <ul>
-                {links.map(link => (
+                {homeDoc?.nav.map(link => (
                     <>
-                    {link.subLinks && link.subLinks.map(sub => (
+                    {link.primary.submenu && link.fields.map((sub, id) => (
+                        <>
+                        {sub.sub_nav_link._linkType == 'Link.web'
+                            ?  <MenuItem>
+                                    <LinkStyled href={sub.sub_nav_link.url} target={"_blank"}>
+                                    {sub.sub_nav_link_label[0].text}
+                                 </LinkStyled>
+                            </MenuItem>
+                            :
                         <MenuItem>
-                            <LinkStyled key={sub.id} href={sub.url}>
-                                {sub.name}
+                            <LinkStyled key={id} href={`/${sub.sub_nav_link._meta?.uid}`}>
+                                {sub.sub_nav_link_label[0].text}
                             </LinkStyled>
                         </MenuItem>
+                        }
+                        </>
                     ))}
+                    {link.primary.link?._linkType == 'Link.web'
+                        ?  <MenuItem>
+                            <LinkStyled href={link.primary.link.url} target={"_blank"}>
+                                {link.primary.label[0].text}
+                            </LinkStyled>
+                        </MenuItem>
+                        :
                     <MenuItem>
-                        <LinkStyled key={link.id}  href={link.url}>
-                            {link.name}
+                        <LinkStyled
+                            key={link.id}
+                            href={link.primary.link?._meta ? `/${link.primary.link._meta.uid}` : '/'}
+                        >
+                            {link.primary.label[0].text}
                         </LinkStyled>
-                    </MenuItem>
+                    </MenuItem>}
                     </>
                 ))}
-                <MenuItem>
-                    <LinkStyled href="tel:+48516178131">
-                        516-178-131
-                    </LinkStyled>
-                </MenuItem>
                 </ul>
 
             </ManuContent>
