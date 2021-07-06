@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {RefObject} from "react";
 
 type DataProps = {
+    autoWidth?: boolean
 }
 
 export const ModalCloseIcon = styled.div<DataProps>`
@@ -39,7 +40,7 @@ export const ModalBackground = styled.div<DataProps>`
 
 export const ModalWrapper = styled.div<DataProps>`
   margin: 0 auto;
-  width: 520px;
+  width: ${({autoWidth}) => autoWidth ? 'auto' : '520px'};
   border-radius: ${({theme}) => theme.borderRadius};
   box-shadow: ${({theme}) => theme.boxShadow};
   background: ${({theme}) => theme.colors.white};

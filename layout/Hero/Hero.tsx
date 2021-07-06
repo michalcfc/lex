@@ -24,51 +24,6 @@ import {
     HeroText
 } from "./Hero.styles"
 
-const bubbles = [
-    {
-        id: 1,
-        name: 'LEXELL internet',
-        url: '/clientChoose'
-    },
-    {
-        id: 2,
-        name: 'LEXELL help desk IT',
-        url: '/helpDesk'
-    },
-    {
-        id: 3,
-        name: "LEXELL computer",
-        url: '/computer'
-    },
-    {
-        id: 4,
-        name: "LEXELL energy",
-        url: '/energy'
-    },
-    {
-        id: 5,
-        name: "LEXELL building",
-        url: '/building'
-    },
-    {
-        id: 6,
-        name: "LEXELL telecom",
-        url: '/building'
-    },
-    {
-        id: 7,
-        name: "LEXELL smart and security",
-        url: '/smart'
-    },
-    {
-        id: 8,
-        name: "Fineinvest",
-        url: '/fineinvest'
-    },
-
-]
-
-
 const Hero = () => {
 
     const [homeDoc, setHomeDoc] = useState(null);
@@ -89,6 +44,7 @@ const Hero = () => {
     }, []);
 
     if (homeDoc) {
+
         const heroText = homeDoc.body[0].primary.heading[0].text;
         return (
             <HeroWrapper>
@@ -99,15 +55,13 @@ const Hero = () => {
                                 <HeroTitle>
                                     {heroText}
                                 </HeroTitle>
-                                {/*<HeroDescription>*/}
-                                {/*    Nowoczesna technologia. Pomoc. Bezpieczeństwo. Budownictwo. Energia.*/}
-                                {/*</HeroDescription>*/}
                                 <HeroBubbles>
-                                    {bubbles.map(bubble => {
+                                    {homeDoc.body[0].fields.map(bubble => {
+
                                         return <HeroBubble>
                                             {bubble.name === "LEXELL telecom" ?
                                                 <a href="http://telecom.lexell.pl" target={"_blank"}>{bubble.name}</a> :
-                                                <Link href={bubble.url}>
+                                                <Link href={bubble.url._meta.uid}>
                                                     {bubble.name}
                                                 </Link>
                                             }

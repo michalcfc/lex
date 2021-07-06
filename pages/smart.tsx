@@ -8,6 +8,8 @@ import {RichText} from "prismic-reactjs";
 import CategoriesMenu from "@components/CategoriesMenu";
 import {queryPageContent} from "../utilis/prismicQueries";
 import Loader from "@components/Loader";
+import Image from "next/image";
+import {ImageLoader} from "./../utilis/imageLoader";
 
 const Smart: React.FC<HomeProps> = () => {
 
@@ -38,12 +40,18 @@ const Smart: React.FC<HomeProps> = () => {
         return categroies
     }
 
+    const getCurrentPage = () => {
+        const currentPage = pageDoc?.data.allPagess.edges.find(e => e.node.main_img !== null)
+        return currentPage
+    }
+
     if(loader) {
         return <Loader />;
     }
 
     if(pageDoc) {
         const title = RichText.asText(pageDoc.headline)
+        const currentPage = getCurrentPage()
         return (
             <Container>
                 <Head>
@@ -61,7 +69,14 @@ const Smart: React.FC<HomeProps> = () => {
                     />
                     {title}
                     <div>
-                        <RichText render={renderText()}/>
+                        <img
+                            width="100%"
+                            height={"320"}
+                            src={currentPage.node.main_img.url}
+                        />
+                        <RichText
+                            render={renderText()}
+                        />
                     </div>
                 </Grid>
             </Container>

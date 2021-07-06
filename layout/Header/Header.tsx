@@ -36,9 +36,7 @@ import {HeaderProps} from "./Header.d";
 import App from "../../pages/_app";
 const SCROLL_DISTANCE = 10
 
-const Header: React.FC<HeaderProps> = ( {
-    links,
-}) => {
+const Header: React.FC<HeaderProps> = () => {
     const [scrolled, setScroled] = useState(null)
     const [scroll, setScroll] = useState(false)
     const [isMenuOpen, setMenuOpen] = useState(false)
@@ -115,10 +113,6 @@ const Header: React.FC<HeaderProps> = ( {
                             <SocialIcon><FontAwesomeIcon icon={faFacebookF} /></SocialIcon>
                             <SocialIcon><FontAwesomeIcon icon={faInstagram} /></SocialIcon>
                         </HeaderTopInfoItems>
-                        {/* <HeaderTopInfoItems>
-                            <HeaderTopInfoItem>Dla firmy</HeaderTopInfoItem>
-                            <HeaderTopInfoItem>Dla dewelopera</HeaderTopInfoItem>
-                        </HeaderTopInfoItems> */}
                     </HeaderTopInfoItems>
                     <HeaderTopInfoItems>
                         <HeaderTopInfoItem>
@@ -150,11 +144,8 @@ const Header: React.FC<HeaderProps> = ( {
                                 <img src={changeLogo()}/>
                             </Link>}
                         </BrandLogo>
-                        {!isMobile ? <Menu
-                            links={links}
-                            />
+                        {!isMobile ? <Menu/>
                         : <MobileMenu
-                                links={links}
                                 setMenuOpen={setMenuOpen}
                                 isOpen={isMenuOpen}
                             />}

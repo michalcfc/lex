@@ -13,9 +13,9 @@ const loopOne = keyframes`
 `
 
 export const SliderWrapper = styled.div<DataProps>`
-  box-shadow: 0 10px 0px -5px rgba(0, 0, 0, 0.125);
   height: 100px;
   margin: auto;
+  margin: 2rem 0;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -43,7 +43,7 @@ export const SliderStyle = styled.div<DataProps>`
   display: flex;
   align-items: center;
   width: calc(250px * 14);
-
+  width: 100px;
 `;
 
 export const SliderItem = styled.div<DataProps>`

@@ -10,6 +10,8 @@ import {RichText} from "prismic-reactjs";
 import {useEffect, useState} from "react";
 import Loader from "@components/Loader";
 import CategoriesMenu from "@components/CategoriesMenu";
+import Image from "next/image";
+import {ImageLoader} from "./../utilis/imageLoader";
 
 const Energy: React.FC<HomeProps> = () => {
 
@@ -31,15 +33,22 @@ const Energy: React.FC<HomeProps> = () => {
     }, [loader]);
 
     const renderText = () => {
-        const text = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.id == "YLAIrxAAACYAZLYi").pop()
+        const text = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.id == "YNR_FRIAACMAnmJG").pop()
         return text?.node.description
     }
 
 
     const getCategories = () => {
-        const categroies = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.id !== "YLAIrxAAACYAZLYi")
+        const categroies = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.id !== "YNR_FRIAACMAnmJG")
         return categroies
     }
+
+    const getCurrentPage = () => {
+        const currentPage = pageDoc?.data.allPagess.edges.find(e => e.node.main_img !== null)
+        return currentPage
+    }
+
+    const currentPage = getCurrentPage()
 
     if(loader) {
         return <Loader />;
@@ -64,7 +73,14 @@ const Energy: React.FC<HomeProps> = () => {
                     />
                     {title}
                     <div>
-                        <RichText render={renderText()}/>
+                        <img
+                            width="100%"
+                            height={"320"}
+                            src={currentPage.node.main_img.url}
+                        />
+                        <RichText
+                            render={renderText()}
+                        />
                     </div>
                 </Grid>
             </Container>

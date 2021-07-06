@@ -15,6 +15,7 @@ export const MenuAsideMobileWrapper = styled.div<DataProps>`
 export const MenuAsideMobileContent = styled.div<DataProps>`
   margin: 0 2rem;
   position: absolute;
+  z-index: 99;
   top: 0;
   transform: translate(-10%, 32%);
   padding: ${({theme}) => theme.spacing.sm} ${({theme}) => theme.spacing.md};

@@ -1,10 +1,13 @@
-import {useRef, useState} from "react"
+import {useEffect, useRef, useState} from "react"
 import { HomeProps } from "./../Types/Home.d"
 import Pricing from "@components/Pricing"
 import Container from "@components/Container"
 import Flexbox from "@components/Flexbox"
 
 import Head from "next/head";
+import {queryPricingContent} from "../utilis/prismicQueries";
+import Loader from "@components/Loader";
+import {RichText} from "prismic-reactjs";
 
 const Network: React.FC<HomeProps> = ({
 
@@ -12,148 +15,85 @@ const Network: React.FC<HomeProps> = ({
 
     const myRef = useRef(null)
 
-    const executeScroll = () => myRef.current.scrollIntoView() 
+    const executeScroll = () => myRef.current.scrollIntoView()
+
+    const [loader, setLoader] = useState(true)
+    const [pageDoc, setPageDoc] = useState(null);
+
+    // Fetch the Prismic initial Prismic content on page load
+    const pageID = "about"
+    useEffect(() => {
+        const fetchPrismicContent = async () => {
+            const queryResponse = await queryPricingContent();
+            const pageDocContent = queryResponse.data.allPricings.edges;
+            if (pageDocContent) {
+                setPageDoc(pageDocContent);
+                setLoader(false);
+            }
+        };
+        fetchPrismicContent();
+    }, [loader]);
+
+    if(loader) {
+        return <Loader />;
+    }
 
 
-    const pricing = [
-                {
-                    id: 1,
-                    name: '300 Mb/s',
-                    download: '300 Mb/s',
-                    upload: '150 Mb/s',
-                    twoYearsActive: 'Opłata aktywacyjna: 99 zł',
-                    twoYearsAbo: '59 zł/mc*',
-                    noTimeActive: 'Opłata aktywacyjna: 499 zł',
-                    noTimeAbo: '99 zł/mc*'
-                },
-                {
-                    id: 2,
-                    name: '750 Mb/s',
-                    download: '750 Mb/s',
-                    upload: '250 Mb/s',
-                    twoYearsActive: 'Opłata aktywacyjna: 99 zł',
-                    twoYearsAbo: '69 zł/mc*',
-                    noTimeActive: 'Opłata aktywacyjna: 499 zł',
-                    noTimeAbo: '109 zł/mc*'
-                },
-                {
-                    id: 3,
-                    name: '1000 Mb/s',
-                    download: '1000 Mb/s',
-                    upload: '350 Mb/s',
-                    twoYearsActive: 'Opłata aktywacyjna: 99 zł',
-                    twoYearsAbo: '89 zł/mc*',
-                    noTimeActive: 'Opłata aktywacyjna: 499 zł',
-                    noTimeAbo: '129 zł/mc*'
-                },
-        ]
-
-        const pricingRadio = [
-            {
-                id: 1,
-                name: '10 Mb/s',
-                download: '10 Mb/s',
-                upload: '10/1 Mb/s',
-                twoYearsActive: '',
-                twoYearsAbo: '40 zł/mc*',
-                noTimeActive: '',
-                noTimeAbo: '50 zł/mc*'
-            },
-            {
-                id: 2,
-                name: '20 Mb/s',
-                download: '20 Mb/s',
-                upload: '20/2 Mb/s',
-                twoYearsActive: '',
-                twoYearsAbo: '45 zł/mc*',
-                noTimeActive: '',
-                noTimeAbo: '55 zł/mc*'
-            },
-            {
-                id: 3,
-                name: '30 Mb/s',
-                download: '30 Mb/s',
-                upload: '30/3 Mb/s',
-                twoYearsActive: '',
-                twoYearsAbo: '55 zł/mc*',
-                noTimeActive: '',
-                noTimeAbo: '65 zł/mc*'
-            },
-            {
-                id: 4,
-                name: '40 Mb/s',
-                download: '40 Mb/s',
-                upload: '40/4 Mb/s',
-                twoYearsActive: '',
-                twoYearsAbo: '65 zł/mc*',
-                noTimeActive: '',
-                noTimeAbo: '80 zł/mc*'
-            },
-            {
-                id: 5,
-                name: '50 Mb/s',
-                download: '50 Mb/s',
-                upload: '50/5 Mb/s',
-                twoYearsActive: '',
-                twoYearsAbo: '75 zł/mc*',
-                noTimeActive: '',
-                noTimeAbo: '90 zł/mc*'
-            },
-    ]
-
-
-    return (
-        <>
-          <Container>
-            <Head>
-                <title>Internet światłowodowy - cennik</title>
-            </Head>
-
+    if(pageDoc) {
+        const radio = pageDoc?.filter(e => e.node._meta.id == "YJHOrhEAAEV9J7pf").pop()
+        const opticalFiber = pageDoc?.filter(e => e.node._meta.id == "YNm9ihQAACQAf1ID").pop()
+        const mapUrlPath = radio.node.map.embed_url
+        return (
             <>
+                <Container>
+                    <Head>
+                        <title>{radio.node.page_title[0].text}</title>
+                    </Head>
 
-                <h2>Internet radiowy</h2>
+                    <>
+                        <h2>{radio.node.page_title[0].text}</h2>
 
-                <p>Usługi Internetu radiowego świadczymy już w wielu miastach! Poniżej przedstawiamy cennik wraz z mapą zasięgów.</p><br/>
+                        <RichText render={radio.node.page_description} />
 
-                   <p> Z cennika skorzystać mogą nowi oraz aktualni klienci Lexell, pod
-                    warunkiem nie posiadania na dzień podpisania umowy/aneksu zaległości
-                    płatniczych wobec Lexell.</p><br/>
+                        {/*<p>Usługi Internetu radiowego świadczymy już w wielu miastach! Poniżej przedstawiamy cennik wraz*/}
+                        {/*    z mapą zasięgów.</p><br/>*/}
 
-                    <p>Prędkość łącza wskazana w taryfie jest wartością podstawową. W godzinach
-                    nocnych (00:00 - 7:00) prędkość jest nawet 2 razy większa.</p>
+                        {/*<p> Z cennika skorzystać mogą nowi oraz aktualni klienci Lexell, pod*/}
+                        {/*    warunkiem nie posiadania na dzień podpisania umowy/aneksu zaległości*/}
+                        {/*    płatniczych wobec Lexell.</p><br/>*/}
 
-                    <Pricing
-                        isRadioPricing={true}
-                        pricing={pricingRadio}
-                    />
+                        {/*<p>Prędkość łącza wskazana w taryfie jest wartością podstawową. W godzinach*/}
+                        {/*    nocnych (00:00 - 7:00) prędkość jest nawet 2 razy większa.</p>*/}
 
-                    <h2>Mapa zasięgu</h2>
-                    <iframe src="https://www.google.com/maps/d/embed?mid=1nVsbWjf9tpuZRH6ssqi3jVXwCVhEQJ4u" width="100%" height="480"></iframe>
+                        <Pricing
+                            isRadioPricing={true}
+                            pricing={radio.node.body}
+                        />
 
-                    <Flexbox
-                        align={'center'}
-                    >
-                        <h2>Internet światłowodowy </h2>
-                        <a href="http://telecom.lexell.pl" target="_blank">
-                            <img src={"/img/logos/telecom.png"}  height={"40px"} style={{marginLeft: '1rem'}}/>
-                        </a>
-                    </Flexbox>
+                        <h2>Mapa zasięgu</h2>
+                        <iframe src={mapUrlPath}
+                                width="100%" height="480"></iframe>
 
-                    <p>
-                        Kliencie, jeśli mieszkasz na terenie Lubonia, Chwałkówka lub Koninka, zapraszamy do zapoznania się z ofertą naszej drugiej spółki Lexell telecom,
-                        która oferuje Internet światłowodowy w najlepszej cenie!
-                        Poniżej przedstawiamy cennik!<br/>
-                        Więcej informacji na stronie: <a href="http://telecom.lexell.pl" target="_blank">http://telecom.lexell.pl/</a>
-                    </p>
+                        <Flexbox
+                            align={'center'}
+                        >
+                            <h2>{opticalFiber.node.page_title[0].text}</h2>
+                            <a href="http://telecom.lexell.pl" target="_blank">
+                                <img src={"/img/logos/telecom.png"} height={"40px"} style={{marginLeft: '1rem'}}/>
+                            </a>
+                        </Flexbox>
 
-                    <Pricing
-                        isNetworkPricing={true}
-                        pricing={pricing}
-                    />
-            </>  
-            </Container>
-        </>
-    )
+                        <RichText render={opticalFiber.node.page_description} />
+
+                        <Pricing
+                            isNetworkPricing={true}
+                            pricing={opticalFiber.node.body}
+                        />
+                    </>
+                </Container>
+            </>
+        )
+    }
 }
 
 export default Network

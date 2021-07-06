@@ -123,24 +123,25 @@ const Section: React.FC<PricingProps> = ({
                 columns="repeat(auto-fit, minmax(260px, 1fr));"
                 mt={4}
             >
-                {pricing.map(pack => (
+                {pricing?.map(pack => {
+                return (
                     <PricingPack>
                         <PricingHeader>
-                            <PricingTitle>{pack.name}</PricingTitle>
+                            <PricingTitle>{pack.primary.plan_name[0].text}</PricingTitle>
                             {!isNetworkPricing && <PricingDescription>Umowa na 24 miesiące</PricingDescription>}
                         </PricingHeader>
                         {(isNetworkPricing || isRadioPricing)
                             && <ProgressBar>
-                                <ProgressValue value={`${changeValue(pack.name)}`}></ProgressValue>
+                                <ProgressValue value={`${changeValue(pack.primary.plan_name[0].text)}`}></ProgressValue>
                             </ProgressBar>
                         }
                         <PricingItem>
                             {
-                                pack.download
+                                pack.primary.download
                                 && <FontAwesomeIcon icon={faArrowCircleUp}/>
                             }
                             {
-                                pack.download || pack.channels
+                                pack.primary.download || pack.channels
                             }
                             {isTvPricing
                                 && <ChannelList onClick={() => setChannelModal(true)}>
@@ -151,12 +152,12 @@ const Section: React.FC<PricingProps> = ({
                         {isNetworkPricing
                             && <PricingItem>
                             <FontAwesomeIcon icon={faArrowCircleDown}/>
-                            {pack.upload}
+                            {pack.primary.upload}
                         </PricingItem>}
                         <PricingItemPrice>
                             {isNoTime
-                                ? pack.noTimeAbo
-                                :  pack.twoYearsAbo  || pack.tvAbo
+                                ? pack.primary.indefinite_contract_price
+                                :  pack.primary.term_contract_price || pack.tvAbo
                             }
                         </PricingItemPrice>
                         <PricingItem>
@@ -165,8 +166,8 @@ const Section: React.FC<PricingProps> = ({
                             }
                             <span>{
                                 isNoTime
-                                ? pack.noTimeActive
-                                : pack.twoYearsActive
+                                ? pack.primary.indefinite_activation_price
+                                : pack.primary.term_activation_price
                                 || pack.decoder
                             }</span>
                         </PricingItem>
@@ -180,7 +181,7 @@ const Section: React.FC<PricingProps> = ({
                             </Link>
                         </PricingFooter>
                     </PricingPack>
-                ))}
+                )})}
             </Grid>
             <PricingBottom>
                 {!isTvPricing && !isRadioPricing && "Stały adres IP za dopłatą miesięcznie: 5zł"}

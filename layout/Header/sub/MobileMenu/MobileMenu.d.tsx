@@ -16,7 +16,6 @@ interface Links {
   }
 
 export interface MenuProps {
-    links: Links[]
     isOpen: boolean
     setMenuOpen: (arg: boolean) => void
 }

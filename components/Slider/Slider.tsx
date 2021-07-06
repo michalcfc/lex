@@ -45,27 +45,34 @@ const Slider: React.FC<SliderProps> = ({
   }
   return (
       <>
-        {/*<Arrow*/}
-        {/*    leftDirection*/}
-        {/*    left='-40px'*/}
-        {/*    bottom='50%'*/}
-        {/*    onClick={() => moveLeft()}*/}
-        {/*/>*/}
         <SliderWrapper ref={element}>
           <SliderStyle>
-                {items.map(item => {
-                  return <a href={item.url} target={"_blank"}><SliderItem>
-                    <SliderImg src={item.img} />
-                  </SliderItem></a>
-                })}
+
+              {items?.map(item => {
+                  return <>{item.logo_url.__typename === "_ExternalLink" ?
+                      <a  href="http://telecom.lexell.pl" target={"_blank"}><SliderItem>
+                          <SliderImg src={item.logo_img.url}/>
+                      </SliderItem></a>
+                      : <a href={item.logo_url._meta?.uid} target={"_blank"}><SliderItem>
+                          <SliderImg src={item.logo_img.url}/>
+                      </SliderItem></a>
+
+                  }</>
+              })}
+              {items?.map(item => {
+                  return <>{item.logo_url.__typename === "_ExternalLink" ?
+                  <a  href="http://telecom.lexell.pl" target={"_blank"}><SliderItem>
+                          <SliderImg src={item.logo_img.url}/>
+                      </SliderItem></a>
+                      : <a href={item.logo_url._meta?.uid} target={"_blank"}><SliderItem>
+                          <SliderImg src={item.logo_img.url}/>
+                      </SliderItem></a>
+
+                  }</>
+              })}
           </SliderStyle>
         </SliderWrapper>
-        {/*  <Arrow*/}
-        {/*    leftDirection*/}
-        {/*    left='-40px'*/}
-        {/*    bottom='50%'*/}
-        {/*    onClick={() => moveRight()}*/}
-        {/*/>*/}
+
       </>
   )
 }

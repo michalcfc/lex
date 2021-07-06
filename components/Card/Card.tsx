@@ -1,4 +1,3 @@
-
 import {
     CardContainer,
     CardFigure,
@@ -16,15 +15,19 @@ import Link from "next/link"
 
 import Arrow from "@components/Arrow"
 
-import {
-    faClock,
-} from '@fortawesome/free-solid-svg-icons'
+import { RichText } from "prismic-reactjs";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { CardProps } from './Card.d';
 
-const Card: React.FC<CardProps> = ({
+import {
+    SpaceProps
+} from "styled-system"
+
+type Props = CardProps & SpaceProps
+
+const Card: React.FC<Props> = ({
    cardIcon,
     img,
    hasRedirection,
@@ -47,6 +50,13 @@ const Card: React.FC<CardProps> = ({
     m,
     p
 }) => {
+
+    const truncateText = (text) => {
+        if (text.length > 75) {
+            return text.slice(0, 75).concat('...')
+        }
+        return text
+    }
     return (
         <CardContainer
             p={p}
@@ -72,24 +82,40 @@ const Card: React.FC<CardProps> = ({
             >
                 <div>
                 {cardIcon
-                    && <CardIcon><FontAwesomeIcon size='2x' icon={cardIcon} /></CardIcon>
+                    && <CardIcon>
+                        <FontAwesomeIcon
+                            size='2x'
+                            icon={cardIcon}
+                        />
+                    </CardIcon>
                 }
                 </div>
             <div>
             <CardHeader>
                 <CardTitle>
-                    {title}
+                    {linkName ?
+                        <Link href={link}>{title}</Link>
+                        : title
+                    }
                 </CardTitle>
             </CardHeader>
                 {children}
                 <CardDescription>
-                    {description}
+                    {Array.isArray(description)
+                        ? truncateText(`${RichText.asText(description)}`)
+                        : description
+                    }
                 </CardDescription>
-            </div>
-                {hasRedirection && <CardLink>
-                    <Link href={link}>{linkName}</Link>
-                     <Arrow rightDirection />
+                <CardFooter>
+                    {linkName && <CardLink>
+                        <Link href={link}>{linkName}</Link>
+                             <Arrow
+                                 rightDirection
+                                 fontSize={1}
+                             />
                     </CardLink>}
+                </CardFooter>
+            </div>
             </CardContent>
         </CardContainer>
     )

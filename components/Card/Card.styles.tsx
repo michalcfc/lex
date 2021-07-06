@@ -70,7 +70,7 @@ export const CardTitle = styled.div`
 `
 
 export const CardContent = styled.div<DataProps>`
-  flex: 1 1 0%;
+  flex: ${({flexContent}) => flexContent && `1 1 0%`};
   padding:  ${({theme}) => theme.spacing.sm};
   display: ${({flexContent}) => flexContent && `flex`};
   align-items: ${({flexContent}) => flexContent && `center`};
@@ -84,19 +84,20 @@ export const CardDescription = styled.p`
 `
 
 export const CardFooter = styled.div`
-  margin: ${({theme}) => theme.spacing.sm};
-  padding: ${({theme}) => theme.spacing.sm};
+  margin: ${({theme}) => theme.spacing.md} 0 0 0 ;
+  & a {
+    font-size: ${({ theme }) => theme.fontSize.sm};
+    margin-right: 1rem;
+  }
 `;
 
 export const CardLink = styled.div`
   display: flex;
-  padding: 0 1rem;
   align-items: center;
   position: relative;
   justify-content: flex-end;
   color: ${({theme}) => theme.colors.brand};
-  & a {
-    font-size: 1.2rem;
-    margin-right: 1rem;
+  @media (min-width: 800px) {
+    padding: 0 1rem;
   }
 `

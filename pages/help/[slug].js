@@ -4,12 +4,13 @@ import {useEffect, useState} from "react";
 import { RichText } from "prismic-reactjs";
 
 import Grid             from "@components/Grid"
+import Card             from "@components/Card";
 import Loader           from "@components/Loader"
 import Container        from "@components/Container"
 import CategoriesMenu   from "@components/CategoriesMenu";
 
 import {
-    queryPageContent
+    queryPageContent, queryPostPageContent
 } from "../../utilis/prismicQueries";
 const Post = () => {
 
@@ -17,15 +18,19 @@ const Post = () => {
 
     const [loader, setLoader] = useState(true)
     const [pageDoc, setPageDoc] = useState(null);
+    const [pagePosts, setPagePosts] = useState(null)
 
     // Fetch the Prismic initial Prismic content on page load
     const tag = "help"
     useEffect(() => {
         const fetchPrismicContent = async () => {
             const queryResponse = await queryPageContent(tag);
+            const postPageReposnse = await  queryPostPageContent(tag)
             const pageDocContent = queryResponse;
+            const pagePostDocContent = postPageReposnse.data.allPosts.edges
             if (pageDocContent) {
                 setPageDoc(pageDocContent);
+                setPagePosts(pagePostDocContent)
                 setLoader(false);
             }
         };
@@ -38,9 +43,11 @@ const Post = () => {
     }
 
     const getCategories = () => {
-        const categroies = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.uid !== "help-desk-it")
+        const categroies = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.uid !== tag)
         return categroies
     }
+
+    const isPageWithPosts = router.query.slug === 'help-realization'
 
     if(loader) {
         return <Loader />
@@ -64,6 +71,19 @@ const Post = () => {
                     />
                     <div>
                         <RichText render={renderText()}/>
+                        {pagePosts.map(post => (
+                            <>
+                                {isPageWithPosts && <Card
+                                    mb={3}
+                                    imgFlex
+                                    img={post.node.main_image.url}
+                                    description={post.node.text}
+                                    title={post.node.title[0].text}
+                                    link={`/${tag}/articles/${post.node._meta.uid}`}
+                                    linkName={post.node.cta_text}
+                                />}
+                            </>
+                        ))}
                     </div>
                 </Grid>
             </Container>

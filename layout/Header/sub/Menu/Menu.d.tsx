@@ -16,5 +16,5 @@ interface Links {
   }
 
 export interface MenuProps {
-    links: Links[]
+
 }

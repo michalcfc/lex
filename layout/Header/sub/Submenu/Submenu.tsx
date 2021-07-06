@@ -18,16 +18,6 @@ const Submenu: React.FC<SubmenuProps> = ({
     setMenuOpen,
 }) => {
 
-    function chunkArrayInGroups(arr, size) {
-        let result = [];
-        let pos = 0;
-        while (pos < arr.length) {
-            result.push(arr.slice(pos, pos + size));
-            pos += size;
-        }
-        return result;
-        }
-
     return (
         <MenuWrapper
             onMouseLeave={() => {
@@ -40,14 +30,13 @@ const Submenu: React.FC<SubmenuProps> = ({
                return <MenuItem
                    key={id}
                >
-                   {link.sub_nav_link._meta.uid == 'LEXELL telecom' ? <a href="http://telecom.lexell.pl" target={"_blank"}>
-                       <MenuLink>{link.sub_nav_link._meta.uid} </MenuLink>
+                   {link.sub_nav_link._linkType == 'Link.web' ? <a href={link.sub_nav_link.url} target={"_blank"}>
+                       <MenuLink>{link.sub_nav_link_label[0].text} </MenuLink>
                    </a>  :
-                   <Link href={link.sub_nav_link._meta.uid}>
+                   <Link href={`/${link.sub_nav_link._meta.uid}`}>
                        <a>
                        <MenuLink>
-                           {/* <FontAwesomeIcon icon={link.icon} /> */}
-                           <span>{link.sub_nav_link._meta.uid}</span>
+                           <span>{link.sub_nav_link_label[0].text}</span>
                        </MenuLink>
                        </a>
                    </Link>

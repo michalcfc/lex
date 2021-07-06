@@ -20,8 +20,9 @@ import {
 import { CallToActionProps } from "./CallToAction.d"
 import {faFacebookF} from "@fortawesome/free-brands-svg-icons";
 
-const CallToAction: React.FC<CallToActionProps> = () => {
-
+const CallToAction: React.FC<CallToActionProps> = ({
+    data
+   }) => {
 
     return (
         <Section
@@ -30,18 +31,18 @@ const CallToAction: React.FC<CallToActionProps> = () => {
                 <CallToActionStyle>
                     <CallToActionLeft>
                         <CallToActionImg
-                            src="/img/support.png"
+                            src={data.img.url}
                         />
                     </CallToActionLeft>
                     <CallToActionRight>
-                        <CallToActionTitle>Masz pytania? Zadzwoń!</CallToActionTitle>
-                        Konsultanci pracują od poniedziałku do piątku w godzinach 8:00 - 17:00.
+                        <CallToActionTitle>{data.heading[0].text}</CallToActionTitle>
+                        {data.text[0].text}
                         <CallToActionText>
                             <PhoneNumber>
-                                <FontAwesomeIcon icon={faPhone} /> 61 814-38-25
+                                <FontAwesomeIcon icon={faPhone} /> {data.phone_one}
                             </PhoneNumber>
                             <PhoneNumber>
-                                <FontAwesomeIcon icon={faPhone} /> 516-178-131
+                                <FontAwesomeIcon icon={faPhone} /> {data.phone_two}
                             </PhoneNumber>
                         </CallToActionText>
                     </CallToActionRight>
