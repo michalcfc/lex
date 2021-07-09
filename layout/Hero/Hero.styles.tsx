@@ -53,7 +53,7 @@ export const HeroWrapper = styled.picture`
     object-fit: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url("img/lex2.png");
+    background-image: url("/img/lex2.png");
     @media (min-width: 800px) {
       min-height: 38rem;
     }

@@ -43,10 +43,10 @@ const Menu: React.FC<MenuProps> = () => {
     return (
         <MenuWrapper>
 
-            {homeDoc?.nav.map(link => {
+            {homeDoc?.nav.map((link, id) => {
                 return <>{!link.primary.link?.url?.includes("tel") &&
                 <MenuItem
-                    key={link.primary.label[0].text}
+                    key={id}
                     onMouseEnter={() => {
                         setSubemnuId(link.primary.label[0].text)
                         setMenuOpen(true)

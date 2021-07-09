@@ -52,6 +52,12 @@ const Section: React.FC<PricingProps> = ({
 
     const mailTopic = (packName) => {
         switch (packName) {
+            case "OK":
+                return "Telewizja z internetem 'Pakiet OK'"
+            case "Optymalny":
+                return "Telewizja z internetem 'Pakiet Optymalny'"
+            case "Komfortowy":
+                return "Telewizja z internetem 'Pakiet Komfortowy'"
             case "10 Mb/s":
                 return "Internet radiowy 10 Mb/s"
             case "20 Mb/s":
@@ -173,10 +179,10 @@ const Section: React.FC<PricingProps> = ({
                         </PricingItem>
                         <PricingFooter>
                                 <Link
-                                    href={'contact'}
+                                    href={'/contact'}
                                     >
                             <StyledLink
-                                onClick={() => choosePack(pack.name)}
+                                onClick={() => choosePack(pack.primary.plan_name[0].text)}
                             >Wybieram</StyledLink>
                             </Link>
                         </PricingFooter>

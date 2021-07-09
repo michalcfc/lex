@@ -90,6 +90,16 @@ query footerQuery {
         contact_label
         phone_one
         phone_two
+        social_fb {
+          ...on _ExternalLink {
+            url
+          }
+        }
+        social_insta {
+          ...on _ExternalLink {
+            url
+          }
+        }
         footer_links {
           link_label
           link {
@@ -135,6 +145,39 @@ query blogHomeQuery {
   allHomepages {
     edges {
       node {
+              social_fb {
+          ...on _ExternalLink {
+            url
+          }
+        }
+        social_insta {             
+          ...on _ExternalLink {
+            url
+        }
+        }
+        phone_number
+        phone_number_url {
+          ...on _ExternalLink {
+            url
+          }
+        }
+        open_hours
+        for_business {
+          ...on Pages {
+            _meta {
+              uid
+            }
+          }
+        }
+        for_business_label
+        for_developer {
+           ...on Pages {
+            _meta {
+              uid
+            }
+          }
+        }
+        for_developer_label
         body {
            ...on HomepageBodyCta_feature {
                 type
@@ -235,6 +278,16 @@ allPagess(uid: $uid) {
         _meta {
            id   
           uid
+        }
+          body {
+          ...on PagesBodyContact {
+            primary {
+              phone_number_one
+              phone_number_two
+              street
+              city
+            }
+          }
         }
         page_title
         description

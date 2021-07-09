@@ -71,12 +71,16 @@ const Footer = () => {
                                 <RichText render={footerDoc.about_us} />
                             </p>
                             <FooterSocialIcons>
+                                <a href={footerDoc.social_fb.url} >
                                 <FooterSocialIcon>
                                     <FontAwesomeIcon icon={faFacebookF} />
                                 </FooterSocialIcon>
-                                <FooterSocialIcon>
-                                    <FontAwesomeIcon icon={faInstagram} />
-                                </FooterSocialIcon>
+                                </a>
+                                <a href={footerDoc.social_insta.url} >
+                                    <FooterSocialIcon>
+                                        <FontAwesomeIcon icon={faInstagram} />
+                                    </FooterSocialIcon>
+                                </a>
                             </FooterSocialIcons>
                         </FooterColumn>
                             <FooterColumn>
