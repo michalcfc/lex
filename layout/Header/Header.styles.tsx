@@ -42,6 +42,7 @@ export const HeaderTopInfoWrapper = styled.div<DataProps>`
   background: ${({ theme }) => theme.colors.brand};
   & svg {
     margin-right: .42rem;
+    color: ${({theme}) => theme.colors.white}
   }
   @media (max-width: 800px) {
     display: none;
@@ -56,6 +57,9 @@ export const HeaderTopInfoContent = styled.div<DataProps>`
 
 export const HeaderTopInfoItems = styled.div<DataProps>`
   display: flex;
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const HeaderTopInfoItem = styled.div<DataProps>`

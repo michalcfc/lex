@@ -55,16 +55,6 @@ const Network: React.FC<HomeProps> = ({
 
                         <RichText render={radio.node.page_description} />
 
-                        {/*<p>Usługi Internetu radiowego świadczymy już w wielu miastach! Poniżej przedstawiamy cennik wraz*/}
-                        {/*    z mapą zasięgów.</p><br/>*/}
-
-                        {/*<p> Z cennika skorzystać mogą nowi oraz aktualni klienci Lexell, pod*/}
-                        {/*    warunkiem nie posiadania na dzień podpisania umowy/aneksu zaległości*/}
-                        {/*    płatniczych wobec Lexell.</p><br/>*/}
-
-                        {/*<p>Prędkość łącza wskazana w taryfie jest wartością podstawową. W godzinach*/}
-                        {/*    nocnych (00:00 - 7:00) prędkość jest nawet 2 razy większa.</p>*/}
-
                         <Pricing
                             isRadioPricing={true}
                             pricing={radio.node.body}

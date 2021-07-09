@@ -1,5 +1,5 @@
 interface  Pricing {
-    primary: any;
+    primary: any
     id: number
     tvAbo?: string
     name: string

@@ -45,7 +45,7 @@ const ClientSwitch: React.FC<ClientSwitchProps> = ({
                     </Link>
                 </LeftSide>
                 <SwitchButtons>
-                    <Link href='/biznes'>
+                    <Link href='/business'>
                         <StyledLink>
                             Dla biznesu
                         </StyledLink>

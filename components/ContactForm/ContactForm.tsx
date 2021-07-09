@@ -33,7 +33,8 @@ import {
 const ContactForm: React.FC<ContactFormProps> = ({
      messageTopic,
      choosenPack,
-     isContactPage
+     isContactPage,
+    data
 }) => {
 
 
@@ -110,7 +111,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                             <FontAwesomeIcon icon={faPhone} />
                         </ContactIcon>
                         <ContactItemText>
-                                61 814-38-25
+                            {data.phone_number_one}
                         </ContactItemText>
                     </ContactItem>
                     
@@ -119,7 +120,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                             <FontAwesomeIcon icon={faPhone} />
                         </ContactIcon>
                             <ContactItemText>
-                                516-178-131
+                                {data.phone_number_two}
                             </ContactItemText>
                     </ContactItem>
 
@@ -128,8 +129,8 @@ const ContactForm: React.FC<ContactFormProps> = ({
                             <FontAwesomeIcon icon={faMapMarked} />
                         </ContactIcon>
                         <ContactItemText>
-                            ul. Przylesie 6, <br/>
-                            60-185 Skórzewo
+                            {data.street} <br/>
+                            {data.city}
                         </ContactItemText>
                     </ContactItem>
 

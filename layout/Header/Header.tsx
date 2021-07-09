@@ -34,16 +34,29 @@ import Menu from "./sub/Menu"
 import MobileMenu from "./sub/MobileMenu"
 import {HeaderProps} from "./Header.d";
 import App from "../../pages/_app";
+import {queryHomeContent} from "../../utilis/prismicQueries";
 const SCROLL_DISTANCE = 10
 
 const Header: React.FC<HeaderProps> = () => {
-    const [scrolled, setScroled] = useState(null)
+
     const [scroll, setScroll] = useState(false)
     const [isMenuOpen, setMenuOpen] = useState(false)
     const [isMobile, setMobile] = useState(false)
-    const router = useRouter();
+
+    const [homeDoc, setHomeDoc] = useState(null);
+    const [loader, setLoader] = useState(true);
 
     useEffect(() => {
+
+        const fetchPrismicContent = async () => {
+            const queryResponse = await queryHomeContent();
+            const homeDocContent = queryResponse.data.allHomepages.edges[0].node;
+            if (homeDocContent) {
+                setHomeDoc(homeDocContent);
+                setLoader(false)
+            }
+        };
+        fetchPrismicContent();
 
         if (isMenuOpen) {
             setMenuOpen(!isMenuOpen);
@@ -97,64 +110,99 @@ const Header: React.FC<HeaderProps> = () => {
         }
     }
 
+    if (loader) {
+        return <></>
+    }
 
-    return (
-        <HeaderWrapper
-          position={isHomePage() && scroll}
-          homePage={isHomePage()}
-        >
-            <HeaderTopInfoWrapper
+    if(homeDoc) {
+        const forDeveloperLabel = homeDoc.for_developer_label
+        const forDeveloperUrl = homeDoc.for_developer._meta.uid
+        const forBusinessLabel = homeDoc.for_business_label
+        const forBusinessUrl = homeDoc.for_business._meta.uid
+        const facebookUrl = homeDoc.social_fb.url
+        const instagramUrl = homeDoc.social_insta.url
+        const openHours = homeDoc.open_hours
+        const phoneNumber = homeDoc.phone_number
+        const phoneNumberUrl = homeDoc.phone_number_url.url
+        return (
+            <HeaderWrapper
                 position={isHomePage() && scroll}
-            >
-                <Container>
-                <HeaderTopInfoContent>
-                    <HeaderTopInfoItems>
-                        <HeaderTopInfoItems>
-                            <SocialIcon><FontAwesomeIcon icon={faFacebookF} /></SocialIcon>
-                            <SocialIcon><FontAwesomeIcon icon={faInstagram} /></SocialIcon>
-                        </HeaderTopInfoItems>
-                    </HeaderTopInfoItems>
-                    <HeaderTopInfoItems>
-                        <HeaderTopInfoItem>
-                           <FontAwesomeIcon icon={faClock} /> Pon - Pt: 8:00 - 17:00
-                        </HeaderTopInfoItem>
-                        <HeaderTopInfoItem>
-                            <FontAwesomeIcon icon={faPhone} />
-                            <a href="tel:+48516178131">
-                                516-178-131
-                            </a>
-                        </HeaderTopInfoItem>
-                        {/* <HeaderTopInfoItem>
-                          <FontAwesomeIcon icon={faUser} />Panel klienta
-                        </HeaderTopInfoItem> */}
-                    </HeaderTopInfoItems>
-                </HeaderTopInfoContent>
-                </Container>
-            </HeaderTopInfoWrapper>
-            <HeaderContentWrapper
-                position={scroll}
                 homePage={isHomePage()}
             >
-                <Container>
-                    <HeaderContent>
-                        <BrandLogo>
-                         {scroll ? <Link href="/">
-                                <img src="/img/logo.png"/>
-                            </Link> :   <Link href="/">
-                                <img src={changeLogo()}/>
-                            </Link>}
-                        </BrandLogo>
-                        {!isMobile ? <Menu/>
-                        : <MobileMenu
-                                setMenuOpen={setMenuOpen}
-                                isOpen={isMenuOpen}
-                            />}
-                    </HeaderContent>
-                </Container>
-            </HeaderContentWrapper>
-            {isHomePage() && <Progress/>}
-        </HeaderWrapper>
-    )
+                <HeaderTopInfoWrapper
+                    position={isHomePage() && scroll}
+                >
+                    <Container>
+                        <HeaderTopInfoContent>
+                            <HeaderTopInfoItems>
+                                <HeaderTopInfoItems>
+                                    <a href={facebookUrl} target="_blank">
+                                        <SocialIcon>
+                                            <FontAwesomeIcon icon={faFacebookF} />
+                                        </SocialIcon>
+                                    </a>
+                                    <a href={instagramUrl} target="_blank">
+                                        <SocialIcon>
+                                            <FontAwesomeIcon icon={faInstagram} />
+                                        </SocialIcon>
+                                    </a>
+                                </HeaderTopInfoItems>
+                                <HeaderTopInfoItems>
+                                    <Link href={`/${forBusinessUrl}`}>
+                                        <HeaderTopInfoItem>
+                                            {forBusinessLabel}
+                                        </HeaderTopInfoItem>
+                                    </Link>
+                                    <Link href={`/${forDeveloperUrl}`}>
+                                        <HeaderTopInfoItem>
+                                            {forDeveloperLabel}
+                                        </HeaderTopInfoItem>
+                                    </Link>
+                                </HeaderTopInfoItems>
+                            </HeaderTopInfoItems>
+                            <HeaderTopInfoItems>
+                                <HeaderTopInfoItem>
+                                    <FontAwesomeIcon icon={faClock} /> {openHours}
+                                </HeaderTopInfoItem>
+                                <HeaderTopInfoItem>
+                                    <FontAwesomeIcon icon={faPhone} />
+                                    <a href={phoneNumberUrl}>
+                                        {phoneNumber}
+                                    </a>
+                                </HeaderTopInfoItem>
+                                {/* <HeaderTopInfoItem>
+                          <FontAwesomeIcon icon={faUser} />Panel klienta
+                        </HeaderTopInfoItem> */}
+                            </HeaderTopInfoItems>
+                        </HeaderTopInfoContent>
+                    </Container>
+                </HeaderTopInfoWrapper>
+                <HeaderContentWrapper
+                    position={scroll}
+                    homePage={isHomePage()}
+                >
+                    <Container>
+                        <HeaderContent>
+                            <BrandLogo>
+                                {scroll ? <Link href="/">
+                                    <img src="/img/logo.png"/>
+                                </Link> :   <Link href="/">
+                                    <img src={changeLogo()}/>
+                                </Link>}
+                            </BrandLogo>
+                            {!isMobile ? <Menu/>
+                                : <MobileMenu
+                                    setMenuOpen={setMenuOpen}
+                                    isOpen={isMenuOpen}
+                                />}
+                        </HeaderContent>
+                    </Container>
+                </HeaderContentWrapper>
+                {isHomePage() && <Progress/>}
+            </HeaderWrapper>
+        )
+
+    }
 }
 
 export default Header

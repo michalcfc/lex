@@ -23,25 +23,29 @@ import {
     HeroDescription,
     HeroText
 } from "./Hero.styles"
+import Loader from "@components/Loader";
 
 const Hero = () => {
 
     const [homeDoc, setHomeDoc] = useState(null);
-    const [notFound, toggleNotFound] = useState(false);
+    const [loader, setLoader] = useState(true);
 
-// Fetch the Prismic initial Prismic content on page load
+    // Fetch the Prismic initial Prismic content on page load
     useEffect(() => {
         const fetchPrismicContent = async () => {
             const queryResponse = await queryHomeContent();
             const homeDocContent = queryResponse.data.allHomepages.edges[0].node;
             if (homeDocContent) {
                 setHomeDoc(homeDocContent);
-            } else {
-                toggleNotFound(true);
+                setLoader(false)
             }
         };
         fetchPrismicContent();
     }, []);
+
+    if (loader) {
+        return <Loader/>
+    }
 
     if (homeDoc) {
 
@@ -57,7 +61,6 @@ const Hero = () => {
                                 </HeroTitle>
                                 <HeroBubbles>
                                     {homeDoc.body[0].fields.map(bubble => {
-
                                         return <HeroBubble>
                                             {bubble.name === "LEXELL telecom" ?
                                                 <a href="http://telecom.lexell.pl" target={"_blank"}>{bubble.name}</a> :
@@ -75,9 +78,6 @@ const Hero = () => {
             </HeroWrapper>
 
         )
-    }
-    if (notFound) {
-        return <>loading</>;
     }
 
     return null;
