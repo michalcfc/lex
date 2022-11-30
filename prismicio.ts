@@ -17,11 +17,11 @@ const routes: prismic.Route[] = [
   },
 ];
 
-export const prismicClient = ({
-     previewData,
-     req,
-     ...config
- }: prismicNext.CreateClientConfig = {}) => {
+export const createClient = ({
+ previewData,
+ req,
+ ...config
+}: prismicNext.CreateClientConfig = {}) => {
     const client = prismic.createClient(prismic.getRepositoryEndpoint(repositoryName), {
         routes,
         ...config,
@@ -31,10 +31,11 @@ export const prismicClient = ({
 
     return client;
 };
+
 export const client = (preview) => new ApolloClient({
     link: new HttpLink({
         uri: prismic.getGraphQLEndpoint(repositoryName),
-        fetch: prismicClient(preview).graphQLFetch,
+        fetch: createClient(preview).graphQLFetch,
         useGETForQueries: true,
     }),
     cache: new InMemoryCache(),

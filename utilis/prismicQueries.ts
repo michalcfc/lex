@@ -59,11 +59,11 @@ query menuQuery {
 }
 `;
 
-export const queryMenuContent = async () => {
+export const queryMenuContent = async (previewData?) => {
     const previewCookie = Cookies.get('io.prismic.preview');
     const queryOptions = {
         query: menuQuery,
-        context: undefined
+        context: previewData
     };
 
     if (previewCookie) {
@@ -121,11 +121,11 @@ query footerQuery {
 }
 `;
 
-export const queryFooterContent = async () => {
+export const queryFooterContent = async (previewData?) => {
     const previewCookie = Cookies.get('io.prismic.preview');
     const queryOptions = {
         query: footerQuery,
-        context: undefined
+        context: previewData
     };
 
     if (previewCookie) {
@@ -252,11 +252,11 @@ query blogHomeQuery {
 }
 `;
 
-export const queryHomeContent = async () => {
+export const queryHomeContent = async (previewData?) => {
     const previewCookie = Cookies.get('io.prismic.preview');
     const queryOptions = {
         query: blogHomeQuery,
-        context: undefined
+        context: previewData
     };
 
     if (previewCookie) {
@@ -300,11 +300,11 @@ allPagess(uid: $uid) {
 }
 `;
 
-export const queryStaticPageContent = async (uid) => {
+export const queryStaticPageContent = async (uid, previewData?) => {
     const previewCookie = Cookies.get('io.prismic.preview');
     const queryOptions = {
         query: staticPageQuery,
-        context: undefined,
+        context: previewData,
         variables: {
             uid
         },
@@ -399,11 +399,11 @@ allPosts(tags: $tag) {
 }
 `;
 
-export const queryPostPageContent = async (tag) => {
+export const queryPostPageContent = async (tag, previewData?) => {
     const previewCookie = Cookies.get('io.prismic.preview');
     const queryOptions = {
         query: postPageQuery,
-        context: undefined,
+        context: previewData,
         variables: {
             tag
         },
@@ -454,11 +454,11 @@ allPricings {
 }
 `;
 
-export const queryPricingContent = async () => {
+export const queryPricingContent = async (previewData?) => {
     const previewCookie = Cookies.get('io.prismic.preview');
     const queryOptions = {
         query: pricingQuery,
-        context: undefined,
+        context: previewData,
     };
 
     if (previewCookie) {
