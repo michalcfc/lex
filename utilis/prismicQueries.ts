@@ -123,7 +123,8 @@ query footerQuery {
 export const queryFooterContent = async () => {
     const previewCookie = Cookies.get('io.prismic.preview');
     const queryOptions = {
-        query: footerQuery
+        query: footerQuery,
+        context: undefined
     };
 
     if (previewCookie) {
@@ -254,6 +255,7 @@ export const queryHomeContent = async () => {
     const previewCookie = Cookies.get('io.prismic.preview');
     const queryOptions = {
         query: blogHomeQuery,
+        context: undefined
     };
 
     if (previewCookie) {
@@ -301,6 +303,7 @@ export const queryStaticPageContent = async (uid) => {
     const previewCookie = Cookies.get('io.prismic.preview');
     const queryOptions = {
         query: staticPageQuery,
+        context: undefined,
         variables: {
             uid
         },
@@ -343,6 +346,7 @@ export const queryPageContent = async (tag, previewData?) => {
     const previewCookie = Cookies.get('io.prismic.preview');
     const queryOptions = {
         query: slugPageQuery,
+        context: undefined,
         variables: {
             tag
         },
@@ -398,6 +402,7 @@ export const queryPostPageContent = async (tag) => {
     const previewCookie = Cookies.get('io.prismic.preview');
     const queryOptions = {
         query: postPageQuery,
+        context: undefined,
         variables: {
             tag
         },
@@ -452,9 +457,7 @@ export const queryPricingContent = async () => {
     const previewCookie = Cookies.get('io.prismic.preview');
     const queryOptions = {
         query: pricingQuery,
-        variables: {
-            tag
-        },
+        context: undefined,
     };
 
     if (previewCookie) {
