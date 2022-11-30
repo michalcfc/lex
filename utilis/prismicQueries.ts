@@ -63,6 +63,7 @@ export const queryMenuContent = async () => {
     const previewCookie = Cookies.get('io.prismic.preview');
     const queryOptions = {
         query: menuQuery,
+        context: undefined
     };
 
     if (previewCookie) {
