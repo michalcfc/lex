@@ -79,7 +79,6 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                 >
                     <div>
                    {img && <Link href={link}>
-                       <a>
                            <SectionFigure>
                            <SectionImg
                             src={img}
@@ -90,7 +89,6 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                                 <AbsoluteText src={logo} />
                            </AbsoluteContent>
                        </SectionFigure>
-                    </a>
                    </Link>}
                     </div>
                     <SectionBody
@@ -107,15 +105,14 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                             {link
                                 && <Link
                                         href={link}
+                                        onMouseEnter={() => setShowServices(true)}
                                     >
-                                    <a onMouseEnter={() => setShowServices(true)}>
                                         <Button
                                             variant="secondary"
                                             name="Dowiedz się więcej"
                                             onClick={() => {}}
                                             onMouseEnter={() => setShowServices(true)}
                                         />
-                                    </a>
                             </Link>}
                             {showServices && categories
                             && <SectionLinks>
@@ -124,11 +121,9 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({
                                        <Link
                                            href={category.url}
                                        >
-                                           <a>
                                            <li>
                                             {category.name}
                                            </li>
-                                       </a>
                                        </Link>
                                     )
                                 })}

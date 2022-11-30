@@ -34,11 +34,9 @@ const Submenu: React.FC<SubmenuProps> = ({
                        <MenuLink>{link.sub_nav_link_label[0].text} </MenuLink>
                    </a>  :
                    <Link href={`/${link.sub_nav_link._meta.uid}`}>
-                       <a>
                        <MenuLink>
                            <span>{link.sub_nav_link_label[0].text}</span>
                        </MenuLink>
-                       </a>
                    </Link>
                    }
                 </MenuItem>

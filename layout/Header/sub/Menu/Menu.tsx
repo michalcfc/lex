@@ -57,7 +57,6 @@ const Menu: React.FC<MenuProps> = () => {
                         : '/'
                     }
                     >
-                        <a>
                             {link.primary.label[0].text}
                             {link.primary.submenu
                             && <>{
@@ -68,7 +67,6 @@ const Menu: React.FC<MenuProps> = () => {
                             }
                             </>
                             }
-                        </a>
                     </Link>
                     {link.primary.submenu
                     && isMenuOpen

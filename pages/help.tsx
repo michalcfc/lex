@@ -8,12 +8,9 @@ import { queryPageContent } from './../utilis/prismicQueries'
 import Grid from "@components/Grid"
 import Loader from "@components/Loader"
 import CategoriesMenu from "@components/CategoriesMenu"
-import { useMobileDetect }  from "./../utilis/api"
 import {RichText} from "prismic-reactjs";
-import Image from "next/image";
-import {ImageLoader} from "./../utilis/imageLoader";
 
-const Help: React.FC<HomeProps> = () => {
+const Help: React.FC<HomeProps> = ({ previewData = false }) => {
 
     const [loader, setLoader] = useState(true)
     const [pageDoc, setPageDoc] = useState(null);
@@ -22,7 +19,7 @@ const Help: React.FC<HomeProps> = () => {
     const tag = "help"
     useEffect(() => {
         const fetchPrismicContent = async () => {
-            const queryResponse = await queryPageContent(tag);
+            const queryResponse = await queryPageContent(tag, previewData );
             const pageDocContent = queryResponse;
             if (pageDocContent) {
                 setPageDoc(pageDocContent);
@@ -92,3 +89,13 @@ const Help: React.FC<HomeProps> = () => {
 }
 
 export default Help
+
+export async function getStaticProps({ previewData }) {
+
+
+    return {
+        props: {
+            previewData: String(previewData)
+        },
+    }
+}
