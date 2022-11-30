@@ -339,7 +339,7 @@ allPagess(tags: $tag) {
 }
 `;
 
-export const queryPageContent = async (tag, previewData) => {
+export const queryPageContent = async (tag, previewData?) => {
     const previewCookie = Cookies.get('io.prismic.preview');
     const queryOptions = {
         query: slugPageQuery,
