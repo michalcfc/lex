@@ -267,7 +267,7 @@ export const queryHomeContent = async () => {
         };
     }
 
-    return client().query(queryOptions);
+    return client(false).query(queryOptions);
 };
 
 /*
