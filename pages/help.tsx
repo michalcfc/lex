@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 import { HomeProps } from "./../Types/Home.d"
 import Head from "next/head";
