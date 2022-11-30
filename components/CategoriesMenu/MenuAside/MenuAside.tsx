@@ -28,14 +28,12 @@ const MenuAside = ({
                         {categories && categories.map(category => {
                             return <MenuItem key={category.node._meta.uid}>
                                 <Link href={`/${tag}/${category.node._meta.uid}`}>
-                                    <a>
                                     <CurrentPage
                                         fontBold={item === category.node._meta.uid}
                                         onClick={() => setItem(category.node._meta.uid)}
                                     >
                                         {category.node.page_title[0].text}
                                     </CurrentPage>
-                                    </a>
                                 </Link>
                             </MenuItem>
                         })}

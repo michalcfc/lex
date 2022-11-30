@@ -136,10 +136,8 @@ const Footer = () => {
                     </FooterContent>
                     <FooterBottom>
 
-                        <Link href="https://jachimov.pl">
-                            <a target="_blank" rel="noreferrer">
+                        <Link href="https://jachimov.pl" target="_blank" rel="noreferrer">
                                 © 2021 Jachimov.pl | All Rights Reserved
-                            </a>
                         </Link>
                     </FooterBottom>
                 </Container>

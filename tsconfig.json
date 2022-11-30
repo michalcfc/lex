@@ -3,7 +3,9 @@
     "target": "es5",
     "baseUrl": "./",
     "paths": {
-      "@components/*": ["components/*"]
+      "@components/*": [
+        "components/*"
+      ]
     },
     "lib": [
       "dom",
@@ -20,13 +22,18 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "incremental": true
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "pages/_document.js", "pages/_app.js", "utilis/utils.js", "pages/movies/[movieId].tsx"  ],
+    "**/*.tsx",
+    "pages/_document.js",
+    "pages/_app.js",
+    "utilis/utils.js",
+    "pages/movies/[movieId].tsx"
+  ],
   "exclude": [
     "node_modules"
   ]
