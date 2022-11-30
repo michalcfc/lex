@@ -31,7 +31,7 @@ export const prismicClient = ({
 
     return client;
 };
-export const client = (preview = undefined) => new ApolloClient({
+export const client = (preview) => new ApolloClient({
     link: new HttpLink({
         uri: prismic.getGraphQLEndpoint(repositoryName),
         fetch: prismicClient(preview).graphQLFetch,
