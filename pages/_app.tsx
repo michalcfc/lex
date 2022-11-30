@@ -10,7 +10,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS
 
 import Layout from "../layout"
-import {repoName} from "../prismic-configuration";
+import {repositoryName} from "../prismicio";
 
 
 export default function App(
@@ -27,7 +27,7 @@ export default function App(
               <Link href={href} {...props} />
           )}
       >
-          <PrismicPreview repositoryName={repoName}>
+          <PrismicPreview repositoryName={repositoryName}>
       <ThemeProvider 
         theme={lightTheme}
       >
