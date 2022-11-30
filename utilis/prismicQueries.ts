@@ -448,7 +448,7 @@ allPricings {
 }
 `;
 
-export const queryPricingContent = async (tag) => {
+export const queryPricingContent = async () => {
     const previewCookie = Cookies.get('io.prismic.preview');
     const queryOptions = {
         query: pricingQuery,
