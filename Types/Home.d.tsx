@@ -12,5 +12,6 @@ export interface HomeProps {
     movies: [Movie]
     preview: string
     allPosts: any
+    previewData: any
     text: RichTextBlock[]
 }
