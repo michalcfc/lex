@@ -7,7 +7,6 @@ export default async function preview(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  console.log(req)
   const client = prismicClient({ req });
   setPreviewData({ req, res });
 
