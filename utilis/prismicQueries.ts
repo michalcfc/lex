@@ -74,7 +74,7 @@ export const queryMenuContent = async () => {
         };
     }
 
-    return client().query(queryOptions);
+    return client(false).query(queryOptions);
 };
 
 /*
@@ -136,7 +136,7 @@ export const queryFooterContent = async () => {
         };
     }
 
-    return client().query(queryOptions);
+    return client(false).query(queryOptions);
 };
 
 /*
@@ -267,7 +267,7 @@ export const queryHomeContent = async () => {
         };
     }
 
-    return client().query(queryOptions);
+    return client(false).query(queryOptions);
 };
 
 /*
@@ -318,7 +318,7 @@ export const queryStaticPageContent = async (uid) => {
         };
     }
 
-    return await client().query(queryOptions);
+    return await client(false).query(queryOptions);
 };
 
 
@@ -347,7 +347,7 @@ export const queryPageContent = async (tag, previewData?) => {
     const previewCookie = Cookies.get('io.prismic.preview');
     const queryOptions = {
         query: slugPageQuery,
-        context: undefined,
+        context: previewData,
         variables: {
             tag
         },
@@ -361,7 +361,7 @@ export const queryPageContent = async (tag, previewData?) => {
         };
     }
 
-    return await client(previewData).query(queryOptions);
+    return await client(false).query(queryOptions);
 };
 
 /*
@@ -417,7 +417,7 @@ export const queryPostPageContent = async (tag) => {
         };
     }
 
-    return await client().query(queryOptions);
+    return await client(false).query(queryOptions);
 };
 
 
@@ -469,5 +469,5 @@ export const queryPricingContent = async () => {
         };
     }
 
-    return await client().query(queryOptions);
+    return await client(false).query(queryOptions);
 };
