@@ -23,7 +23,6 @@ export const createClient = ({
  ...config
 }: prismicNext.CreateClientConfig = {}) => {
     const client = prismic.createClient(prismic.getRepositoryEndpoint(repositoryName), {
-        routes,
         ...config,
     });
 
