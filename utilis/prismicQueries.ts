@@ -353,15 +353,8 @@ export const queryPageContent = async (tag, previewData?) => {
         },
     };
 
-    if (previewCookie) {
-        queryOptions.context = {
-            headers: {
-                'Prismic-ref': previewCookie,
-            },
-        };
-    }
 
-    return await client(false).query(queryOptions);
+    return await client(previewData).query(queryOptions);
 };
 
 /*

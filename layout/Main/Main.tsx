@@ -9,13 +9,13 @@ import {
 
 import Hero from "../Hero"
 
-const Main = ({children}) => {
+const Main = ({children, homeDoc}) => {
 
     return (
         <MainWrapper
             homePage={isHomePage()}
         >
-            {isHomePage() && <Hero/>}
+            {isHomePage() && <Hero homeDoc={homeDoc}/>}
             <MainContainer
                 homePage={isHomePage()}
             >

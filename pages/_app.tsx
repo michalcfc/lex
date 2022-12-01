@@ -9,16 +9,10 @@ import "@fortawesome/fontawesome-svg-core/styles.css"; // import Font Awesome CS
 import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS
 
-import Layout from "../layout"
 import {repositoryName} from "../prismicio";
 
 
-export default function App(
-    {
-        Component,
-        pageProps,
-    }
-) {
+export default function App({Component, pageProps, homeDoc}) {
 
   return (
       <PrismicProvider
@@ -27,7 +21,7 @@ export default function App(
               <Link href={href} {...props} />
           )}
       >
-          <PrismicPreview repositoryName={repositoryName}>
+      <PrismicPreview repositoryName={repositoryName}>
       <ThemeProvider 
         theme={lightTheme}
       >
@@ -36,11 +30,9 @@ export default function App(
             name="viewport" 
             content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" 
           />
-        <Layout>
               <Component 
                 {...pageProps} 
                 />
-        </Layout>
       </ThemeProvider>
       </PrismicPreview>
     </PrismicProvider>

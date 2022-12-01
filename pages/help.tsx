@@ -1,34 +1,11 @@
-import {useEffect, useState} from "react";
-
-import { HomeProps } from "./../Types/Home.d"
 import Head from "next/head";
-
 import Container from "@components/Container"
 import { queryPageContent } from './../utilis/prismicQueries'
 import Grid from "@components/Grid"
-import Loader from "@components/Loader"
 import CategoriesMenu from "@components/CategoriesMenu"
 import {RichText} from "prismic-reactjs";
 
-const Help: React.FC<HomeProps> = ({ previewData = false }) => {
-
-    const [loader, setLoader] = useState(true)
-    const [pageDoc, setPageDoc] = useState(null);
-
-    // Fetch the Prismic initial Prismic content on page load
-    const tag = "help"
-    useEffect(() => {
-        const fetchPrismicContent = async () => {
-            const queryResponse = await queryPageContent(tag, previewData );
-            const pageDocContent = queryResponse;
-            if (pageDocContent) {
-                setPageDoc(pageDocContent);
-                setLoader(false);
-            }
-        };
-        fetchPrismicContent();
-    }, [loader]);
-
+const Help = ({ tag, pageDoc }) => {
 
     const renderText = () => {
         const text = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.id == "YKY8qhAAACAA88kf").pop()
@@ -46,10 +23,6 @@ const Help: React.FC<HomeProps> = ({ previewData = false }) => {
     }
 
     const currentPage = getCurrentPage()
-
-    if(loader) {
-        return <Loader />;
-    }
 
     // Return the page if a document was retrieved from Prismic
     if (pageDoc) {
@@ -91,11 +64,15 @@ const Help: React.FC<HomeProps> = ({ previewData = false }) => {
 export default Help
 
 export async function getStaticProps({ previewData }) {
+    const tag = 'help'
+    const queryResponse = await queryPageContent(tag, previewData);
+    const pageDoc = queryResponse;
 
 
     return {
         props: {
-            previewData: String(previewData)
+            tag,
+            pageDoc
         },
     }
 }

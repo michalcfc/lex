@@ -17,29 +17,20 @@ import CookieConsent from "react-cookie-consent";
 
 import {queryHomeContent} from "../utilis/prismicQueries";
 import Loader from "@components/Loader";
+import Layout from "../layout";
 
 
-const Home: React.FC<HomeProps> = ({
-   allPosts
-}) => {
+const Home = ({
+   homeDoc
+}: HomeProps) => {
     
     const [isBottom, setIsBottom] = useState(false)
 
-    const [homeDoc, setHomeDoc] = useState(null);
     const [loader, setLoader] = useState(true);
 
 
 
     useEffect(() => {
-        const fetchPrismicContent = async () => {
-            const queryResponse = await queryHomeContent();
-            const homeDocContent = queryResponse.data.allHomepages.edges[0].node.body;
-            if (homeDocContent) {
-                setHomeDoc(homeDocContent);
-                setLoader(false)
-            }
-        };
-        fetchPrismicContent();
         const onScroll = function () {
            if (window.innerHeight + window.scrollY >= document.documentElement.clientHeight) {
             setIsBottom(true)
@@ -53,19 +44,10 @@ const Home: React.FC<HomeProps> = ({
         return () => window.removeEventListener('scroll', onScroll)
      }, [loader])
 
-    if(loader) {
-        return <Loader/>
-    }
-
     if(homeDoc) {
         return (
-            <>
-                <Head>
-                    {/* <title>{heroPost.hero_title[0].text}</title> */}
-                </Head>
-
-
-                {homeDoc.map((section, index) => {
+            <Layout homeDoc={homeDoc}>
+                {homeDoc.body.map((section, index) => {
                     if(section.type === 'partners') {
                         return (
                             <Container>
@@ -109,9 +91,23 @@ const Home: React.FC<HomeProps> = ({
                 {isBottom
                 && <GoToTop />
                 }
-            </>
+            </Layout>
         )
     }
 }
 
 export default Home
+
+export async function getStaticProps({
+ previewData,
+}) {
+
+    const queryResponse = await queryHomeContent(previewData);
+    const homeDoc = queryResponse.data.allHomepages.edges[0].node;
+
+    return {
+        props: {
+            homeDoc,
+        },
+    };
+}

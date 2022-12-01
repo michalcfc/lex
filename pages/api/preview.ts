@@ -8,6 +8,7 @@ export default async function preview(
     res: NextApiResponse,
 ) {
   const client = createClient({ req });
+  console.log(req)
   setPreviewData({ req, res });
 
   await redirectToPreviewURL({ req, res, client });

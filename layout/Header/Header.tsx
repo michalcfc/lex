@@ -37,26 +37,14 @@ import App from "../../pages/_app";
 import {queryHomeContent} from "../../utilis/prismicQueries";
 const SCROLL_DISTANCE = 10
 
-const Header: React.FC<HeaderProps> = () => {
+const Header = ({ homeDoc  }) => {
 
     const [scroll, setScroll] = useState(false)
     const [isMenuOpen, setMenuOpen] = useState(false)
     const [isMobile, setMobile] = useState(false)
 
-    const [homeDoc, setHomeDoc] = useState(null);
-    const [loader, setLoader] = useState(true);
 
     useEffect(() => {
-
-        const fetchPrismicContent = async () => {
-            const queryResponse = await queryHomeContent();
-            const homeDocContent = queryResponse.data.allHomepages.edges[0].node;
-            if (homeDocContent) {
-                setHomeDoc(homeDocContent);
-                setLoader(false)
-            }
-        };
-        fetchPrismicContent();
 
         if (isMenuOpen) {
             setMenuOpen(!isMenuOpen);
@@ -108,10 +96,6 @@ const Header: React.FC<HeaderProps> = () => {
             default:
                 return '/img/logos/logo.png'
         }
-    }
-
-    if (loader) {
-        return <></>
     }
 
     if(homeDoc) {

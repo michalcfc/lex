@@ -25,30 +25,9 @@ import {
 } from "./Hero.styles"
 import Loader from "@components/Loader";
 
-const Hero = () => {
-
-    const [homeDoc, setHomeDoc] = useState(null);
-    const [loader, setLoader] = useState(true);
-
-    // Fetch the Prismic initial Prismic content on page load
-    useEffect(() => {
-        const fetchPrismicContent = async () => {
-            const queryResponse = await queryHomeContent();
-            const homeDocContent = queryResponse.data.allHomepages.edges[0].node;
-            if (homeDocContent) {
-                setHomeDoc(homeDocContent);
-                setLoader(false)
-            }
-        };
-        fetchPrismicContent();
-    }, []);
-
-    if (loader) {
-        return <Loader/>
-    }
+const Hero = ({ homeDoc }) => {
 
     if (homeDoc) {
-
         const heroText = homeDoc.body[0].primary.heading[0].text;
         return (
             <HeroWrapper>
