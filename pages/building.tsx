@@ -9,12 +9,13 @@ import MenuAsideMobile from "@components/CategoriesMenu/MenuAsideMobile"
 
 import {RichText} from "prismic-reactjs";
 import {useEffect, useState} from "react";
-import {queryPageContent} from "../utilis/prismicQueries";
+import {queryHomeContent, queryPageContent} from "../utilis/prismicQueries";
 import Loader from "@components/Loader";
 import CategoriesMenu from "@components/CategoriesMenu";
 import {ImageLoader} from "./../utilis/imageLoader";
+import Layout from "../layout";
 
-const Energy: React.FC<HomeProps> = () => {
+const Energy = ({ navigation}) => {
 
     const [loader, setLoader] = useState(true)
     const [pageDoc, setPageDoc] = useState(null);
@@ -62,11 +63,11 @@ const Energy: React.FC<HomeProps> = () => {
     if(pageDoc) {
         const title = RichText.asText(pageDoc.headlin)
         return (
-            <Container>
+            <Layout homeDoc={navigation}>
                 <Head>
                     <title>{title}</title>
                 </Head>
-
+                <Container>
                 <Grid
                     gridGap="2rem"
                     columns="360px 1fr"
@@ -88,7 +89,8 @@ const Energy: React.FC<HomeProps> = () => {
                         />
                     </div>
                 </Grid>
-            </Container>
+                </Container>
+            </Layout>
         )
 
     }
@@ -96,11 +98,16 @@ const Energy: React.FC<HomeProps> = () => {
 
 export default Energy
 
-// export async function getStaticProps({ previewData }) {
-//     const allPages = await getAllPages(previewData)
-//     return {
-//         props: {
-//             text: allPages[0].node.description
-//         },
-//     }
-// }
+export async function getStaticProps({
+     previewData,
+ }) {
+
+    const queryResponse = await queryHomeContent(previewData);
+    const navigation = queryResponse.data.allHomepages.edges[0].node;
+
+    return {
+        props: {
+            navigation,
+        },
+    };
+}

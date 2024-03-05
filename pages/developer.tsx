@@ -4,12 +4,13 @@ import Container from "@components/Container";
 import Heading from "@components/Heading";
 import ContactForm from "@components/ContactForm";
 import React, {useEffect, useState} from "react";
-import {queryStaticPageContent} from "../utilis/prismicQueries";
+import {queryHomeContent, queryStaticPageContent} from "../utilis/prismicQueries";
 import Loader from "@components/Loader";
 import {RichText} from "prismic-reactjs";
+import Layout from "../layout";
 
 const Developer: React.FC<HomeProps> = ({
-
+ navigation
 }) => {
 
     let messageTopic = [
@@ -44,7 +45,7 @@ const Developer: React.FC<HomeProps> = ({
     if(pageDoc) {
         const title = RichText.asText(pageDoc.page_title);
         return (
-            <>
+            <Layout homeDoc={navigation}>
                 <Head>
                     <title>
                         {title}
@@ -62,9 +63,23 @@ const Developer: React.FC<HomeProps> = ({
                         messageTopic={messageTopic}
                     />
                 </Container>
-            </>
+            </Layout>
         )
     }
 }
 
 export default Developer
+
+export async function getStaticProps({
+     previewData,
+ }) {
+
+    const queryResponse = await queryHomeContent(previewData);
+    const navigation = queryResponse.data.allHomepages.edges[0].node;
+
+    return {
+        props: {
+            navigation,
+        },
+    };
+}

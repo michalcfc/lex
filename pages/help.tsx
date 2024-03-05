@@ -1,11 +1,12 @@
 import Head from "next/head";
 import Container from "@components/Container"
-import { queryPageContent } from './../utilis/prismicQueries'
+import {queryHomeContent, queryPageContent} from './../utilis/prismicQueries'
 import Grid from "@components/Grid"
 import CategoriesMenu from "@components/CategoriesMenu"
 import {RichText} from "prismic-reactjs";
+import Layout from "../layout";
 
-const Help = ({ tag, pageDoc }) => {
+const Help = ({ tag, pageDoc, navigation }) => {
 
     const renderText = () => {
         const text = pageDoc?.data.allPagess.edges.filter(e => e.node._meta.id == "YKY8qhAAACAA88kf").pop()
@@ -28,6 +29,7 @@ const Help = ({ tag, pageDoc }) => {
     if (pageDoc) {
         const title = RichText.asText(pageDoc.headline);
         return (
+            <Layout homeDoc={navigation}>
             <Container>
                 <Head>
                     <title>{title}</title>
@@ -55,6 +57,7 @@ const Help = ({ tag, pageDoc }) => {
                     </div>
                 </Grid>
             </Container>
+            </Layout>
         )
     }
 
@@ -66,13 +69,16 @@ export default Help
 export async function getStaticProps({ previewData }) {
     const tag = 'help'
     const queryResponse = await queryPageContent(tag, previewData);
+    const queryNavigationResponse = await queryHomeContent(previewData);
+    const navigation = queryNavigationResponse.data.allHomepages.edges[0].node;
     const pageDoc = queryResponse;
 
 
     return {
         props: {
             tag,
-            pageDoc
+            pageDoc,
+            navigation
         },
     }
 }

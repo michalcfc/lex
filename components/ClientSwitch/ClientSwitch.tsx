@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import Link from "next/link"
+
 import {
     ClientSwitchWrapper,
     StyledLink,
@@ -10,7 +10,7 @@ import {ClientSwitchProps } from "./ClientSwitch.d"
 
 import Card from "@components/Card"
 import Flexbox from "@components/Flexbox"
-import Button from "@components/Button";
+import {Link} from "@components/Link";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {

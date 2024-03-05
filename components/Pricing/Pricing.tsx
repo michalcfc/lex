@@ -118,7 +118,7 @@ const Section: React.FC<PricingProps> = ({
                     />
                     <PricingSwitchLabel htmlFor={isNetworkPricing ? '1' : '2'}>
                         <PricingSwitchSelect
-                            data-checked="Bezterminowo"
+                            data-checked={`${isRadioPricing ? 'Bezterminowo' : '12 miesięcy'}`}
                             data-unchecked="24 miesiące"
                         ></PricingSwitchSelect>
                     </PricingSwitchLabel>
@@ -144,7 +144,7 @@ const Section: React.FC<PricingProps> = ({
                         <PricingItem>
                             {
                                 pack.primary.download
-                                && <FontAwesomeIcon icon={faArrowCircleUp}/>
+                                && <FontAwesomeIcon icon={faArrowCircleDown}/>
                             }
                             {
                                 pack.primary.download || pack.channels
@@ -157,7 +157,7 @@ const Section: React.FC<PricingProps> = ({
                         </PricingItem>
                         {isNetworkPricing
                             && <PricingItem>
-                            <FontAwesomeIcon icon={faArrowCircleDown}/>
+                            <FontAwesomeIcon icon={faArrowCircleUp}/>
                             {pack.primary.upload}
                         </PricingItem>}
                         <PricingItemPrice>
@@ -190,7 +190,7 @@ const Section: React.FC<PricingProps> = ({
                 )})}
             </Grid>
             <PricingBottom>
-                {!isTvPricing && !isRadioPricing && "Stały adres IP za dopłatą miesięcznie: 5zł"}
+                {!isTvPricing && !isRadioPricing && "*opłaty uwzględniają wszystkie rabaty"}
             <Modal
             title=""
             text=""

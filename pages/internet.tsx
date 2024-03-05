@@ -5,12 +5,13 @@ import Container from "@components/Container"
 import Flexbox from "@components/Flexbox"
 
 import Head from "next/head";
-import {queryPricingContent} from "../utilis/prismicQueries";
+import {queryHomeContent, queryMenuContent, queryPricingContent} from "../utilis/prismicQueries";
 import Loader from "@components/Loader";
 import {RichText} from "prismic-reactjs";
+import Layout from "../layout";
 
 const Network: React.FC<HomeProps> = ({
-
+  navigation
 }) => {
 
     const myRef = useRef(null)
@@ -44,7 +45,7 @@ const Network: React.FC<HomeProps> = ({
         const opticalFiber = pageDoc?.filter(e => e.node._meta.id == "YNm9ihQAACQAf1ID").pop()
         const mapUrlPath = radio.node.map.embed_url
         return (
-            <>
+            <Layout homeDoc={navigation}>
                 <Container>
                     <Head>
                         <title>{radio.node.page_title[0].text}</title>
@@ -81,9 +82,23 @@ const Network: React.FC<HomeProps> = ({
                         />
                     </>
                 </Container>
-            </>
+            </Layout>
         )
     }
 }
 
 export default Network
+
+export async function getStaticProps({
+     previewData,
+ }) {
+
+    const queryResponse = await queryHomeContent(previewData);
+    const navigation = queryResponse.data.allHomepages.edges[0].node;
+
+    return {
+        props: {
+            navigation,
+        },
+    };
+}

@@ -5,7 +5,6 @@ import Wrapper  from "./Wrapper"
 
 const Layout = ({children, homeDoc}) => (
     <Wrapper>
-        {console.log(homeDoc)}
         <Header
             homeDoc={homeDoc}
         />

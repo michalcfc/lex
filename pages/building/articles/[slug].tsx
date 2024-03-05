@@ -3,13 +3,16 @@ import Head from "next/head";
 
 import Container from "@components/Container"
 import {useEffect, useState} from "react";
-import {queryPageContent, queryPostPageContent} from "../../../utilis/prismicQueries";
+import {queryHomeContent, queryPageContent, queryPostPageContent} from "../../../utilis/prismicQueries";
 import {RichText} from "prismic-reactjs";
 import {useRouter} from "next/router";
 import Loader from "@components/Loader";
 import Gallery from "@components/Gallery";
+import {createClient} from "../../../prismicio";
+import * as prismicH from "@prismicio/helpers";
+import Layout from "../../../layout";
 
-const Realization: React.FC<HomeProps> = () => {
+const Realization: React.FC<HomeProps> = ({ navigation }) => {
 
     const router = useRouter()
 
@@ -47,6 +50,7 @@ const Realization: React.FC<HomeProps> = () => {
         const title = currentPost.node.title[0].text
         const images = currentPost.node.body && currentPost.node.body[0].fields
         return (
+            <Layout homeDoc={navigation}>
             <Container>
                 <Head>
                     <title>{title}</title>
@@ -60,9 +64,37 @@ const Realization: React.FC<HomeProps> = () => {
                     images={images}
                 />}
             </Container>
+            </Layout>
         )
 
     }
 }
 
 export default Realization
+
+export async function getStaticProps({
+                                         previewData,
+                                     }) {
+
+    const queryResponse = await queryHomeContent(previewData);
+    const navigation = queryResponse.data.allHomepages.edges[0].node;
+
+    return {
+        props: {
+            navigation,
+        },
+    };
+}
+
+export async function getStaticPaths() {
+    const client = createClient()
+
+    const pages = await client.getAllByType('page')
+
+    return {
+        paths: pages.map((page) => prismicH.asLink(page)),
+        fallback: true,
+    }
+}
+
+

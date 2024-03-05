@@ -5,13 +5,14 @@ import { HomeProps } from "./../Types/Home.d"
 import Heading from "components/Heading"
 import Container from "components/Container"
 
-import {queryStaticPageContent} from './../utilis/prismicQueries'
+import {queryHomeContent, queryStaticPageContent} from './../utilis/prismicQueries'
 import {useEffect, useState} from "react";
 import Loader from "@components/Loader";
 import {RichText} from "prismic-reactjs";
+import Layout from "../layout";
 
-const About: React.FC<HomeProps> = ({
-
+const About = ({
+    navigation
 }) => {
 
     const [loader, setLoader] = useState(true)
@@ -38,7 +39,7 @@ const About: React.FC<HomeProps> = ({
     if (pageDoc) {
         const title = RichText.asText(pageDoc.page_title);
         return (
-            <>
+            <Layout homeDoc={navigation}>
                 <Head>
                     <title>
                         {title}
@@ -52,9 +53,23 @@ const About: React.FC<HomeProps> = ({
                         <RichText render={pageDoc.description}/>
                     </div>
                 </Container>
-            </>
+            </Layout>
         )
     }
 }
 
 export default About
+
+export async function getStaticProps({
+     previewData,
+ }) {
+
+    const queryResponse = await queryHomeContent(previewData);
+    const navigation = queryResponse.data.allHomepages.edges[0].node;
+
+    return {
+        props: {
+            navigation,
+        },
+    };
+}

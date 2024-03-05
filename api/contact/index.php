@@ -12,7 +12,7 @@ if ($_POST)
 
 	http_response_code(200);
 	$subject = 'Zapytanie ze strony Lexell.pl';
-	$to = "biuro@lexell.com.pl";
+	$to = "admin@icoding.pl";
 	$from = $_POST['email'];
 
 	// data

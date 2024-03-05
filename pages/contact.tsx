@@ -6,13 +6,14 @@ import Head from "next/head";
 
 import Heading from "@components/Heading"
 import Container from "@components/Container"
-import {queryStaticPageContent} from "../utilis/prismicQueries";
+import {queryHomeContent, queryStaticPageContent} from "../utilis/prismicQueries";
 import Loader from "@components/Loader";
 import {RichText} from "prismic-reactjs";
+import Layout from "../layout";
 
-const Contact: React.FC<HomeProps> = (
-
-) => {
+const Contact: React.FC<HomeProps> = ({
+                                          navigation
+                                      }) => {
 
     const [choosenPack, setChoosenPack] = useState<string>('')
 
@@ -78,13 +79,10 @@ const Contact: React.FC<HomeProps> = (
         return <Loader/>
     }
 
-
-    console.log(pageDoc)
-
     if(pageDoc) {
         const title = RichText.asText(pageDoc.page_title);
         return (
-            <>
+            <Layout homeDoc={navigation}>
                 <Head>
                     <title>
                         {title}
@@ -101,9 +99,23 @@ const Contact: React.FC<HomeProps> = (
                         messageTopic={checkChoosenPack()}
                     />
                 </Container>
-            </>
+            </Layout>
         )
     }
 }
 
 export default Contact
+
+export async function getStaticProps({
+                                         previewData,
+                                     }) {
+
+    const queryResponse = await queryHomeContent(previewData);
+    const navigation = queryResponse.data.allHomepages.edges[0].node;
+
+    return {
+        props: {
+            navigation,
+        },
+    };
+}

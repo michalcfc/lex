@@ -6,12 +6,13 @@ import Grid from "@components/Grid"
 import {useEffect, useState} from "react";
 import {RichText} from "prismic-reactjs";
 import CategoriesMenu from "@components/CategoriesMenu";
-import {queryPageContent} from "../utilis/prismicQueries";
+import {queryHomeContent, queryPageContent} from "../utilis/prismicQueries";
 import Loader from "@components/Loader";
 import Image from "next/image";
 import {ImageLoader} from "./../utilis/imageLoader";
+import Layout from "../layout";
 
-const Smart: React.FC<HomeProps> = () => {
+const Smart: React.FC<HomeProps> = ({ navigation }) => {
 
     const [loader, setLoader] = useState(true)
     const [pageDoc, setPageDoc] = useState(null);
@@ -53,6 +54,7 @@ const Smart: React.FC<HomeProps> = () => {
         const title = RichText.asText(pageDoc.headline)
         const currentPage = getCurrentPage()
         return (
+            <Layout homeDoc={navigation}>
             <Container>
                 <Head>
                     <title>{title}</title>
@@ -80,17 +82,23 @@ const Smart: React.FC<HomeProps> = () => {
                     </div>
                 </Grid>
             </Container>
+            </Layout>
         )
     }
 }
 
 export default Smart
 
-// export async function getStaticProps({ previewData }) {
-//     const allPages = await getAllPages(previewData)
-//     return {
-//         props: {
-//             text: allPages[0].node.description
-//         },
-//     }
-// }
+export async function getStaticProps({
+     previewData,
+ }) {
+
+    const queryResponse = await queryHomeContent(previewData);
+    const navigation = queryResponse.data.allHomepages.edges[0].node;
+
+    return {
+        props: {
+            navigation,
+        },
+    };
+}

@@ -10,9 +10,13 @@ import Container        from "@components/Container"
 import CategoriesMenu   from "@components/CategoriesMenu";
 
 import {
+    queryHomeContent,
     queryPageContent, queryPostPageContent
 } from "../../utilis/prismicQueries";
-const Post = () => {
+import {createClient} from "../../prismicio";
+import * as prismicH from "@prismicio/helpers";
+import Layout from "../../layout";
+const Post = ({ navigation }) => {
 
     const router = useRouter()
 
@@ -56,6 +60,7 @@ const Post = () => {
     if(pageDoc) {
         const title = RichText.asText(pageDoc.headline)
         return(
+            <Layout homeDoc={navigation}>
             <Container>
                 <Head>
                     <title>{title}</title>
@@ -87,10 +92,38 @@ const Post = () => {
                     </div>
                 </Grid>
             </Container>
+            </Layout>
         )
     }
 }
 
 
 export default Post
+
+export async function getStaticProps({
+                                         previewData,
+                                     }) {
+
+    const queryResponse = await queryHomeContent(previewData);
+    const navigation = queryResponse.data.allHomepages.edges[0].node;
+
+    return {
+        props: {
+            navigation,
+        },
+    };
+}
+
+export async function getStaticPaths() {
+    const client = createClient()
+
+    const pages = await client.getAllByType('page')
+
+    return {
+        paths: pages.map((page) => prismicH.asLink(page)),
+        fallback: true,
+    }
+}
+
+
 
