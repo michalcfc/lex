@@ -39,7 +39,6 @@ const Home = ({ homeDoc }: HomeProps) => {
   }, [loader]);
 
   if (homeDoc) {
-    console.log(homeDoc);
     return (
       <Layout homeDoc={homeDoc}>
         {homeDoc.body.map((section, index) => {
