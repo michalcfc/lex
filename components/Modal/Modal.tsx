@@ -23,7 +23,7 @@ const Modal = React.forwardRef<RefObject<any>, ModalProps>(({
     title,
     text,
     autoWidth
- }) => {
+ }, ref) => {
 
     return (
         <>

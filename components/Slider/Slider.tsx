@@ -1,25 +1,17 @@
 import React, { useRef, useEffect, useState } from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
 
-import {
-    SliderStyle,
-    SliderWrapper,
-    SliderItem,
-    SliderImg
-} from "./Slider.styles"
+import { SliderStyle, SliderWrapper, SliderItem, SliderImg } from './Slider.styles';
 
-import { SliderProps } from "./Slider.d"
+import { SliderProps } from './Slider.d';
 
 import Grid from '@components/Grid';
-import Arrow from "@components/Arrow"
-import Container from "@components/Container"
+import Arrow from '@components/Arrow';
+import Container from '@components/Container';
 
-const Slider: React.FC<SliderProps> = ({
-     items
-   }) => {
+const Slider: React.FC<SliderProps> = ({ items }) => {
   const element = useRef(null);
-  const [offset, setOffset] = useState(0)
-
+  const [offset, setOffset] = useState(0);
 
   // useEffect(() => {
   // //   const interval = setInterval(() => {
@@ -37,44 +29,58 @@ const Slider: React.FC<SliderProps> = ({
   // }, [element, offset]);
 
   const moveLeft = () => {
-    element.current.scrollLeft -= offset / 2
-  }
+    element.current.scrollLeft -= offset / 2;
+  };
 
   const moveRight = () => {
-    element.current.scrollLeft += offset
-  }
+    element.current.scrollLeft += offset;
+  };
   return (
-      <>
-        <SliderWrapper ref={element}>
-          <SliderStyle>
-
-              {items?.map(item => {
-                  return <>{item.logo_url.__typename === "_ExternalLink" ?
-                      <a  href="http://telecom.lexell.pl" target={"_blank"}><SliderItem>
-                          <SliderImg src={item.logo_img.url}/>
-                      </SliderItem></a>
-                      : <a href={item.logo_url._meta?.uid} target={"_blank"}><SliderItem>
-                          <SliderImg src={item.logo_img.url}/>
-                      </SliderItem></a>
-
-                  }</>
-              })}
-              {items?.map(item => {
-                  return <>{item.logo_url.__typename === "_ExternalLink" ?
-                  <a  href="http://telecom.lexell.pl" target={"_blank"}><SliderItem>
-                          <SliderImg src={item.logo_img.url}/>
-                      </SliderItem></a>
-                      : <a href={item.logo_url._meta?.uid} target={"_blank"}><SliderItem>
-                          <SliderImg src={item.logo_img.url}/>
-                      </SliderItem></a>
-
-                  }</>
-              })}
-          </SliderStyle>
-        </SliderWrapper>
-
-      </>
-  )
-}
+    <>
+      <SliderWrapper ref={element}>
+        <SliderStyle>
+          {items?.map((item, id) => {
+            return (
+              <div key={id}>
+                {item.logo_url.__typename === '_ExternalLink' ? (
+                  <a href="http://telecom.lexell.pl" target={'_blank'} rel="noreferrer">
+                    <SliderItem>
+                      <SliderImg src={item.logo_img.url} />
+                    </SliderItem>
+                  </a>
+                ) : (
+                  <a href={item.logo_url._meta?.uid} target={'_blank'} rel="noreferrer">
+                    <SliderItem>
+                      <SliderImg src={item.logo_img.url} />
+                    </SliderItem>
+                  </a>
+                )}
+              </div>
+            );
+          })}
+          {items?.map((item, id) => {
+            return (
+              <div key={id}>
+                {item.logo_url.__typename === '_ExternalLink' ? (
+                  <a href="http://telecom.lexell.pl" target={'_blank'} rel="noreferrer">
+                    <SliderItem>
+                      <SliderImg src={item.logo_img.url} />
+                    </SliderItem>
+                  </a>
+                ) : (
+                  <a href={item.logo_url._meta?.uid} target={'_blank'} rel="noreferrer">
+                    <SliderItem>
+                      <SliderImg src={item.logo_img.url} />
+                    </SliderItem>
+                  </a>
+                )}
+              </div>
+            );
+          })}
+        </SliderStyle>
+      </SliderWrapper>
+    </>
+  );
+};
 
 export default Slider;

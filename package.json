@@ -74,6 +74,7 @@
     "graphql-tag": "^2.12.4",
     "lint-staged": "13.0.3",
     "prettier": "2.7.1",
+    "slice-machine-ui": "^1.24.1",
     "typescript": "^4.9.3"
   }
 }
